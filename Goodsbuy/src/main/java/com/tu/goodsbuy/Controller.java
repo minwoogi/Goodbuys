@@ -8,6 +8,11 @@ public class Controller {
 
     @GetMapping("/")
     public String test() {
-        return "Application";
+        return "loginPage";
+    }
+
+    @GetMapping("/index")
+    public String test2(){
+        return "index";
     }
 }
