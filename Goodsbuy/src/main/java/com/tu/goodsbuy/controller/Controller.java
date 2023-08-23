@@ -1,4 +1,4 @@
-package com.tu.goodsbuy;
+package com.tu.goodsbuy.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 

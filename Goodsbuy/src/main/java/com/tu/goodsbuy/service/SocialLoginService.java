@@ -1,15 +1,10 @@
 package com.tu.goodsbuy.service;
 
-import com.tu.goodsbuy.dao.LoginDaoImpl;
 import com.tu.goodsbuy.dto.MemberUser;
 
-public class LoginServiceImpl implements LoginService {
-
-
-
+public class SocialLoginService implements LoginService {
     @Override
     public void checkMemberUser(MemberUser memberUser) {
-
 
     }
 

@@ -3,14 +3,28 @@ package com.tu.goodsbuy.dao;
 import com.tu.goodsbuy.dto.MemberUser;
 import com.tu.goodsbuy.util.DbConnection;
 
-public class LoginDaoImpl implements LoginDao {
+public class DirectLoginDao implements LoginDao {
 
 
-    private final DbConnection dbConnection;
+    private DbConnection dbConnection;
 
-    public LoginDaoImpl(DbConnection dbconnection) {
+    private static DirectLoginDao INSTANCE;
+
+    public DirectLoginDao(DbConnection dbconnection) {
         this.dbConnection = dbconnection;
     }
+
+    public DirectLoginDao() {
+
+    }
+
+    public static DirectLoginDao getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new DirectLoginDao();
+        }
+        return INSTANCE;
+    }
+
 
     @Override
     public boolean isLoginState() {

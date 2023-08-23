@@ -20,7 +20,7 @@
                 <img alt="mainLogo" width="400" src="/img/mainLogo.png" title="goodsbuy">
             </div>
 
-            <form id="login-form">
+            <form id="login-form" action="validateLogin.do">
                 <div class="id_input">
                     <input type="text" size="" name="member_user_id"
                            placeholder="아이디" class="member_user_signIn">
