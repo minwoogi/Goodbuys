@@ -20,13 +20,13 @@
                 <img alt="mainLogo" width="400" src="/img/mainLogo.png" title="goodsbuy">
             </div>
 
-            <form id="login-form" action="validateLogin.do">
+            <form id="login-form" action="/account/sign_in.do" method="post">
                 <div class="id_input">
-                    <input type="text" size="" name="member_user_id"
+                    <input type="text" size="" name="username"
                            placeholder="아이디" class="member_user_signIn">
                 </div>
                 <div class="pwd_input">
-                    <input type="password" name="member_user_password"
+                    <input type="password" name="password"
                            placeholder="비밀번호" class="member_user_signIn">
                 </div>
                 <div class="signInBtn-group">
@@ -46,7 +46,6 @@
 
                 <div class="social-login">
                     SNS계정으로 간편 로그인/회원가입
-
                 </div>
             </form>
 

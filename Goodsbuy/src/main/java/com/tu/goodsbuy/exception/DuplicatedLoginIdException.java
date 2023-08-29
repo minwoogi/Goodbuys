@@ -1,9 +1,9 @@
 package com.tu.goodsbuy.exception;
 
-public class DuplicatedLoginIdException extends RuntimeException{
+public class DuplicatedLoginIdException extends RuntimeException {
 
     public DuplicatedLoginIdException() {
-        System.out.println("Duplicate login id");
+        super("Duplicate login id");
     }
 
     public DuplicatedLoginIdException(String message) {

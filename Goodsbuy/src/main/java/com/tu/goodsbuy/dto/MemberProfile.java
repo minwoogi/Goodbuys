@@ -2,7 +2,6 @@ package com.tu.goodsbuy.dto;
 
 public class MemberProfile {
 
-
     private int profile_id;
     private int userNo;
     private String nickName;

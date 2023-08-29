@@ -5,14 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @org.springframework.stereotype.Controller
 public class Controller {
 
-
-    @GetMapping("/")
-    public String test() {
+    @GetMapping("/account/sign_in")
+    public String login() {
         return "loginPage";
     }
 
     @GetMapping("/index")
-    public String test2(){
+    public String index() {
         return "index";
     }
 }

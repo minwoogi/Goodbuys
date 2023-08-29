@@ -3,18 +3,19 @@ package com.tu.goodsbuy.service;
 import com.tu.goodsbuy.dto.MemberUser;
 
 public class SocialLoginService implements LoginService {
-    @Override
-    public void checkMemberUser(MemberUser memberUser) {
 
+    @Override
+    public MemberUser getMemberUserByIdAndPwd(String userId, String userPwd) {
+        return null;
     }
 
     @Override
-    public boolean validateLogin(String id, String pwd) {
-        return false;
+    public int isExistMemberById(String userId) {
+        return 0;
     }
 
     @Override
-    public boolean isLoginState() {
-        return false;
+    public int createAccount(String userId, String userPwd) {
+        return 0;
     }
 }

@@ -21,6 +21,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // jsp
     implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
+    implementation 'org.mybatis:mybatis:3.5.6' //0823 mybatis
+    implementation 'mysql:mysql-connector-java:8.0.23' //0823 jdbc
+
+    implementation 'org.springframework.boot:spring-boot-starter-security' //0829 스프링 시큐리티
+
 }
 
 tasks.named('test') {
