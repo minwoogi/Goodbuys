@@ -13,13 +13,13 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet"/>
 </head>
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">
+        <a class="navbar-brand" href="/goodsbuy/list">
             <img alt="mainLogo" width="200" src="/img/mainLogo.png" title="goodsbuy"
                  class="d-inline-block align-text-top">
         </a>
@@ -48,12 +48,12 @@
                 </div>
                 <div class="p-1">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="#!">로그인</a></li>
+                        <li class="nav-item"><a  href="/login" class="nav-link" aria-current="page" href="#!">로그인</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">회원가입</a></li>
                     </ul>
                 </div>
                 <div class="p-1">
-                    <button type="button" class="btn" style="background-color: #4E00FF; color: white;" type="submit">
+                    <button type="button" class="btn" style="background-color: #4E00FF; color: white;" >
                         <%--                    <i class="bi-cart-fill me-1"></i>--%>
                         글쓰기
                         <%--                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>--%>
@@ -79,9 +79,9 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <%
-                List<Item> items = null;
+                //List<Item> items = null;
 
-                for(Item it: items ){
+                //for(Item it: items ){
             %>
             <div class="col mb-5">
                 <div class="card h-100">
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <%
-                }
+                //}
             %>
             <div class="col mb-5">
                 <div class="card h-100">

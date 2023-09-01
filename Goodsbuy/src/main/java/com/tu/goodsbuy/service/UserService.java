@@ -6,27 +6,22 @@ import com.tu.goodsbuy.dao.UserDao;
 import com.tu.goodsbuy.dto.MemberUser;
 import com.tu.goodsbuy.exception.AuthenticationDataMissingException;
 
-import java.lang.reflect.Member;
-import java.util.Optional;
+public class UserService {
 
-public class DirectLoginService implements LoginService {
-
-    private static LoginService INSTANCE;
+    private static UserService INSTANCE;
     private final UserDao userDao;
 
-    public static LoginService getINSTANCE() {
+    public static UserService getINSTANCE() {
         if (INSTANCE == null) {
-            INSTANCE = new DirectLoginService();
+            INSTANCE = new UserService();
         }
         return INSTANCE;
     }
 
-    public DirectLoginService() {
+    public UserService() {
         this.userDao = MybatisManager.getMapper(UserDao.class);
     }
 
-
-    @Override
     public MemberUser getMemberUserByIdAndPwd(String userId, String userPwd) {
 
         if (userId.equals("") || userPwd.equals("")) {
@@ -37,13 +32,6 @@ public class DirectLoginService implements LoginService {
         return memberUser;
     }
 
-    @Override
-    public int isExistMemberById(String userId) {
-        return 0;
-    }
 
-    @Override
-    public int createAccount(String userId, String userPwd) {
-        return 0;
-    }
 }
+

@@ -1,0 +1,92 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#gbError {
+    position: relative;
+    height: 100%;
+}
+
+#erPage {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.happen {
+    overflow: hidden;
+    width: 100%;
+    padding: 52px 0 52px 0;
+    text-align: center;
+}
+
+.happen .error_txt {
+    display: block;
+    font-weight: bold;
+    font-size: 27px;
+    color: #101010;
+    line-height: 35px;
+    letter-spacing: -0.035em;
+}
+
+.happen .again_txt {
+    padding-top: 16px;
+    font-size: 15px;
+    color: #888;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+}
+
+.happen .imgErr {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 17px auto 0;
+    background: url("../img/exclamationIcon.png") no-repeat;
+    background-size: 150px 150px;
+}
+
+.happen .btn {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    max-width: 330px;
+    margin: 0 auto;
+    padding: 24px 15px 0;
+}
+
+.happen .home_txt {
+    display: block;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    color: #333;
+    background-color: #2d2ae8;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.happen .btn_home .home_txt {
+    color: #fff;
+    background: #4000FF;
+}
+
+.happen .btn_home:only-child {
+    width: 180px;
+    flex: none;
+    margin-right: -1px;
+    text-decoration-line: none;
+}
+
+.logo {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 5px auto 0;
+}

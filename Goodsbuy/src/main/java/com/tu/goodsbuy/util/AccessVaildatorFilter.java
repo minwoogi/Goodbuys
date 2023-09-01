@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@WebFilter(filterName = "loginFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "loginFilter", urlPatterns = "/*")
 public class AccessVaildatorFilter implements Filter {
 
     private List<String> loginSessionRequiredLinks;
@@ -21,18 +21,11 @@ public class AccessVaildatorFilter implements Filter {
     public AccessVaildatorFilter() {
         loginSessionRequiredLinks = new ArrayList<String>();
         loginSessionRequiredLinks.add("/mypage.jsp");
-        loginSessionRequiredLinks.add("/info.jsp");
-        loginSessionRequiredLinks.add("/write.jsp");
-        loginSessionRequiredLinks.add("/article");
-        loginSessionRequiredLinks.add("update.jsp");
-        loginSessionRequiredLinks.add("logOut.do");
+
 
         invaildAccessLinks = new ArrayList<String>();
         invaildAccessLinks.add("/update.do");
-        invaildAccessLinks.add("/delete.do");
-        invaildAccessLinks.add("/scrap.do");
-        invaildAccessLinks.add("/deleteScrap.do");
-        invaildAccessLinks.add("/write.do");
+
     }
 
 

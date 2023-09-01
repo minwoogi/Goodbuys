@@ -6,11 +6,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+<%--    <meta charset="UTF-8" http-equiv="refresh" content="0; url=/goodsbuy/list"> 리다이렉션--%>
     <title></title>
 </head>
 <body>
 <script>
-    location.href="/account/sign_in";
+    location.href="/goodsbuy/list";
 </script>
 </body>
 </html>

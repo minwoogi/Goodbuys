@@ -8,7 +8,7 @@
     <title>GoodsBuy</title>
     <%--link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">--%>
-    <link rel="stylesheet" type="text/css" href="/css/signIn.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 
 </head>
 <body style="background-color: #EEEEEE">
@@ -16,11 +16,13 @@
     <div class="inner_container">
 
         <main class="doc_main">
+            <a href="/goodsbuy/list">
             <div class="doc-title">
                 <img alt="mainLogo" width="400" src="/img/mainLogo.png" title="goodsbuy">
             </div>
+            </a>
 
-            <form id="login-form" action="/account/sign_in.do" method="post">
+            <form id="login-form" action="/login.do" method="post">
                 <div class="id_input">
                     <input type="text" size="" name="username"
                            placeholder="아이디" class="member_user_signIn">
