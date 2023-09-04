@@ -11,4 +11,9 @@ public class GoodsBuyController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/errorPage")
+    public String errorPage() {
+        return "errorPage";
+    }
 }

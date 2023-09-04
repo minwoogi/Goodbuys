@@ -16,7 +16,7 @@ public interface UserRepository {
     Optional<MemberUser> getMemberUserByIdAndPwd(@Param("user_id") String userId, @Param("user_pwd") String userPwd);
 
     @Insert("INSERT INTO member_user(user_id,user_pwd) values(#{user_id} ,#{user_pwd})")
-    void loginByIdAndPwd(@Param("user_id") String userId, @Param("user_pwd") String userPwd);
+    void makeMember();
 
 
 }

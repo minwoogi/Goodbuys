@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.controller;
+package com.tu.goodsbuy.controller.list.get;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

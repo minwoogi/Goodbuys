@@ -1,7 +1,12 @@
 package com.tu.goodsbuy.exception;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -16,27 +21,25 @@ public class ExceptionAdvice {
     }
 
 
-//    @ExceptionHandler(BindException.class)
-//    public String errorPage(BindException e, RedirectAttributes ra, HttpServletRequest req) {
-//        ra.addFlashAttribute("errors", e.getBindingResult());
-//        String servletPath = req.getServletPath();
-//        return "redirect:" + servletPath;
-//    }
-//
-//    @ExceptionHandler({
-//            UserNotFoundException.class, ExistIdException.class
-//    })
-//    public String loginRegisterError(Model model, Exception e) {
-//        model.addAttribute("globalError", e.getMessage());
-//        return "login-form";
-//    }
-//
-//    @ExceptionHandler({
-//            UserPermissionException.class,
-//            NotFoundParentBoardException.class
-//    })
-//    public String requestError(Model model, Exception e) {
-//        model.addAttribute("error", e.getMessage());
-//        return "error";
-//    }
+    @ExceptionHandler(NoHandlerFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handle404(NoHandlerFoundException e) {
+        return "redirect:/errorPage";
+    }
+
+    // 데이터베이스오류
+    @ExceptionHandler(DataAccessException.class)
+    public String handleDataAccessException(DataAccessException e) {
+        e.printStackTrace();
+        return "redirect:/errorPage";
+    }
+
+    // 500에러처리
+    @ExceptionHandler(Exception.class)
+    public String handleException(Exception e) {
+        e.printStackTrace();
+        return "redirect:/errorPage";
+    }
+
+
 }
