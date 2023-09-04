@@ -16,9 +16,16 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+            integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"
+            integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <style>
@@ -51,19 +58,25 @@
     <div class="input-form-backgroud row">
         <div class="input-form col-md-12 mx-auto">
             <div class="mb-5 d-flex justify-content-center"></div>
-            <div class="mb-5 d-flex justify-content-center"><img src="/img/mainLogo.png" style="width:259.5px; height:40px;" class="img-responsive"></div>
+            <a href="/goodsbuy/list">
+                <div class="mb-5 d-flex justify-content-center"><img src="/img/mainLogo.png"
+                                                                     style="width:259.5px; height:40px;"
+                                                                     class="img-responsive"></div>
+            </a>
             <h5 class="mb-5 d-flex justify-content-left">사용자 정보를 입력하세요</h5>
             <form class="validation-form" novalidate action="/register.do">
                 <div class="mb-3">
                     <label for="identify">아이디</label>
-                    <input type="text" class="form-control" id="identify" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="userId"
+                           placeholder="아이디는 (a-z, A-Z), 숫자(0-9) 4~12자만 가능합니다." value="" required>
                     <div class="invalid-feedback">
                         아이디를 입력해주세요.
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="password1">비밀번호</label>
-                    <input type="password" class="form-control" id="password1" placeholder="" value="" required>
+                    <input type="password" class="form-control" id="userPwd"
+                           placeholder="최소 8자에서 20자 이하이어야 하며, 대문자, 소문자, 숫자 및 특수 문자를 모두 포함해야 합니다." value="" required>
                     <div class="invalid-feedback">
                         비밀번호를 입력해주세요.
                     </div>
@@ -72,7 +85,8 @@
 
                 <div class="mb-3">
                     <label for="password2">비밀번호 확인</label>
-                    <input type="password" class="form-control" id="password2" placeholder="" required>
+                    <input type="password" class="form-control" id="password2"
+                           placeholder="최소 8자에서 20자 이하이어야 하며, 대문자, 소문자, 숫자 및 특수 문자를 모두 포함해야 합니다." required>
                     <div class="invalid-feedback">
                         비밀번호를 확인해주세요.
                     </div>

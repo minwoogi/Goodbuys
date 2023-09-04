@@ -36,13 +36,13 @@
                     <input type="password" name="password"
                            placeholder="비밀번호" class="member_user_signIn">
                 </div>
-                <div class="signInBtn-group">
+                <div class="signInBtn-group mb-3">
                     <button id="loginBtn" submit="button">로그인
                     </button>
                 </div>
 
                 <div>
-                    <a>${msg}</a>
+                    <a class="text-danger">${msg}</a>
                 </div>
 
                 <div class="info_user">
@@ -51,7 +51,7 @@
                             <b>계정 찾기</b>
                         </li>
                         <li>
-                            <b>회원가입</b>
+                            <b><a href="/register">회원가입</a></b>
                         </li>
                     </ul>
                 </div>
