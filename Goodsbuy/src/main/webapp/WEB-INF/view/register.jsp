@@ -53,7 +53,7 @@
             <div class="mb-5 d-flex justify-content-center"></div>
             <div class="mb-5 d-flex justify-content-center"><img src="/img/mainLogo.png" style="width:259.5px; height:40px;" class="img-responsive"></div>
             <h5 class="mb-5 d-flex justify-content-left">사용자 정보를 입력하세요</h5>
-            <form class="validation-form" novalidate>
+            <form class="validation-form" novalidate action="/register.do">
                 <div class="mb-3">
                     <label for="identify">아이디</label>
                     <input type="text" class="form-control" id="identify" placeholder="" value="" required>

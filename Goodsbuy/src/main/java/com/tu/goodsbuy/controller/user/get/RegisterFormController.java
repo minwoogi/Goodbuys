@@ -13,7 +13,7 @@ public class RegisterFormController {
 
     @GetMapping("/register.do")
     public String getSession(@SessionAttribute(name = "loginMember", required = false) MemberUser user) {
-        return user == null ? "login" : "list";
+        return user == null ? "register" : "list";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
