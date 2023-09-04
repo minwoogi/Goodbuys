@@ -9,7 +9,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 public class MybatisManager {
 
     private static final String driverName = "com.mysql.cj.jdbc.Driver";
-    private static final String url = "jdbc:mysql://localhost:3306/jspreport?serverTimezone=UTC";
+    private static final String url = "jdbc:mysql://localhost:3306/goodsbuy?serverTimezone=UTC";
     private static final String username = "root";
     private static final String password = "1234";
     private static final SqlSessionFactory sqlSessionFactory;
@@ -19,6 +19,7 @@ public class MybatisManager {
 
         configuration.setCacheEnabled(false);
         configuration.setUseGeneratedKeys(true);
+        configuration.setMapUnderscoreToCamelCase(true);
         configuration.setDefaultExecutorType(ExecutorType.REUSE);
 
         // environment 등록
@@ -31,7 +32,7 @@ public class MybatisManager {
         configuration.setEnvironment(env);
 
         // 매퍼 인터페이스 등록
-        configuration.addMappers("com.bit.dao");
+        configuration.addMappers("com.tu.goodsbuy.repo");
 
         // sql-session-factory 생성
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);

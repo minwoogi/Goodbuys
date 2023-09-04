@@ -18,7 +18,7 @@
             <p class="again_txt">잠시후 다시 이용해주시기 바랍니다.</p>
 
             <div class="btn">
-                <a href="index.jsp" class="btn_home">
+                <a href="/goodsbuy/list" class="btn_home">
                     <span class="home_txt">홈으로</span></a>
             </div>
         </div>

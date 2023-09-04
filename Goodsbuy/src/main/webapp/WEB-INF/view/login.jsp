@@ -32,7 +32,7 @@
                            placeholder="비밀번호" class="member_user_signIn">
                 </div>
                 <div class="signInBtn-group">
-                    <button id="loginBtn" type="button">로그인
+                    <button id="loginBtn" submit="button">로그인
                     </button>
                 </div>
                 <div class="info_user">

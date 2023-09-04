@@ -13,7 +13,7 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/styles.css" rel="stylesheet"/>
+    <link href="/css/list.css" rel="stylesheet"/>
 </head>
 <body>
 <!-- Navigation-->
@@ -48,7 +48,7 @@
                 </div>
                 <div class="p-1">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a  href="/login" class="nav-link" aria-current="page" href="#!">로그인</a></li>
+                        <li class="nav-item"><a  href="/login" class="nav-link" aria-current="page">로그인</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">회원가입</a></li>
                     </ul>
                 </div>

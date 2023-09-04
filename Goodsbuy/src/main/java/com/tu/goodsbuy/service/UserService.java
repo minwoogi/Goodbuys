@@ -2,14 +2,17 @@ package com.tu.goodsbuy.service;
 
 
 import com.tu.goodsbuy.config.MybatisManager;
-import com.tu.goodsbuy.dao.UserDao;
+import com.tu.goodsbuy.repo.UserRepository;
 import com.tu.goodsbuy.dto.MemberUser;
 import com.tu.goodsbuy.exception.AuthenticationDataMissingException;
+
+import java.util.Objects;
+import java.util.Optional;
 
 public class UserService {
 
     private static UserService INSTANCE;
-    private final UserDao userDao;
+    private final UserRepository userRepository;
 
     public static UserService getINSTANCE() {
         if (INSTANCE == null) {
@@ -19,17 +22,13 @@ public class UserService {
     }
 
     public UserService() {
-        this.userDao = MybatisManager.getMapper(UserDao.class);
+        this.userRepository = MybatisManager.getMapper(UserRepository.class);
     }
 
-    public MemberUser getMemberUserByIdAndPwd(String userId, String userPwd) {
+    public Long doLogin(String userId, String userPwd) {
 
-        if (userId.equals("") || userPwd.equals("")) {
-            throw new AuthenticationDataMissingException();
-        }
-
-        MemberUser memberUser = userDao.getMemberUserByIdAndPwd(userId, userPwd).orElseGet(null);
-        return memberUser;
+        Long userNo = userRepository.getUserNoByIdAndPwd(userId, userPwd);
+        return Objects.isNull(userNo) ? -1L : userNo;
     }
 
 
