@@ -12,17 +12,34 @@
 
 </head>
 <body style="background-color: #EEEEEE">
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        let message = "${msg}";
+        if (message.startsWith("계정")) {
+            swal.fire({
+                title: "알림",
+                text: message,
+                icon: "error",
+            });
+        }
+    })
+</script>
+
+
 <div id="container-doc">
     <div class="inner_container">
 
         <main class="doc_main">
             <a href="/goodsbuy/list">
-            <div class="doc-title">
-                <img alt="mainLogo" width="400" src="/img/mainLogo.png" title="goodsbuy">
-            </div>
+                <div class="doc-title">
+                    <img alt="mainLogo" width="400" src="/img/mainLogo.png" title="goodsbuy">
+                </div>
             </a>
 
-            <form id="login-form" action="/login.do" method="post">
+            <form id="login-form" action="/login" method="post">
                 <div class="id_input">
                     <input type="text" size="" name="username"
                            placeholder="아이디" class="member_user_signIn">

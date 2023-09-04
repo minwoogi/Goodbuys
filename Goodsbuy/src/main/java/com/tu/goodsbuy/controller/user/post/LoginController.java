@@ -2,28 +2,33 @@ package com.tu.goodsbuy.controller.user.post;
 
 import com.tu.goodsbuy.dto.MemberUser;
 import com.tu.goodsbuy.service.UserService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 @Controller
+@RequiredArgsConstructor
+@SessionAttributes({"loginMember"})
 public class LoginController {
 
 
-    @PostMapping("/login.do")
+    private final UserService userService;
+
+    @PostMapping("/login")
     public String doLogin(String username, String password, Model model) {
 
-        System.out.println(username);
-        System.out.println(password);
+        MemberUser loginMember = userService.doLogin(username, password);
 
-        Long userNo = UserService.getINSTANCE().doLogin(username, password);
-
-        if (userNo == -1L) {
-            return "redirect:/login";
+        if (loginMember == null) {
+            model.addAttribute("msg", "계정 혹은 비밀번호가 일치하지 않습니다. 입력한 내용을 다시 확인해 주세요.");
+            return "/login";
         }
-        System.out.println("victory");
+        model.addAttribute("loginMember", loginMember);
+
         return "redirect:/goodsbuy/list";
     }
 

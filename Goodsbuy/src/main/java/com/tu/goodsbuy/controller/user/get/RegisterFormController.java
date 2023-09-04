@@ -18,6 +18,6 @@ public class RegisterFormController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String getSesson(@SessionAttribute(name = "loginMember", required = false) MemberUser user) {
-        return user == null ? "login" : "list";
+        return user == null ? "register" : "list";
     }
 }

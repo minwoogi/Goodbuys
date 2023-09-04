@@ -1,11 +1,9 @@
 package com.tu.goodsbuy.dto;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
 
 
-@Getter
-@RequiredArgsConstructor
+@Data
 public class MemberUser {
 
     private Long userNo;
