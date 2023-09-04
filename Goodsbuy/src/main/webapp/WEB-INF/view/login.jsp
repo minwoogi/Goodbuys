@@ -1,3 +1,4 @@
+<%@ page import="com.tu.goodsbuy.dto.MemberUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -13,21 +14,6 @@
 </head>
 <body style="background-color: #EEEEEE">
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $(document).ready(function () {
-        let message = "${msg}";
-        if (message.startsWith("계정")) {
-            swal.fire({
-                title: "알림",
-                text: message,
-                icon: "error",
-            });
-        }
-    })
-</script>
-
 
 <div id="container-doc">
     <div class="inner_container">
@@ -39,7 +25,7 @@
                 </div>
             </a>
 
-            <form id="login-form" action="/login" method="post">
+            <form id="login-form" action="/login.do" method="post">
                 <div class="id_input">
                     <input type="text" size="" name="username"
                            placeholder="아이디" class="member_user_signIn">
@@ -52,6 +38,11 @@
                     <button id="loginBtn" submit="button">로그인
                     </button>
                 </div>
+
+                <div>
+                    <a>${msg}</a>
+                </div>
+
                 <div class="info_user">
                     <ul class="list_user">
                         <li>
