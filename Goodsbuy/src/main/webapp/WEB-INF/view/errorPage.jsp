@@ -7,7 +7,10 @@
     <title>GoodsBuy wrong apporch</title>
 </head>
 
+
 <body>
+
+
 <div id="gbError" class="error">
 
     <main id="erPage">
