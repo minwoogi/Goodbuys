@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: rodin
-  Date: 2023-09-04
-  Time: AM 2:20
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ko">
 
@@ -14,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoodsBuy Reigster</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
             integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -64,19 +60,38 @@
                                                                      class="img-responsive"></div>
             </a>
             <h5 class="mb-5 d-flex justify-content-left">사용자 정보를 입력하세요</h5>
-            <form class="validation-form" novalidate action="/register.do">
+            <form class="validation-form" novalidate action="/register.do" method="post">
                 <div class="mb-3">
                     <label for="identify">아이디</label>
-                    <input type="text" class="form-control" id="userId"
-                           placeholder="아이디는 (a-z, A-Z), 숫자(0-9) 4~12자만 가능합니다." value="" required>
+                    <input type="text" class="form-control" id="identify" name="userId"
+                           placeholder="아이디는 (a-z, A-Z), 숫자(0-9) 4~12자만 가능합니다."
+                    <c:if test="${not empty registerForm and not empty registerForm.userId}">
+                           value="${registerForm.userId}"
+                    </c:if>
+                           required>
+                    <div>
+                        <c:if test="${not empty errors and errors.hasFieldErrors('userId')}">
+                            <div class="error">${errors.getFieldError('userId').defaultMessage}</div>
+                        </c:if>
+                    </div>
                     <div class="invalid-feedback">
                         아이디를 입력해주세요.
                     </div>
                 </div>
+
                 <div class="mb-3">
                     <label for="password1">비밀번호</label>
-                    <input type="password" class="form-control" id="userPwd"
-                           placeholder="최소 8자에서 20자 이하이어야 하며, 대문자, 소문자, 숫자 및 특수 문자를 모두 포함해야 합니다." value="" required>
+                    <input type="password" class="form-control" id="password1" name="userPwd"
+                           placeholder="최소 8자에서 20자 이하이어야 하며, 대문자, 소문자, 숫자 및 특수 문자를 모두 포함해야 합니다."
+                    <c:if test="${not empty registerForm and not empty registerForm.userPwd}">
+                           value="${registerForm.userPwd}"
+                    </c:if>
+                           required>
+                    <div>
+                        <c:if test="${not empty errors and errors.hasFieldErrors('userPwd')}">
+                            <div class="error">${errors.getFieldError('userPwd').defaultMessage}</div>
+                        </c:if>
+                    </div>
                     <div class="invalid-feedback">
                         비밀번호를 입력해주세요.
                     </div>
@@ -85,24 +100,43 @@
 
                 <div class="mb-3">
                     <label for="password2">비밀번호 확인</label>
-                    <input type="password" class="form-control" id="password2"
-                           placeholder="최소 8자에서 20자 이하이어야 하며, 대문자, 소문자, 숫자 및 특수 문자를 모두 포함해야 합니다." required>
+                    <input type="password" class="form-control" id="password2" name="confirmPassword"
+                           placeholder="최소 8자에서 20자 이하이어야 하며, 대문자, 소문자, 숫자 및 특수 문자를 모두 포함해야 합니다."
+                    <c:if test="${not empty registerForm and not empty registerForm.confirmPassword}">
+                           value="${registerForm.confirmPassword}"
+                    </c:if>
+                           required>
+                    <div>
+                        <c:if test="${not empty errors and errors.hasFieldErrors('confirmPassword')}">
+                            <div class="error">${errors.getFieldError('confirmPassword').defaultMessage}</div>
+                        </c:if>
+                    </div>
                     <div class="invalid-feedback">
                         비밀번호를 확인해주세요.
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="birthday">생년월일</label>
-                    <input type="text" id="birthday" class="form-control" value="" placeholder="ex : 20000101" required>
+                    <label for="birthday">생년 월일</label>
+                    <input type="text" id="birthday" name="birth" class="form-control"
+                           placeholder="ex : 19990101"
+                    <c:if test="${not empty registerForm and not empty registerForm.birth}">
+                           value="${registerForm.birth}"
+                    </c:if>
+                           required>
+                    <div>
+                        <c:if test="${not empty errors and errors.hasFieldErrors('birth')}">
+                            <div class="error">${errors.getFieldError('birth').defaultMessage}</div>
+                        </c:if>
+                    </div>
                     <div class="invalid-feedback">
-                        주소를 입력해주세요.
+                        생년 월일을 입력해주세요.
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="root">성별</label>
-                    <select class="custom-select d-block w-100" id="root">
+                    <select class="custom-select d-block w-100" id="root" name="nickname">
                         <option value=""></option>
                         <option>남자</option>
                         <option>여자</option>
@@ -114,7 +148,8 @@
                 <hr class="mb-4">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="aggrement" required>
-                    <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+                    <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에
+                        동의합니다.</label>
                 </div>
                 <div class="mb-4"></div>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">다음</button>

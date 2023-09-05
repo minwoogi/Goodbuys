@@ -12,7 +12,15 @@ public class ScriptWriterUtil {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         PrintWriter writer = response.getWriter();
-        writer.println("<script>alert('" + msg + "'); </script>");
+        writer.println("<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>");
+        writer.println("<script>");
+        writer.println("Swal.fire({");
+        writer.println("  icon: 'success',"); // 아이콘 타입 (success, error, warning 등)
+        writer.println("  title: '알림',"); // 제목
+        writer.println("  text: '" + msg + "',"); // 메시지
+        writer.println("})");
+        writer.println("</script>");
+
         writer.flush();
         writer.close();
     }
