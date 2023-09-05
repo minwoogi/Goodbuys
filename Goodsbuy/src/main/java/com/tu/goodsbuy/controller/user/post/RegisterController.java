@@ -35,6 +35,8 @@ public class RegisterController {
         if (userService.isValidRegister(registerForm.getUserId())) {
             userService.makeMemberUser(registerForm.getUserId(), registerForm.getUserPwd());
             userService.makeMemberProfile(registerForm.getUserId(), registerForm.getNickname());
+        } else {
+            ScriptWriterUtil.writeAndRedirect(response, "이미 존재하는 ID입니다.", "/register");
         }
 
         ScriptWriterUtil.writeAndRedirect(response, "회원가입에 성공하였습니다.", "/login");

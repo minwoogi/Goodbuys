@@ -21,6 +21,9 @@ public class UserService {
     }
 
     public boolean isValidRegister(String userId) {
+
+
+
         return userRepository.validMember(userId) == 1 ? false : true;
     }
 

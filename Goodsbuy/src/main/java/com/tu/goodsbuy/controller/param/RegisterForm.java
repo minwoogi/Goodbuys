@@ -30,7 +30,7 @@ public class RegisterForm {
     private String birth;
 
 
-    @Pattern(regexp = "^[a-zA-Z0-9가-힣]{2,20}$", message = "닉네임 형식에 맞게 작성해주세요.")
+    @Pattern(regexp = "^[a-zA-Z0-9가-힣]{4,20}$", message = "닉네임 형식에 맞게 작성해주세요.")
     private String nickname;
 
 

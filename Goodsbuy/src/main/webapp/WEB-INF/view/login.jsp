@@ -29,11 +29,15 @@
             <form id="login-form" action="/login.do" method="post">
                 <div class="id_input">
                     <input type="text" size="" name="username"
-                           placeholder="아이디" class="member_user_signIn">
+                           placeholder="아이디" class="member_user_signIn" autofocus
+                           oninvalid="this.setCustomValidity('아이디를 입력하세요.')"
+                           oninput="this.setCustomValidity('')" required/>
                 </div>
                 <div class="pwd_input">
                     <input type="password" name="password"
-                           placeholder="비밀번호" class="member_user_signIn">
+                           placeholder="비밀번호" class="member_user_signIn"
+                           oninvalid="this.setCustomValidity('비밀번호를 입력하세요.')"
+                           oninput="this.setCustomValidity('')" required/>
                 </div>
                 <div class="signInBtn-group mb-3">
                     <button id="loginBtn" submit="button">로그인
