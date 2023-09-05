@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,8 +32,12 @@ public class RegisterController {
             return "redirect:/register";
         }
 
+        if (userService.isValidRegister(registerForm.getUserId())) {
+            userService.makeMemberUser(registerForm.getUserId(), registerForm.getUserPwd());
+            userService.makeMemberProfile(registerForm.getUserId(), registerForm.getNickname());
+        }
 
-        ScriptWriterUtil.writeScript(response, "회원가입에 성공하였습니다.");
+        ScriptWriterUtil.writeAndRedirect(response, "회원가입에 성공하였습니다.", "/login");
 
         return "redirect:/goodsbuy/list";
     }
