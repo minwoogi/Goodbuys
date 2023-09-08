@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.repo;
+package com.tu.goodsbuy.repository;
 
 
 import org.apache.ibatis.annotations.Mapper;

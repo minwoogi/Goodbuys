@@ -1,11 +1,10 @@
 package com.tu.goodsbuy.service;
 
 
+import com.tu.goodsbuy.dto.MemberProfile;
 import com.tu.goodsbuy.dto.MemberUser;
-import com.tu.goodsbuy.exception.DuplicatedLoginIdException;
-import com.tu.goodsbuy.exception.MakeMemberException;
-import com.tu.goodsbuy.exception.MakeMemberProfileException;
-import com.tu.goodsbuy.repo.UserRepository;
+import com.tu.goodsbuy.exception.*;
+import com.tu.goodsbuy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,27 +20,14 @@ public class UserService {
     }
 
     public boolean isValidRegister(String userId) {
-
-
-
-        return userRepository.validMember(userId) == 1 ? false : true;
+        return userRepository.validMember(userId) != 1;
     }
 
     public void makeMemberUser(String userId, String userPwd) {
         if (userRepository.makeMemberUser(userId, userPwd) == 0) {
-            new MakeMemberException();
+            throw new MakeMemberException();
         }
     }
-
-    public void makeMemberProfile(String userId, String nickname) {
-
-        if (userRepository.makeMemberProfile(userRepository.findUserNoById(userId), nickname) == 0) {
-            new MakeMemberProfileException();
-        }
-
-
-    }
-
 
 }
 

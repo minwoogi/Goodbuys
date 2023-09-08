@@ -1,6 +1,7 @@
 package com.tu.goodsbuy.controller.user.post;
 
 import com.tu.goodsbuy.controller.param.RegisterForm;
+import com.tu.goodsbuy.service.ProfileService;
 import com.tu.goodsbuy.service.UserService;
 import com.tu.goodsbuy.util.ScriptWriterUtil;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import java.io.IOException;
 public class RegisterController {
 
     private final UserService userService;
+    private final ProfileService profileService;
 
 
     @RequestMapping(value = "/register.do", method = RequestMethod.POST)
@@ -34,7 +36,7 @@ public class RegisterController {
 
         if (userService.isValidRegister(registerForm.getUserId())) {
             userService.makeMemberUser(registerForm.getUserId(), registerForm.getUserPwd());
-            userService.makeMemberProfile(registerForm.getUserId(), registerForm.getNickname());
+            profileService.makeMemberProfile(registerForm.getUserId(), registerForm.getNickname());
         } else {
             ScriptWriterUtil.writeAndRedirect(response, "이미 존재하는 ID입니다.", "/register");
         }

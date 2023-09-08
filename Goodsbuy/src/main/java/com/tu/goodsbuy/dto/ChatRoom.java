@@ -4,4 +4,5 @@ public class ChatRoom {
 
     private long chatRoomNumber;
 
+
 }

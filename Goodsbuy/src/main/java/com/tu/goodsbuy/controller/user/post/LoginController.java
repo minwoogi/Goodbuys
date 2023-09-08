@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -20,7 +19,7 @@ public class LoginController {
     private final UserService userService;
 
     @PostMapping("/login.do")
-    public String doLogin(String username, String password, Model model, RedirectAttributes rttr) {
+    public String doLogin(String username, String password, Model model) {
 
 
         MemberUser loginMember = userService.doLogin(username, password);

@@ -16,7 +16,7 @@ public class RegisterFormController {
         return user == null ? "register" : "list";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping(value = "/register")
     public String getSesson(@SessionAttribute(name = "loginMember", required = false) MemberUser user) {
         return user == null ? "register" : "list";
     }

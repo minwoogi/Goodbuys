@@ -35,6 +35,10 @@ dependencies {
     // validation
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.6'
 
+    // SLF4J
+    implementation 'org.springframework.boot:spring-boot-starter-logging' // SLF4J를 Spring Boot에 추가
+    implementation 'org.slf4j:slf4j-api' // SLF4J API
+    // SLF4J END
 
 
 }

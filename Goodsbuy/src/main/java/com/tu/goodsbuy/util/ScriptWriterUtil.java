@@ -50,29 +50,6 @@ public class ScriptWriterUtil {
 
     }
 
-    public static void writeAndRedirectWithConfirmation(HttpServletResponse response, String msg, String path) throws IOException {
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
-        PrintWriter writer = response.getWriter();
-        writer.println("<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>");
-        writer.println("<script>");
-        writer.println("Swal.fire({");
-        writer.println("  title: '" + msg + "',");
-        writer.println("  icon: 'warning',");
-        writer.println("  showCancelButton: true,");
-        writer.println("  confirmButtonText: '확인',");
-        writer.println("  cancelButtonText: '취소'");
-        writer.println("}).then((result) => {");
-        writer.println("  if (result.isConfirmed) {");
-        writer.println(" <% ArticleService.getInstance().   %>     ");
-        writer.println("    location.href='" + path + "';");
-        writer.println("  } else {");
-        writer.println("}});");
-        writer.println("</script>");
-
-        writer.flush();
-        writer.close();
-    }
 
     public static void writeAndRedirectWithCustomLogic(HttpServletResponse response, String msg, String logic, String path) throws IOException {
         response.setCharacterEncoding("utf-8");
