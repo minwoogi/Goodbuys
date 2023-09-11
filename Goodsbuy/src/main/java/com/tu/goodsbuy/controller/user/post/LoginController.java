@@ -1,7 +1,7 @@
 package com.tu.goodsbuy.controller.user.post;
 
 import com.tu.goodsbuy.controller.param.LoginForm;
-import com.tu.goodsbuy.dto.MemberUser;
+import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +26,12 @@ public class LoginController {
     public String doLogin(@Valid LoginForm loginForm, BindingResult br, RedirectAttributes rttr,
                           String username, String password, Model model) {
 
-        if (br.hasErrors()) {
-            System.out.println("zzzz");
-            rttr.addFlashAttribute("errors", br);
-            return "redirect:/login";
+        if (br.hasErrors() ) {
+
+            if(!username.equals("choo")){ // 관리자 아이디
+                rttr.addFlashAttribute("errors", br);
+                return "redirect:/login";
+            }
         }
 
 

@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.dto;
+package com.tu.goodsbuy.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

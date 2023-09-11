@@ -1,7 +1,7 @@
 package com.tu.goodsbuy.repository;
 
 
-import com.tu.goodsbuy.dto.MemberProfile;
+import com.tu.goodsbuy.model.dto.MemberProfile;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Optional;

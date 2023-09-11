@@ -1,8 +1,7 @@
 package com.tu.goodsbuy.service;
 
 
-import com.tu.goodsbuy.dto.MemberProfile;
-import com.tu.goodsbuy.dto.MemberUser;
+import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.exception.*;
 import com.tu.goodsbuy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

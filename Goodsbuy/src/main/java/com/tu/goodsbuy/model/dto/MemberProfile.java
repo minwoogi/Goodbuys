@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.dto;
+package com.tu.goodsbuy.model.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class MemberProfile {
     private String introduction;
     private String imageURL;
     private String birthday;
-    private short locationNo;
+    private String location;
 
     @Override
     public String toString() {
@@ -35,7 +35,7 @@ public class MemberProfile {
                 ", introduction='" + introduction + '\'' +
                 ", imageURL='" + imageURL + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", locationNo=" + locationNo +
+                ", location=" + location +
                 '}';
     }
 }

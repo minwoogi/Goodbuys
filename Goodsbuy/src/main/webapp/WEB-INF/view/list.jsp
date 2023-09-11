@@ -1,9 +1,10 @@
-<%@ page import="com.tu.goodsbuy.dto.Item" %>
+<%@ page import="com.tu.goodsbuy.model.dto.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
-<%@ page import="com.tu.goodsbuy.dto.MemberUser" %>
+<%@ page import="com.tu.goodsbuy.model.dto.MemberUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -35,15 +36,6 @@
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="#!">카테고리</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">동네소식</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">알바</a></li>
-                <%--                <li class="nav-item dropdown">--%>
-                <%--                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>--%>
-                <%--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
-                <%--                        <li><a class="dropdown-item" href="#!">All Products</a></li>--%>
-                <%--                        <li><hr class="dropdown-divider" /></li>--%>
-                <%--                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>--%>
-                <%--                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>--%>
-                <%--                    </ul>--%>
-                <%--                </li>--%>
             </ul>
             <form class="d-flex m-3 mb-3">
                 <div class="p-2">
@@ -99,39 +91,57 @@
 
 </header>
 <!-- Section-->
+
+<!-- test -->
+<a><%
+    if (Objects.nonNull(loginUser)) {
+        String location = (String) session.getAttribute("location");
+%>
+    설정된 동네: <%=location%>
+    <%}%></a>
+
+
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <%if (Objects.isNull(loginUser)) {%>
 
-
             <%
-            } else {
-                // Integer locationNo = (Integer) request.getAttribute("locationNo");
+            } else {%>
 
-
-            %>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/500x500/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">상품1</h5>
-                            <!-- Product price-->
-                            10,000원<br>
-                            남구 대연동<br>
-                            찜 1 · 채팅 5
+            <c:choose>
+                <c:when test="${not empty productList}">
+                    <c:forEach var="product" items="${productList}">
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="https://dummyimage.com/500x500/dee2e6/6c757d.jpg"
+                                     alt="..."/>
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder"><c:out value="${product.productName}"/></h5>
+                                        <!-- Product price-->
+                                        <c:out value="${product.productPrice}"/> <br>
+                                        <c:out value="${product.userId}"/>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">상품보기</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">상품보기</a></div>
-                    </div>
-                </div>
-            </div>
+
+
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    ${noProduct}
+                </c:otherwise>
+            </c:choose>
             <%}%>
 
 

@@ -1,14 +1,12 @@
 package com.tu.goodsbuy.advice;
 
-import com.tu.goodsbuy.exception.DuplicatedLoginIdException;
-import com.tu.goodsbuy.exception.MakeMemberException;
-import com.tu.goodsbuy.exception.MakeMemberProfileException;
-import com.tu.goodsbuy.exception.NicknameDuplicateException;
+import com.tu.goodsbuy.exception.*;
 import com.tu.goodsbuy.util.ScriptWriterUtil;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -27,9 +25,15 @@ public class ExceptionAdvice {
         return "redirect:/login";
     }
 
+    @ExceptionHandler(NoProductListException.class)
+    public String noProductListError(Exception e, Model model) {
+        model.addAttribute("noProduct", e.getMessage());
+        return "list";
+    }
+
     @ExceptionHandler(NicknameDuplicateException.class)
-    public void duplicatedNickNameError(HttpServletResponse response) throws IOException {
-        ScriptWriterUtil.writeAndRedirect(response, "이미 사용중인 닉네임 입니다.", "/myPage");
+    public void duplicatedNickNameError(HttpServletResponse response, Exception e) throws IOException {
+        ScriptWriterUtil.writeAndRedirect(response, e.getMessage(), "/goodsbuy/profile");
     }
 
     @ExceptionHandler({MakeMemberException.class, MakeMemberProfileException.class})
@@ -37,6 +41,8 @@ public class ExceptionAdvice {
         ScriptWriterUtil.writeAndRedirect(response, "회원가입 실패", "/register");
     }
 
+
+    //404에러
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handle404(NoHandlerFoundException e) {

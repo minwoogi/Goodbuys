@@ -1,10 +1,9 @@
 package com.tu.goodsbuy.controller.user.get;
 
 
-import com.tu.goodsbuy.dto.MemberProfile;
-import com.tu.goodsbuy.dto.MemberUser;
+import com.tu.goodsbuy.model.dto.MemberProfile;
+import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.service.ProfileService;
-import com.tu.goodsbuy.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

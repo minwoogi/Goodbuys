@@ -1,7 +1,6 @@
 package com.tu.goodsbuy.repository;
 
-import com.tu.goodsbuy.dto.MemberProfile;
-import com.tu.goodsbuy.dto.MemberUser;
+import com.tu.goodsbuy.model.dto.MemberUser;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Optional;

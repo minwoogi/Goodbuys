@@ -1,7 +1,7 @@
 package com.tu.goodsbuy.service;
 
 
-import com.tu.goodsbuy.dto.MemberProfile;
+import com.tu.goodsbuy.model.dto.MemberProfile;
 import com.tu.goodsbuy.exception.GetProfileException;
 import com.tu.goodsbuy.exception.MakeMemberProfileException;
 import com.tu.goodsbuy.exception.NicknameDuplicateException;
@@ -32,5 +32,9 @@ public class ProfileService {
         if (profileRepository.updateNickname(userNo, nickname) == 0) {
             throw new NicknameDuplicateException();
         }
+    }
+
+    public void updateProfile(Long userNo) {
+
     }
 }
