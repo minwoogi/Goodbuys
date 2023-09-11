@@ -37,10 +37,14 @@
                 <li class="nav-item"><a class="nav-link" href="#!">동네소식</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">알바</a></li>
             </ul>
-            <form class="d-flex m-3 mb-3">
+            <form class="d-flex m-3 mb-3" action="/goodsbuy/list/search" method="get">
                 <div class="p-2">
-                    <input class="form-control form-control-sm w-auto" type="search" placeholder="검색창"
-                           aria-label="Search">
+                    <input name="productName" class="form-control form-control-sm w-auto" type="search"
+                           placeholder="상품명 검색"
+                           aria-label="Search" maxlength='18'
+                    <c:if test="${not empty searchProductName}">
+                           value="${searchProductName}"
+                    </c:if>>
                 </div>
 
                 <% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");
@@ -124,7 +128,7 @@
                                         <h5 class="fw-bolder"><c:out value="${product.productName}"/></h5>
                                         <!-- Product price-->
                                         <c:out value="${product.productPrice}"/> <br>
-                                        <c:out value="${product.userId}"/>
+                                        <c:out value="${product.registrar}"/>
                                     </div>
                                 </div>
                                 <!-- Product actions-->

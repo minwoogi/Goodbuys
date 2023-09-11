@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
@@ -40,5 +41,16 @@ public class ListController {
         return "list";
     }
 
+    @GetMapping("/list/search")
+    public String searchList(@RequestParam(required = false, defaultValue = "") String productName,
+                             HttpServletRequest request, Model model) {
 
+        request.setAttribute("searchProductName", productName);
+
+        List<Product> productList = listService.getSearchProductListByProductNameAndLocation(
+                (String) request.getSession().getAttribute("location"), productName);
+        model.addAttribute("productList", productList);
+
+        return "list";
+    }
 }

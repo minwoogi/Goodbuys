@@ -24,4 +24,12 @@ public class ListService {
         }
         return productList;
     }
+
+    public List<Product> getSearchProductListByProductNameAndLocation(String location, String productName) {
+        List<Product> productList = listRepository.getSearchProductListByProductNameAndLocation(location, productName);
+        if (productList.isEmpty()) {
+            throw new NoProductListException();
+        }
+        return productList;
+    }
 }
