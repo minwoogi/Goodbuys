@@ -128,7 +128,7 @@
                                         <h5 class="fw-bolder"><c:out value="${product.productName}"/></h5>
                                         <!-- Product price-->
                                         <c:out value="${product.productPrice}"/> <br>
-                                        <c:out value="${product.registrar}"/>
+                                        <c:out value="${product.nickname}"/>
                                     </div>
                                 </div>
                                 <!-- Product actions-->
