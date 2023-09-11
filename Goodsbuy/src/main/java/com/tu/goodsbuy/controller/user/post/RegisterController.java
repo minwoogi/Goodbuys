@@ -24,9 +24,7 @@ public class RegisterController {
 
 
     @RequestMapping(value = "/register.do", method = RequestMethod.POST)
-    public String register(@Valid RegisterForm registerForm, BindingResult br, RedirectAttributes rttr, HttpServletResponse response) throws IOException {
-
-        System.out.println("pwd : " + registerForm.getUserPwd());
+    public String doRegister(@Valid RegisterForm registerForm, BindingResult br, RedirectAttributes rttr, HttpServletResponse response) throws IOException {
 
         if (br.hasErrors()) {
             rttr.addFlashAttribute("registerForm", registerForm);

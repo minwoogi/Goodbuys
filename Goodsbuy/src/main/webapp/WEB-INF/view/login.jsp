@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" data-dark="false" class="root">
 <head>
@@ -45,7 +46,11 @@
                 </div>
 
                 <div>
-                    <a class="text-danger">${msg}</a>
+                    <a class="text-danger">
+                        <c:if test="${not empty errors and (errors.hasFieldErrors('username') or errors.hasFieldErrors('password'))}">
+                            ${errors.getFieldError('username').defaultMessage}
+                        </c:if>
+                        ${msg}</a>
                 </div>
 
                 <div class="info_user">

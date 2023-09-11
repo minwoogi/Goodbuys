@@ -1,6 +1,7 @@
 <%@ page import="com.tu.goodsbuy.dto.Item" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
+<%@ page import="com.tu.goodsbuy.dto.MemberUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <html>
@@ -50,7 +51,9 @@
                            aria-label="Search">
                 </div>
 
-                <% if (request.getSession().getAttribute("loginMember") == null) {%>
+                <% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");
+                    if (Objects.isNull(loginUser)) {
+                %>
                 <div class="p-1">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a href="/login" class="nav-link" aria-current="page">로그인</a></li>
@@ -99,8 +102,15 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <%if (Objects.isNull(request.getSession().getAttribute("loginMember"))) {%>
-            <%} else {%>
+            <%if (Objects.isNull(loginUser)) {%>
+
+
+            <%
+            } else {
+                // Integer locationNo = (Integer) request.getAttribute("locationNo");
+
+
+            %>
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->

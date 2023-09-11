@@ -1,13 +1,17 @@
 package com.tu.goodsbuy.controller.user.post;
 
+import com.tu.goodsbuy.controller.param.LoginForm;
 import com.tu.goodsbuy.dto.MemberUser;
 import com.tu.goodsbuy.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -19,7 +23,14 @@ public class LoginController {
     private final UserService userService;
 
     @PostMapping("/login.do")
-    public String doLogin(String username, String password, Model model) {
+    public String doLogin(@Valid LoginForm loginForm, BindingResult br, RedirectAttributes rttr,
+                          String username, String password, Model model) {
+
+        if (br.hasErrors()) {
+            System.out.println("zzzz");
+            rttr.addFlashAttribute("errors", br);
+            return "redirect:/login";
+        }
 
 
         MemberUser loginMember = userService.doLogin(username, password);
