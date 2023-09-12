@@ -109,7 +109,10 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <%if (Objects.isNull(loginUser)) {%>
-
+            <div id="goodsBox">
+                <span id="lock_img"></span><br><br>
+                <strong id="need_login">로그인 후에 이 서비스를 이용하실 수 있습니다.</strong>
+            </div>
             <%
             } else {%>
 
