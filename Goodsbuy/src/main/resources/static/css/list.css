@@ -12,6 +12,32 @@
  *
  */
 
+#goodsBox {
+    overflow: hidden;
+    width: 98%;
+    padding: 52px 0 52px 0;
+    text-align: center;
+    background-color: #EEEEEE;
+}
+
+#goodsBox #need_login {
+    display: block;
+    font-weight: bold;
+    font-size: 27px;
+    color: #101010;
+    line-height: 35px;
+    letter-spacing: -0.035em;
+}
+
+#goodsBox #lock_img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 17px auto 0;
+    background: url(../img/lock.png) no-repeat;
+    background-size: 150px 150px;
+}
+
 
 :root {
     --bs-blue: #0d6efd;
@@ -12406,31 +12432,6 @@ textarea.form-control-lg {
     }
 }
 
-#goodsBox {
-    overflow: hidden;
-    width: 100%;
-    padding: 52px 0 52px 0;
-    text-align: center;
-    background-color: #808080;
-}
-
-#goodsBox #need_login {
-    display: block;
-    font-weight: bold;
-    font-size: 27px;
-    color: #101010;
-    line-height: 35px;
-    letter-spacing: -0.035em;
-}
-
-#goodsBox #lock_img {
-    display: block;
-    width: 150px;
-    height: 150px;
-    margin: 17px auto 0;
-    background: url(../img/lock.png) no-repeat;
-    background-size: 150px 150px;
-}
 
 
 

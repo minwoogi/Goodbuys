@@ -17,7 +17,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/list.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 
 </head>
 <body>
@@ -162,34 +161,35 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/scripts.js" type="application/javascript"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const logOutLink = document.getElementById('logOut');
 
-        logOutLink.addEventListener('click', function (event) {
-            event.preventDefault(); // 링크의 기본 동작 중지
+        if (logOutLink) {
+            logOutLink.addEventListener('click', function (event) {
+                event.preventDefault(); // 링크의 기본 동작 중지
 
-            Swal.fire({
-                title: '로그아웃',
-                text: '정말로 로그아웃하시겠습니까?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: '확인',
-                cancelButtonText: '취소'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // 사용자가 확인을 눌렀을 때 POST 요청 전송
-                    const form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = '/logOut.do';
-                    document.body.appendChild(form);
-                    form.submit();
-                }
+                Swal.fire({
+                    title: '로그아웃',
+                    text: '정말로 로그아웃하시겠습니까?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: '확인',
+                    cancelButtonText: '취소'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // 사용자가 확인을 눌렀을 때 POST 요청 전송
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = '/logOut.do';
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+                });
             });
-        });
+        }
     });
 </script>
 
