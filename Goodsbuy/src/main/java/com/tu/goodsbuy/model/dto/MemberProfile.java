@@ -4,10 +4,11 @@ package com.tu.goodsbuy.model.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class MemberProfile {
 
     private int profileId;
@@ -22,20 +23,4 @@ public class MemberProfile {
     private String birthday;
     private String location;
 
-    @Override
-    public String toString() {
-        return "MemberProfile{" +
-                "profileId=" + profileId +
-                ", userNo=" + userNo +
-                ", nickName='" + nickName + '\'' +
-                ", joinDate='" + joinDate + '\'' +
-                ", updateDate='" + updateDate + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", introduction='" + introduction + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", location=" + location +
-                '}';
-    }
 }

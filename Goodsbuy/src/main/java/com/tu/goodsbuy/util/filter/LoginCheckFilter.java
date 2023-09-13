@@ -28,6 +28,7 @@ public class LoginCheckFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
+
 //        if (backList.contains(req.getServletPath()) && Objects.isNull(req.getSession(false))) {
 //            ScriptWriterUtil.writeAndRedirect(res, "로그인이 필요한 페이지입니다.", "/login");
 //            return;

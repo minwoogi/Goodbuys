@@ -17,6 +17,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <style>
         body {
@@ -85,6 +86,22 @@
     </footer>
 </div>
 <script>
+
+
+    $('#email').on('keyup', function () {
+        var email = $("#email").val();
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        var invalidFeedback = $('#email').siblings('.invalid-feedback');
+
+        if (!emailRegex.test(email)) {
+            invalidFeedback.text('유효하지 않은 이메일 주소입니다.');
+            invalidFeedback.show();
+        } else {
+            invalidFeedback.hide();
+        }
+    });
+
+
     window.addEventListener('load', () => {
         const forms = document.getElementsByClassName('validation-form');
 

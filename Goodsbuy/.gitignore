@@ -38,4 +38,6 @@ out/
 
 
 ### 
-src/main/resources/application.properties
+application.properties
+email.properties
+

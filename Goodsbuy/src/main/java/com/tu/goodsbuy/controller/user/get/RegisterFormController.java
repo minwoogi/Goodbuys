@@ -18,4 +18,14 @@ public class RegisterFormController {
     public String getSesson(@SessionAttribute(name = "loginMember", required = false) MemberUser user) {
         return user == null ? "register" : "list";
     }
+
+
+    @GetMapping("/email-auth")
+    public String emailAuth() {
+
+
+
+
+        return "emailauth";
+    }
 }

@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -23,7 +24,7 @@ public class RegisterController {
     private final ProfileService profileService;
 
 
-    @RequestMapping(value = "/register.do", method = RequestMethod.POST)
+    @PostMapping("/register.do")
     public String doRegister(@Valid RegisterForm registerForm, BindingResult br, RedirectAttributes rttr, HttpServletResponse response) throws IOException {
 
         if (br.hasErrors()) {
@@ -43,6 +44,8 @@ public class RegisterController {
 
         return "redirect:/goodsbuy/list";
     }
+
+
 
 
 }

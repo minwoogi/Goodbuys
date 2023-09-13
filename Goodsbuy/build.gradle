@@ -41,6 +41,11 @@ dependencies {
     // SLF4J END
 
 
+    //springboot mail
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    //springboot mail end
+
+
 }
 
 tasks.named('test') {
