@@ -46,10 +46,13 @@ public class RegisterController {
         return "redirect:/goodsbuy/list";
     }
 
-    @PostMapping("/email-auth.do")
+    @PostMapping("/email-auth")
     public String doAutoEmail(@RequestParam String email) throws Exception {
 
         String confirm = emailService.sendSimpleMessage(email);
+
+
+
         System.out.println("전송완료!");
 
         return "/eamilauth";

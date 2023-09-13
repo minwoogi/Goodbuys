@@ -26,12 +26,13 @@ public class LoginSessionFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-        if (req.getServletPath().contains("/js")) {
+        if (req.getRequestURI().matches(".*(css|jpg|png|gif|js)")) {
             chain.doFilter(request, response);
+            return;
         }
 
         if (Objects.nonNull(req.getSession(false).getAttribute("loginMember"))) {
-            res.sendRedirect("/list");
+            res.sendRedirect("goodsbuy/list");
             return;
         }
         chain.doFilter(request, response);

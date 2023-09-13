@@ -95,7 +95,7 @@
         var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "/email-auth.do",
+            url: "/email-auth",
             data: {email: email},
             success: function (response) {
                 console.log("서버 응답:", response);
@@ -104,8 +104,6 @@
                 console.error("오류 발생:", error);
             }
         });
-
-
     }
 
 
