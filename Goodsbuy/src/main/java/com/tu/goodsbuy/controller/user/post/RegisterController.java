@@ -1,6 +1,7 @@
 package com.tu.goodsbuy.controller.user.post;
 
 import com.tu.goodsbuy.controller.param.RegisterForm;
+import com.tu.goodsbuy.service.EmailService;
 import com.tu.goodsbuy.service.ProfileService;
 import com.tu.goodsbuy.service.UserService;
 import com.tu.goodsbuy.util.ScriptWriterUtil;
@@ -10,8 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
@@ -22,6 +22,7 @@ public class RegisterController {
 
     private final UserService userService;
     private final ProfileService profileService;
+    private final EmailService emailService;
 
 
     @PostMapping("/register.do")
@@ -45,7 +46,14 @@ public class RegisterController {
         return "redirect:/goodsbuy/list";
     }
 
+    @PostMapping("/email-auth.do")
+    public String doAutoEmail(@RequestParam String email) throws Exception {
 
+        String confirm = emailService.sendSimpleMessage(email);
+        System.out.println("전송완료!");
+
+        return "/eamilauth";
+    }
 
 
 }

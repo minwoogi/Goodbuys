@@ -59,8 +59,11 @@
 
                 <label for="email">이메일</label>
                 <div class="input-group mb-3">
-                    <input type="email" id="email" class="form-control" placeholder="example@example.com" required>
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">인증번호 전송</button>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="example@example.com"
+                           required>
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2"
+                            onclick="sendEmailNumber()">인증번호 전송
+                    </button>
                     <div class="invalid-feedback">
                         이메일 주소를 입력해주세요.
                     </div>
@@ -68,7 +71,7 @@
                 <label for="auth">인증번호</label>
                 <div class="input-group mb-3">
                     <input type="text" id="auth" class="form-control" placeholder="" required>
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">인증번호 확인</button>
+                    <button class="btn btn-outline-primary" type="button">인증번호 확인</button>
                     <div class="invalid-feedback">
                         인증번호를 입력해주세요.
                     </div>
@@ -86,6 +89,24 @@
     </footer>
 </div>
 <script>
+
+    function sendEmailNumber() {
+
+        var email = $("#email").val();
+        $.ajax({
+            type: "POST",
+            url: "/email-auth.do",
+            data: {email: email},
+            success: function (response) {
+                console.log("서버 응답:", response);
+            },
+            error: function (error) {
+                console.error("오류 발생:", error);
+            }
+        });
+
+
+    }
 
 
     $('#email').on('keyup', function () {
