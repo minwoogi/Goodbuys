@@ -61,7 +61,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a id="logOut" href="/logOut.do" class="nav-link"
                                                 aria-current="page">로그아웃</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/goodsbuy/profile">마이페이지</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/profile">마이페이지</a></li>
                     </ul>
                 </div>
 

@@ -16,7 +16,7 @@ public class RegisterRestController {
 
     private final UserService userService;
 
-    @PostMapping("/idCheck")
+    @PostMapping("/api/idCheck")
     public ResponseEntity<Boolean> userIdCheck(@RequestBody Map<String, String> idMap) {
 
         String idToCheck = idMap.get("id");
@@ -24,7 +24,7 @@ public class RegisterRestController {
         return ResponseEntity.ok(userService.isUserIdExists(idToCheck));
     }
 
-    @PostMapping("/nickCheck")
+    @PostMapping("/api/nickCheck")
     public ResponseEntity<Boolean> userNickCheck(@RequestBody Map<String, String> nickNameMap) {
 
         String nickToCheck = nickNameMap.get("nickname");

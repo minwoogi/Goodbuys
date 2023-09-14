@@ -16,7 +16,7 @@ public class UserProfileGetController {
 
     private final ProfileService profileService;
 
-    @GetMapping("/goodsbuy/profile")
+    @GetMapping("/profile")
     public String myPage(HttpServletRequest request, Model model) {
 
         MemberUser loginMember = (MemberUser) request.getSession().getAttribute("loginMember");

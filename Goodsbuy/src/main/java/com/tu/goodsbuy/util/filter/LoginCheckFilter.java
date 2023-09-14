@@ -18,7 +18,7 @@ import java.util.Objects;
 /**
  * 로그인 세션이 필요한 페이지면 로그인페이지로 보내기
  **/
-@WebFilter(urlPatterns = "/goodsbuy/profile")
+@WebFilter(urlPatterns = "/profile")
 public class LoginCheckFilter implements Filter {
 
 //    List<String> backList = List.of("");

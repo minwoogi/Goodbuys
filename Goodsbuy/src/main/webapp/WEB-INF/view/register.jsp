@@ -208,7 +208,7 @@
     function checkUserIdExists() {
         $.ajax({
             type: 'POST',
-            url: '/idCheck',
+            url: '/api/idCheck',
             data: JSON.stringify({id: $('#identify').val()}),
             contentType: 'application/json',
             success: function (flag) {
@@ -230,7 +230,7 @@
     function checkNicknameExists() {
         $.ajax({
             type: 'POST',
-            url: '/nickCheck',
+            url: '/api/nickCheck',
             data: JSON.stringify({nickname: $('#nickname').val()}),
             contentType: 'application/json',
             success: function (flag) {
