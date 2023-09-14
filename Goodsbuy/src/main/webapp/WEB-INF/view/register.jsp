@@ -203,12 +203,22 @@
     }
 
 
-    $('#idCheck').click(checkUserIdExists);
+    $('#idCheck').click(isValidUserId);
+
+    function isValidUserId() {
+        var pattern = /^[a-zA-Z0-9]{4,12}$/;
+
+        if (pattern.test($('#identify').val())) {
+            checkUserIdExists();
+        } else {
+            sweetAlert('Invalid ID', 'ID는 알파벳 소문자, 대문자, 숫자로 이루어진 4자에서 12자까지의 문자열이어야 합니다.', 'error');
+        }
+    }
 
     function checkUserIdExists() {
         $.ajax({
             type: 'POST',
-            url: '/api/idCheck',
+            url: '/users/id/duplicated',
             data: JSON.stringify({id: $('#identify').val()}),
             contentType: 'application/json',
             success: function (flag) {
@@ -225,12 +235,24 @@
         });
     }
 
-    $('#nickCheck').click(checkNicknameExists);
+
+    $('#nickCheck').click(isValidNickname);
+
+    function isValidNickname() {
+
+        var pattern = /^[a-zA-Z0-9]{4,12}$/;
+
+        if (pattern.test($('#nickname').val())) {
+            checkNicknameExists();
+        } else {
+            sweetAlert('Invalid Nickname', '닉네임은 알파벳 소문자, 대문자, 숫자로 이루어진 4자에서 12자까지의 문자열이어야 합니다.', 'error');
+        }
+    }
 
     function checkNicknameExists() {
         $.ajax({
             type: 'POST',
-            url: '/api/nickCheck',
+            url: '/users/nickname/duplicated',
             data: JSON.stringify({nickname: $('#nickname').val()}),
             contentType: 'application/json',
             success: function (flag) {
