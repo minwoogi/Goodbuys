@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.controller.user.post;
+package com.tu.goodsbuy.controller.mypage.post;
 
 
 import com.tu.goodsbuy.model.dto.MemberUser;
@@ -34,7 +34,7 @@ public class UserProfilePostController {
         profileService.updateProfile(loginMember.getUserNo());
 
 
-        return "redirect:/goodsbuy/profile";
+        return "redirect:/profile";
     }
 
 }

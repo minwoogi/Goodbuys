@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.controller.user.post;
+package com.tu.goodsbuy.controller.mypage.post;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

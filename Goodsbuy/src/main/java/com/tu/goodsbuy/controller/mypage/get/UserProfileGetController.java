@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.controller.user.get;
+package com.tu.goodsbuy.controller.mypage.get;
 
 
 import com.tu.goodsbuy.model.dto.MemberProfile;
