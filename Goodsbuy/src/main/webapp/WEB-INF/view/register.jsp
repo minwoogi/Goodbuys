@@ -14,7 +14,9 @@
           crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <%--jquery--%>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <%--sweetalert2--%>
 
 
     <style>
@@ -58,12 +60,19 @@
                   action="/register.do" method="post">
                 <div class="mb-3">
                     <label for="identify">아이디</label>
-                    <input type="text" class="form-control" id="identify" name="userId"
-                           placeholder="(a-z, A-Z), 숫자(0-9) 4~12자만 가능"
-                    <c:if test="${not empty registerForm and not empty registerForm.userId}">
-                           value="${registerForm.userId}"
-                    </c:if>
-                           required>
+                    <div class="row">
+                        <div class="col-8">
+                            <input type="text" class="form-control" id="identify" name="userId"
+                                   placeholder="(a-z, A-Z), 숫자(0-9) 4~12자만 가능"
+                            <c:if test="${not empty registerForm and not empty registerForm.userId}">
+                                   value="${registerForm.userId}"
+                            </c:if>
+                                   required>
+                        </div>
+                        <div class="col-4">
+                            <button id="idCheck" class="btn btn-primary btn-block" type="button">아이디 확인</button>
+                        </div>
+                    </div>
                     <div>
                         <c:if test="${not empty errors and errors.hasFieldErrors('userId')}">
                             <div class="text-danger error">${errors.getFieldError('userId').defaultMessage}</div>
@@ -131,12 +140,19 @@
 
                 <div class="mb-3">
                     <label for="nickname">닉네임</label>
-                    <input type="text" id="nickname" name="nickname" class="form-control"
-                           placeholder="4~10자 내 (*특수문자 제외)"
-                    <c:if test="${not empty registerForm and not empty registerForm.nickname}">
-                           value="${registerForm.nickname}"
-                    </c:if>
-                           required>
+                    <div class="row">
+                        <div class="col-8">
+                            <input type="text" id="nickname" name="nickname" class="form-control"
+                                   placeholder="4~10자 내 (*특수문자 제외)"
+                            <c:if test="${not empty registerForm and not empty registerForm.nickname}">
+                                   value="${registerForm.nickname}"
+                            </c:if>
+                                   required>
+                        </div>
+                        <div class="col-4">
+                            <button id="nickCheck" class="btn btn-primary btn-block" type="button">닉네임 확인</button>
+                        </div>
+                    </div>
                     <div>
                         <c:if test="${not empty errors and errors.hasFieldErrors('nickname')}">
                             <div class="text-danger error">${errors.getFieldError('nickname').defaultMessage}</div>
@@ -176,6 +192,60 @@
             invalidFeedback.hide();
         }
     });
+
+    function sweetAlert(tle, msg, icn) {
+        Swal.fire({
+            title: tle,  // 제목
+            text: msg,  // 메시지 내용
+            icon: icn,  // 아이콘 (success, error, warning, info 중 선택)
+            confirmButtonText: '확인'  // 확인 버튼 텍스트
+        });
+    }
+
+
+    $('#idCheck').click(checkUserIdExists);
+
+    function checkUserIdExists() {
+        $.ajax({
+            type: 'POST',
+            url: '/idCheck',
+            data: JSON.stringify({id: $('#identify').val()}),
+            contentType: 'application/json',
+            success: function (flag) {
+                console.log(flag);
+                if (flag) {
+                    sweetAlert("ID already exists", "이미 존재하는 ID입니다. 다른ID를 사용해주세요.", 'warning');
+                } else {
+                    sweetAlert('Available ID', '사용 가능한 ID입니다!', 'success');
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    $('#nickCheck').click(checkNicknameExists);
+
+    function checkNicknameExists() {
+        $.ajax({
+            type: 'POST',
+            url: '/nickCheck',
+            data: JSON.stringify({nickname: $('#nickname').val()}),
+            contentType: 'application/json',
+            success: function (flag) {
+                console.log(flag);
+                if (flag) {
+                    sweetAlert('사용중인 닉네임', ' 다른 닉네임을 사용해주세요.', 'warning');
+                } else {
+                    sweetAlert('Available nickname', '사용 가능한 닉네임입니다.', 'success');
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
 
 
     var pwd1 = document.getElementById("password1")

@@ -23,8 +23,11 @@ public class UserService {
 
 
     @Transactional(readOnly = true)
-    public boolean isValidRegister(String userId) {
-        return userRepository.validMember(userId) != 1;
+    public boolean isValidRegister(String userId, String nickname) {
+        if (userRepository.isUserIdExists(userId) != 1 && userRepository.isNicknameExists(nickname) != 1) {
+            return true;
+        }
+        return false;
     }
 
 
@@ -34,6 +37,17 @@ public class UserService {
             throw new MakeMemberException();
         }
     }
+
+    @Transactional(readOnly = true)
+    public boolean isUserIdExists(String id) {
+        return userRepository.isUserIdExists(id) == 1;
+    }
+
+    @Transactional(readOnly = true)
+    public boolean isNicknameExists(String nickname) {
+        return userRepository.isNicknameExists(nickname) == 1;
+    }
+
 
 }
 

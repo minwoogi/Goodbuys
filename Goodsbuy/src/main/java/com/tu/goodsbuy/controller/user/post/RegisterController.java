@@ -34,11 +34,11 @@ public class RegisterController {
             return "redirect:/register";
         }
 
-        if (userService.isValidRegister(registerForm.getUserId())) {
+        if (userService.isValidRegister(registerForm.getUserId(), registerForm.getNickname())) {
             userService.makeMemberUser(registerForm.getUserId(), registerForm.getUserPwd());
             profileService.makeMemberProfile(registerForm.getUserId(), registerForm.getNickname());
         } else {
-            ScriptWriterUtil.writeAndRedirect(response, "이미 존재하는 ID입니다.", "/register");
+            ScriptWriterUtil.writeAndRedirect(response, "ID나 NICKNAME 중복을 확인하세요.", "/register");
         }
 
         ScriptWriterUtil.writeAndRedirect(response, "회원가입에 성공하였습니다.", "/login");
@@ -50,7 +50,6 @@ public class RegisterController {
     public String doAutoEmail(@RequestParam String email) throws Exception {
 
         String confirm = emailService.sendSimpleMessage(email);
-
 
 
         System.out.println("전송완료!");
