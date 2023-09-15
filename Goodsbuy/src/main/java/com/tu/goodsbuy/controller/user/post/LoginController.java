@@ -41,7 +41,7 @@ public class LoginController {
     }
 
 
-    @PostMapping("/logOut.do")
+    @PostMapping("/logout.do")
     public String doLogOut(SessionStatus sessionStatus) {
         sessionStatus.setComplete();
 

@@ -16,10 +16,12 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="/css/list.css" rel="stylesheet"/>
 
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
@@ -61,7 +63,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a id="logOut" href="/logOut.do" class="nav-link"
                                                 aria-current="page">로그아웃</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/profile">마이페이지</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/goodsbuy/profile">마이페이지</a></li>
                     </ul>
                 </div>
 
@@ -80,19 +82,35 @@
         </div>
     </div>
 </nav>
-<!-- Header class="bg-dark py-5"-->
-<header style="height: 400px; width: 1235px; margin: 0 auto; text-align: center; overflow: hidden">
-    <%--    <div class="container px-4 px-lg-5 my-5">--%>
-    <%--        <div class="text-center text-white">--%>
-    <%--            --%>
-    <%--            <h1 class="display-4 fw-bolder">배너</h1>--%>
-    <%--            <p class="lead fw-normal text-white-50 mb-0">배너가 들어가는 공간입니다.</p>--%>
-    <%--        </div>--%>
-    <%--    </div>--%>
-    <img alt="banner" src="/img/bannerImsi.png" style="width: 100%; height: 100%; object-fit: cover">
-
-
+<header class="py-1">
+    <div class="container px-3 px-lg-3 my-5">
+        <div class="text-center text-white">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/img/banner1.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/banner2.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/banner3.png" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </header>
+
+<%--</header>--%>
 <!-- Section-->
 
 <!-- test -->
@@ -154,6 +172,7 @@
         </div>
     </div>
 </section>
+
 <!-- Footer-->
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Goodsbuy</p></div>

@@ -19,9 +19,8 @@ public class LoginFormController {
         return "login";
     }
 
-    @GetMapping("/logOut.do")
+    @GetMapping("/logout.do")
     public String doLogOut() {
-
         return "redirect:/goodsbuy/list";
     }
 

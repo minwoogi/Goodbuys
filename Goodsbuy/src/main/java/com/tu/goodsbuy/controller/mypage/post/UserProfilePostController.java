@@ -18,7 +18,7 @@ public class UserProfilePostController {
     private final ProfileService profileService;
 
 
-    @PostMapping("/profile/updateNick.do")
+    @PostMapping("/profile/update-nick.do")
     public String updateNickname(@RequestParam String nickname, HttpServletRequest request) {
 
         MemberUser loginMember = (MemberUser) request.getSession().getAttribute("loginMember");
