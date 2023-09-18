@@ -2,6 +2,7 @@ package com.tu.goodsbuy.advice;
 
 import com.tu.goodsbuy.exception.*;
 import com.tu.goodsbuy.util.ScriptWriterUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -62,6 +63,11 @@ public class ExceptionAdvice {
     public String handleException(Exception e) {
         e.printStackTrace();
         return "redirect:/errorPage";
+    }
+
+    @ExceptionHandler(NotImageFileException.class)
+    public void notImageFileError(HttpServletResponse response, Exception e) throws IOException {
+        ScriptWriterUtil.writeScript(response, e.getMessage());
     }
 
 
