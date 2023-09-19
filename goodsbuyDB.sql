@@ -17,7 +17,7 @@ create table member_profile
 (
     profile_id   BIGINT AUTO_INCREMENT,
     user_no      BIGINT      NOT NULL UNIQUE,
-    nickname     varchar(12) NOT NULL,
+    nickname     varchar(12) NOT NULL UNIQUE,
     join_date    DATETIME    NOT NULL,
     update_date  DATETIME    NOT NULL,
     email        VARCHAR(50) UNIQUE,
@@ -53,3 +53,32 @@ create table product
 
 ALTER TABLE product
     AUTO_INCREMENT = 1;
+
+
+drop table member_dibs;
+
+create table member_dibs
+(
+
+    dibs_id    BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_no    BIGINT,
+    product_no BIGINT,
+    FOREIGN KEY (user_no) references member_user (user_no) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (product_no) references product (product_no) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+ALTER TABLE member_dibs
+    AUTO_INCREMENT = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
