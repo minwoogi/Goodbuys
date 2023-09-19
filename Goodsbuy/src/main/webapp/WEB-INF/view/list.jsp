@@ -64,7 +64,7 @@
 
                 <div class="p-1">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a id="logOut" href="/logOut.do" class="nav-link"
+                        <li class="nav-item"><a id="logOut" href="/logout.do" class="nav-link"
                                                 aria-current="page">로그아웃</a></li>
                         <li class="nav-item"><a class="nav-link" href="/profile">마이페이지</a></li>
                     </ul>
@@ -209,7 +209,7 @@
                         // 사용자가 확인을 눌렀을 때 POST 요청 전송
                         const form = document.createElement('form');
                         form.method = 'POST';
-                        form.action = '/logOut.do';
+                        form.action = '/logout.do';
                         document.body.appendChild(form);
                         form.submit();
                     }
