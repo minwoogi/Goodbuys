@@ -98,5 +98,11 @@ public class ProfileService {
 
         return folderPath + uuid + "_" + fileName;
     }
+
+    public void setEmailVerificationStatus(Long userNo) {
+        if (profileRepository.setEmailVerificationStatus(userNo) == 0) {
+
+        }
+    }
 }
 

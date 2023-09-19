@@ -17,7 +17,7 @@ import java.util.Objects;
 /**
  * 로그인 햇을때 로그인 페이지 접근 불가
  */
-@WebFilter(urlPatterns = {"/login.do", "/login"})
+@WebFilter(urlPatterns = {"/login.do", "/login", "/email"})
 public class LoginSessionFilter implements Filter {
 
     @Override

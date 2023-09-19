@@ -19,6 +19,7 @@ public class EmailService {
 
 
     private final JavaMailSender emailSender;
+    private final ProfileService profileService;
 
     private MimeMessage createMessage(String to, String ePw) throws Exception {
 
