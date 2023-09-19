@@ -16,12 +16,15 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="/css/list.css" rel="stylesheet"/>
 
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
@@ -63,7 +66,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a id="logOut" href="/logOut.do" class="nav-link"
                                                 aria-current="page">로그아웃</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/goodsbuy/profile">마이페이지</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/profile">마이페이지</a></li>
                     </ul>
                 </div>
 
@@ -97,11 +100,13 @@
                         <img src="/img/banner3.png" class="d-block w-100" alt="...">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -114,13 +119,15 @@
 <!-- Section-->
 
 <!-- test -->
-<a><%
-    if (Objects.nonNull(loginUser)) {
-        String location = (String) session.getAttribute("location");
-%>
-    설정된 동네: <%=location%>
-    <%}%></a>
 
+<div class="container px-1 px-lg-5 mt-1">
+    <a><%
+        if (Objects.nonNull(loginUser)) {
+            String location = (String) session.getAttribute("location");
+    %>
+        설정된 동네: <%=location%>
+        <%}%></a>
+</div>
 
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">

@@ -17,7 +17,7 @@ public class UserProfileGetController {
     private final ProfileService profileService;
 
     @GetMapping("/profile")
-    public String myPage(HttpServletRequest request, Model model) {
+    public String getMyPage(HttpServletRequest request, Model model) {
 
         MemberUser loginMember = (MemberUser) request.getSession().getAttribute("loginMember");
         MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());

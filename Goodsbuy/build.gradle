@@ -21,8 +21,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // jsp
-    implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
-    implementation 'mysql:mysql-connector-java:8.0.23' //0823 jdbc
+
+
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0' //0919 Jakarta Standard Tag Library API » 3.0.0
+
+
+    implementation 'mysql:mysql-connector-java:8.0.33'  //0919 jdbc
 
     compileOnly 'org.projectlombok:lombok' // lombok
     annotationProcessor 'org.projectlombok:lombok' //lombok

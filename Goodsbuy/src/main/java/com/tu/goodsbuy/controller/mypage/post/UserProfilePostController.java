@@ -49,18 +49,6 @@ public class UserProfilePostController {
     }
 
 
-    @PostMapping("/test")
-    public String test(@RequestParam MultipartFile file) {
-
-        if (!file.isEmpty()) {
-            String fileName = profileService.uploadSaveImageAndGetIdentifier(profileImagePath, file);
-
-        }
-
-        return "test";
-    }
-
-
 }
 
 

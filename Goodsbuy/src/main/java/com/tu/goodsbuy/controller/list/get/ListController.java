@@ -27,7 +27,7 @@ public class ListController {
     private final ListService listService;
 
     @GetMapping(value = {" ", "/", "/list"})
-    public String list(HttpServletRequest request, Model model) {
+    public String getList(HttpServletRequest request, Model model) {
         MemberUser memberUser = (MemberUser) request.getSession(false).getAttribute("loginMember");
 
         if (Objects.nonNull(memberUser)) {
@@ -42,8 +42,8 @@ public class ListController {
     }
 
     @GetMapping("/list/search")
-    public String searchList(@RequestParam(required = false, defaultValue = "") String productName,
-                             HttpServletRequest request, Model model) {
+    public String getSearchList(@RequestParam(required = false, defaultValue = "") String productName,
+                                HttpServletRequest request, Model model) {
 
         request.setAttribute("searchProductName", productName);
 

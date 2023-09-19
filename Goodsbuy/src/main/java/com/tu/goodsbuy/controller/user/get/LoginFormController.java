@@ -9,13 +9,13 @@ public class LoginFormController {
 
 
     @GetMapping(value = "/login")
-    public String redirectLoginPage() {
+    public String getLoginPage() {
         return "login";
     }
 
 
     @GetMapping(value = "/login.do")
-    public String redirectToList() {
+    public String getList() {
         return "login";
     }
 

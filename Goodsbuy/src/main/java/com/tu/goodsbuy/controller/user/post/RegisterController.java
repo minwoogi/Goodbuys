@@ -41,15 +41,13 @@ public class RegisterController {
             ScriptWriterUtil.writeAndRedirect(response, "ID나 NICKNAME 중복을 확인하세요.", "/register");
         }
 
-        ScriptWriterUtil.writeAndRedirect(response, "회원가입에 성공하였습니다.", "/login");
-
-        return "redirect:/goodsbuy/list";
+        return "emailauth.jsp";
     }
 
     @PostMapping("/email-auth")
     public String doAutoEmail(@RequestParam String email) throws Exception {
 
-        String confirm = emailService.sendSimpleMessage(email);
+        String confirm = emailService.sendMessage(email);
 
 
         System.out.println("전송완료!");

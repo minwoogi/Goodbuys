@@ -51,9 +51,11 @@
     <div class="input-form-backgroud row">
         <div class="input-form col-md-12 mx-auto">
             <div class="mb-5 d-flex justify-content-center"></div>
-            <div class="mb-5 d-flex justify-content-center"><img src="/img/mainLogo.png"
-                                                                 style="width:259.5px; height:40px;"
-                                                                 class="img-responsive"></div>
+            <div class="mb-5 d-flex justify-content-center"><a href="/goodsbuy/list"><img src="/img/mainLogo.png"
+                                                                                          style="width:259.5px; height:40px;"
+                                                                                          class="img-responsive">
+
+            </a></div>
             <h5 class="mb-5 d-flex justify-content-left">이메일을 인증해주세요.</h5>
             <form class="validation-form" novalidate>
 
@@ -95,7 +97,7 @@
         var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "/email-auth",
+            url: "/email",
             data: {email: email},
             success: function (response) {
                 console.log("서버 응답:", response);
