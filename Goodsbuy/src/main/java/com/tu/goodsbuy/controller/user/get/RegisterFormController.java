@@ -22,9 +22,4 @@ public class RegisterFormController {
         return user == null ? "register" : "list";
     }
 
-
-    @GetMapping("/email-auth") //임시 테스트용
-    public String getEmailAuthPage() {
-        return "emailauth";
-    }
 }
