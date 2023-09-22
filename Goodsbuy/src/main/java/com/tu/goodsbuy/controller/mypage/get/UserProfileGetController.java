@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,11 +18,9 @@ public class UserProfileGetController {
     private final ProfileService profileService;
 
     @GetMapping("/profile")
-    public String getMyPage(HttpServletRequest request, Model model) {
+    public String getMyPage(@SessionAttribute("loginMember") MemberUser loginMember, Model model) {
 
-        MemberUser loginMember = (MemberUser) request.getSession().getAttribute("loginMember");
         MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
-
         model.addAttribute("memberProfile", memberProfile);
         return "myPage";
     }

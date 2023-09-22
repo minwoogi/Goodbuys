@@ -1,7 +1,6 @@
 package com.tu.goodsbuy.service;
 
 
-import com.tu.goodsbuy.exception.*;
 import com.tu.goodsbuy.global.exception.*;
 import com.tu.goodsbuy.model.dto.MemberProfile;
 import com.tu.goodsbuy.repository.ProfileRepository;

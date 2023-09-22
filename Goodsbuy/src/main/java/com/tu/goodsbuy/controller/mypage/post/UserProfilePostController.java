@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -25,9 +26,8 @@ public class UserProfilePostController {
 
 
     @PostMapping("/profile/update-nick.do")
-    public String updateNickname(@RequestParam String nickname, HttpServletRequest request) {
+    public String updateNickname(@RequestParam String nickname, @SessionAttribute("loginMember") MemberUser loginMember) {
 
-        MemberUser loginMember = (MemberUser) request.getSession().getAttribute("loginMember");
         profileService.updateNickname(loginMember.getUserNo(), nickname);
 
         return "redirect:/goodsbuy/profile";

@@ -9,10 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,8 +24,7 @@ public class ListController {
     private final ListService listService;
 
     @GetMapping(value = {" ", "/", "/list"})
-    public String getList(HttpServletRequest request, Model model) {
-        MemberUser memberUser = (MemberUser) request.getSession(false).getAttribute("loginMember");
+    public String getList(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser, Model model) {
 
         if (Objects.nonNull(memberUser)) {
             MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
