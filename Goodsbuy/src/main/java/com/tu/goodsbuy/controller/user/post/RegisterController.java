@@ -1,23 +1,19 @@
 package com.tu.goodsbuy.controller.user.post;
 
 import com.tu.goodsbuy.controller.param.RegisterForm;
-import com.tu.goodsbuy.service.EmailService;
 import com.tu.goodsbuy.service.ProfileService;
 import com.tu.goodsbuy.service.UserService;
-import com.tu.goodsbuy.util.ScriptWriterUtil;
+import com.tu.goodsbuy.global.util.ScriptWriterUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
-import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor

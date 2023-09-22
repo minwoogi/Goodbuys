@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.util;
+package com.tu.goodsbuy.global.util;
 
 
 import jakarta.servlet.http.HttpServletResponse;

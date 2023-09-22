@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.config;
+package com.tu.goodsbuy.global.config;
 
 import java.util.Properties;
 

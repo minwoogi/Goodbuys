@@ -1,10 +1,10 @@
 package com.tu.goodsbuy.controller.user.post;
 
-import com.tu.goodsbuy.exception.EmailSendFailedException;
+import com.tu.goodsbuy.global.exception.EmailSendFailedException;
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.service.EmailService;
 import com.tu.goodsbuy.service.ProfileService;
-import com.tu.goodsbuy.util.ScriptWriterUtil;
+import com.tu.goodsbuy.global.util.ScriptWriterUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;

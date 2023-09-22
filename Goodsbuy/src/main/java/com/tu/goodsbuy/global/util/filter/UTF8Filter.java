@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.util.filter;
+package com.tu.goodsbuy.global.util.filter;
 
 
 import jakarta.servlet.*;

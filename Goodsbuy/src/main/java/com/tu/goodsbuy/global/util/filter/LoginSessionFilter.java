@@ -1,6 +1,6 @@
-package com.tu.goodsbuy.util.filter;
+package com.tu.goodsbuy.global.util.filter;
 
-import com.tu.goodsbuy.util.ScriptWriterUtil;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -11,16 +11,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 
 /**
- * 로그인 세션이 필요한 페이지면 로그인페이지로 보내기
- **/
-@WebFilter(urlPatterns = {"/profile", "/dibs" , "/email"})
-public class LoginCheckFilter implements Filter {
-
+ * 로그인 햇을때 로그인 페이지 접근 불가
+ */
+@WebFilter(urlPatterns = {"/login.do", "/login", "/email"})
+public class LoginSessionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -28,13 +26,13 @@ public class LoginCheckFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-
-        if (req.getServletPath().contains("/js") || req.getServletPath().contains("/css")) {
+        if (req.getRequestURI().matches(".*(css|jpg|png|gif|js)")) {
             chain.doFilter(request, response);
+            return;
         }
 
-        if (Objects.isNull(req.getSession(false).getAttribute("loginMember"))) {
-            ScriptWriterUtil.writeAndRedirect(res, "로그인이 필요한 페이지입니다.", "/login");
+        if (Objects.nonNull(req.getSession(false).getAttribute("loginMember"))) {
+            res.sendRedirect("goodsbuy/list");
             return;
         }
         chain.doFilter(request, response);

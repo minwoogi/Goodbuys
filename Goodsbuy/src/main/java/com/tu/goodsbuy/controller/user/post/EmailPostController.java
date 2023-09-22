@@ -1,6 +1,6 @@
 package com.tu.goodsbuy.controller.user.post;
 
-import com.tu.goodsbuy.util.ScriptWriterUtil;
+import com.tu.goodsbuy.global.util.ScriptWriterUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;

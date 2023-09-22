@@ -1,7 +1,7 @@
 package com.tu.goodsbuy.service;
 
 
-import com.tu.goodsbuy.exception.NoProductListException;
+import com.tu.goodsbuy.global.exception.NoProductListException;
 import com.tu.goodsbuy.model.dto.Product;
 import com.tu.goodsbuy.repository.ListRepository;
 import lombok.RequiredArgsConstructor;

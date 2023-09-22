@@ -1,7 +1,7 @@
 package com.tu.goodsbuy.advice;
 
-import com.tu.goodsbuy.exception.*;
-import com.tu.goodsbuy.util.ScriptWriterUtil;
+import com.tu.goodsbuy.global.exception.*;
+import com.tu.goodsbuy.global.util.ScriptWriterUtil;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;

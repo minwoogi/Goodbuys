@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.exception;
+package com.tu.goodsbuy.global.exception;
 
 public class DuplicatedLoginIdException extends RuntimeException {
 
