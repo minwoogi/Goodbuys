@@ -15,16 +15,11 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="/css/list.css" rel="stylesheet"/>
 
 
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
 <!-- Navigation-->
 <jsp:include page="common/header.jsp"></jsp:include>
 <header class="py-1">
@@ -36,7 +31,7 @@
                         <img src="/img/banner1.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/banner2.png" class="d-block w-100" alt="...">
+                        <img src="/img/bannerimsi.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="/img/banner3.png" class="d-block w-100" alt="...">
@@ -57,10 +52,6 @@
     </div>
 </header>
 
-<%--</header>--%>
-<!-- Section-->
-
-<!-- test -->
 
 <% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");%>
 <div class="container px-1 px-lg-5 mt-1" id="selected_location">
@@ -68,7 +59,7 @@
         if (Objects.nonNull(loginUser)) {
             String location = (String) session.getAttribute("location");
     %>
-        설정된 동네: <%=location%>
+        <i class="bi bi-geo-alt-fill"></i> &nbsp;설정된 동네: <%=location%>
         <%}%></a>
 </div>
 

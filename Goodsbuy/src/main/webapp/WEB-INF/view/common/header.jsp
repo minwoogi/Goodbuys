@@ -8,12 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <title>GoodsBuy</title>
 
 </head>
@@ -63,9 +59,7 @@
                 </div>
                 <div class="p-1">
                     <button type="button" class="btn" style="background-color: #4E00FF; color: white;">
-                        <%--                    <i class="bi-cart-fill me-1"></i>--%>
                         글쓰기
-                        <%--                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>--%>
                     </button>
                 </div>
                 <%}%>
