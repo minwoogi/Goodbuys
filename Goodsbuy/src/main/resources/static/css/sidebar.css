@@ -22,6 +22,7 @@ a:hover {
 }
 
 .app {
+    display: inline-block;
     height: 100vh;
 }
 
@@ -34,7 +35,6 @@ Sidebar
     width: 17em;
     height: 100%;
     top: 0;
-    overflow: hidden;
     background-color: #19222a;
     -webkit-transform: translateZ(0);
     visibility: visible;
@@ -55,11 +55,9 @@ Sidebar Nav
     position: relative;
     /* width: 13em; */
     background-color: #19222a;
-    height: 100%;
     font-weight: 400;
     font-size: 1.2em;
-    overflow: auto;
-    padding-bottom: 6em;
+    padding-bottom: 0;
     z-index: 9;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
@@ -144,4 +142,19 @@ Sidebar Nav
 .sidebar-nav ul > li:hover .nav-flyout {
     transform: translateX(0);
     transition: all 0.5s ease;
+}
+
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+header{
+    font-family: GmarketSansMedium, serif;
+    font-size: large;
 }

@@ -21,7 +21,7 @@
 </head>
 <body>
 <!-- Navigation-->
-<jsp:include page="common/header.jsp"></jsp:include>
+<jsp:include page="../common/header.jsp"></jsp:include>
 <header class="py-1">
     <div class="container px-3 px-lg-3 my-5">
         <div class="text-center text-white">
@@ -114,7 +114,7 @@
     </div>
 </section>
 
-<jsp:include page="common/footer.jsp"></jsp:include>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
