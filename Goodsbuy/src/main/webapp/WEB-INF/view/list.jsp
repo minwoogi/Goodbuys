@@ -28,65 +28,7 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="/goodsbuy/list">
-            <img alt="mainLogo" width="200" src="/img/mainLogo.png" title="goodsbuy"
-                 class="d-inline-block align-text-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="#!">카테고리</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">동네소식</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">알바</a></li>
-            </ul>
-            <form class="d-flex m-3 mb-3" action="/goodsbuy/list/search" method="get">
-                <div class="p-2">
-                    <input name="productName" class="form-control form-control-sm w-auto" type="search"
-                           placeholder="상품명 검색"
-                           aria-label="Search" maxlength='18'
-                    <c:if test="${not empty searchProductName}">
-                           value="${searchProductName}"
-                    </c:if>>
-                </div>
-
-                <% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");
-                    if (Objects.isNull(loginUser)) {
-                %>
-                <div class="p-1">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a href="/login" class="nav-link" aria-current="page">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/register">회원가입</a></li>
-                    </ul>
-                </div>
-                <%} else {%>
-
-                <div class="p-1">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a id="logOut" href="/logout.do" class="nav-link"
-                                                aria-current="page">로그아웃</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/profile">마이페이지</a></li>
-                    </ul>
-                </div>
-
-
-                <div class="p-1">
-                    <button type="button" class="btn" style="background-color: #4E00FF; color: white;">
-                        <%--                    <i class="bi-cart-fill me-1"></i>--%>
-                        글쓰기
-                        <%--                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>--%>
-                    </button>
-                </div>
-                <%}%>
-
-
-            </form>
-        </div>
-    </div>
-</nav>
+<jsp:include page="common/header.jsp"></jsp:include>
 <header class="py-1">
     <div class="container px-3 px-lg-3 my-5">
         <div class="text-center text-white">
@@ -122,6 +64,7 @@
 
 <!-- test -->
 
+<% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");%>
 <div class="container px-1 px-lg-5 mt-1">
     <a><%
         if (Objects.nonNull(loginUser)) {
@@ -182,13 +125,7 @@
     </div>
 </section>
 
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Goodsbuy</p></div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
+<jsp:include page="common/footer.jsp"></jsp:include>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
