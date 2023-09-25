@@ -10,13 +10,13 @@ public class LoginFormController {
 
     @GetMapping(value = "/login")
     public String getLoginPage() {
-        return "login";
+        return "users/login";
     }
 
 
     @GetMapping(value = "/login.do")
     public String getList() {
-        return "login";
+        return "users/login";
     }
 
     @GetMapping("/logout.do")

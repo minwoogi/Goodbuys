@@ -22,12 +22,12 @@ public class UserProfileGetController {
 
         MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
         model.addAttribute("memberProfile", memberProfile);
-        return "myPage";
+        return "profile/myPage";
     }
 
-    @GetMapping("/test")
-    public String test() {
+    @GetMapping("/nickname")
+    public String getNicknameUpdatePage() {
 
-        return "test";
+        return "profile/nicknameUpdate";
     }
 }

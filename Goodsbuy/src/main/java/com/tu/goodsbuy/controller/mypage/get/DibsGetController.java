@@ -26,7 +26,7 @@ public class DibsGetController {
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
         model.addAttribute("dibsProductList", dibsProudctList);
 
-        return "/mypage";
+        return "/profile/mypage";
     }
 
 }

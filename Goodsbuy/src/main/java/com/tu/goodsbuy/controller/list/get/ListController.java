@@ -34,7 +34,7 @@ public class ListController {
             model.addAttribute("productList", productList);
         }
 
-        return "list";
+        return "product/list";
     }
 
     @GetMapping("/list/search")
@@ -47,6 +47,6 @@ public class ListController {
                 (String) request.getSession().getAttribute("location"), productName);
         model.addAttribute("productList", productList);
 
-        return "list";
+        return "product/list";
     }
 }

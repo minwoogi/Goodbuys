@@ -8,6 +8,6 @@ public class EmailController {
 
     @GetMapping("/email")
     public String getEmailAuthPage() {
-        return "emailauth";
+        return "profile/emailauth";
     }
 }

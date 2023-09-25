@@ -21,6 +21,6 @@ public class EmailPostController {
         }
 
         request.getSession().removeAttribute("emailAuth");
-        return "/goodsbuy/list";
+        return "redirect:/goodsbuy/list";
     }
 }

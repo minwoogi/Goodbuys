@@ -25,7 +25,7 @@ public class RegisterController {
 
     @PostMapping("/register.do")
     public String doRegister(@Valid RegisterForm registerForm, BindingResult br, RedirectAttributes retry,
-                             HttpServletRequest request, HttpServletResponse response) throws IOException {
+                            HttpServletResponse response) throws IOException {
         if (br.hasErrors()) {
             retry.addFlashAttribute("registerForm", registerForm);
             retry.addFlashAttribute("errors", br);
@@ -41,7 +41,7 @@ public class RegisterController {
 
         ScriptWriterUtil.writeAndRedirect(response, "회원가입에 성공하셨습니다", "/login");
 
-        return "/login";
+        return "users/login";
     }
 
 

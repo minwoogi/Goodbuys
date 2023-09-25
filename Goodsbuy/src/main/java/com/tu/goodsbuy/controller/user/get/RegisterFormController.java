@@ -14,12 +14,12 @@ public class RegisterFormController {
 
     @GetMapping("/register.do")
     public String getSession(@SessionAttribute(name = "loginMember", required = false) MemberUser user) {
-        return user == null ? "register" : "list";
+        return user == null ? "users/register" : "product/list";
     }
 
     @GetMapping(value = "/register")
     public String getSesson(@SessionAttribute(name = "loginMember", required = false) MemberUser user) {
-        return user == null ? "register" : "list";
+        return user == null ? "users/register" : "product/list";
     }
 
 }
