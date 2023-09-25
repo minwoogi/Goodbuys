@@ -24,4 +24,10 @@ public class UserProfileGetController {
         model.addAttribute("memberProfile", memberProfile);
         return "myPage";
     }
+
+    @GetMapping("/test")
+    public String test() {
+
+        return "test";
+    }
 }

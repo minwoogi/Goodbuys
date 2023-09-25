@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="/css/error.css">
+    <link rel="shortcut icon" href="/img/fav.ico">
     <title>GoodsBuy wrong apporch</title>
 </head>
 
