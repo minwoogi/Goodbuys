@@ -1,5 +1,3 @@
-<%@ page import="com.tu.goodsbuy.model.dto.Product" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
 <%@ page import="com.tu.goodsbuy.model.dto.MemberUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -65,7 +63,7 @@
 <!-- test -->
 
 <% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");%>
-<div class="container px-1 px-lg-5 mt-1">
+<div class="container px-1 px-lg-5 mt-1" id="selected_location">
     <a><%
         if (Objects.nonNull(loginUser)) {
             String location = (String) session.getAttribute("location");

@@ -25,3 +25,16 @@
     background: url(../img/lock.png) no-repeat;
     background-size: 150px 150px;
 }
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#selected_location {
+    font-family: GmarketSansMedium, serif;
+    font-size: large;
+}
+
