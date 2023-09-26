@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,7 +19,8 @@ import java.util.Objects;
 /**
  * 로그인 세션이 필요한 페이지면 로그인페이지로 보내기
  **/
-@WebFilter(urlPatterns = {"/profile", "/dibs", "/email"})
+@WebFilter(urlPatterns = {"/profile", "/dibs", "/email" ,"/profile/nickname"})
+@Slf4j
 public class LoginCheckFilter implements Filter {
 
 
@@ -30,6 +32,7 @@ public class LoginCheckFilter implements Filter {
 
 
         if (req.getServletPath().contains("/js") || req.getServletPath().contains("/css")) {
+            log.info(req.getRequestURI());
             chain.doFilter(request, response);
         }
 

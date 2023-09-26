@@ -31,10 +31,10 @@
                         <img src="/img/banner1.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/bannerimsi.png" class="d-block w-100" alt="...">
+                        <img src="/img/banner2.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/banner3.png" class="d-block w-100" alt="...">
+                        <img src="/img/banner3.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"

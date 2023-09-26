@@ -25,9 +25,8 @@ public class UserProfileGetController {
         return "profile/myPage";
     }
 
-    @GetMapping("/nickname")
+    @GetMapping("/profile/nickname")
     public String getNicknameUpdatePage() {
-
         return "profile/nicknameUpdate";
     }
 }

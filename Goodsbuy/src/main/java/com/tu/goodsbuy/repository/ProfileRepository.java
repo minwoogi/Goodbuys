@@ -19,7 +19,7 @@ public interface ProfileRepository {
 
     @Update("UPDATE member_profile SET " +
             "nickname=#{nickname} , update_date=now()" +
-            " WEHRE user_no = #{user_no}")
+            " WHERE user_no = #{user_no}")
     int updateNickname(@Param("user_no") Long userNo, @Param("nickname") String nickname);
 
     @Select("SELECT *" +
@@ -35,7 +35,7 @@ public interface ProfileRepository {
 
 
     @Update("UPDATE member_profile SET " +
-            "email_check=1" +
+            "email_check=1 " +
             "WHERE user_no =#{user_no}")
     int setEmailVerificationStatus(@Param("user_no") Long userNo);
 }

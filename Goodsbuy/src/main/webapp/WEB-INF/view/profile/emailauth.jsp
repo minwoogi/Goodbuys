@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: rodin
-  Date: 2023-09-04
-  Time: AM 2:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ko">
 
@@ -59,7 +52,7 @@
 
             </a></div>
             <h5 class="mb-5 d-flex justify-content-left">이메일을 인증해주세요.</h5>
-            <form class="validation-form" novalidate>
+            <form class="validation-form" novalidate   action="/email-code" method="post">
 
                 <label for="email">이메일</label>
                 <div class="input-group mb-3">
@@ -71,11 +64,15 @@
                     <div class="invalid-feedback">
                         이메일 주소를 입력해주세요.
                     </div>
+                    <div id="timer" style="display:none; color: red;">
+                    </div>
+
+
                 </div>
                 <label for="auth">인증번호</label>
                 <div class="input-group mb-3">
-                    <input type="text" id="auth" class="form-control" placeholder="" required>
-                    <button class="btn btn-outline-primary" type="button">인증번호 확인</button>
+                    <input type="text" id="auth" name="receiveCode" class="form-control" placeholder="" required>
+                    <button id="email-code-check" class="btn btn-outline-primary" type="submit">인증번호 확인</button>
                     <div class="invalid-feedback">
                         인증번호를 입력해주세요.
                     </div>
@@ -83,7 +80,7 @@
 
                 <hr class="mb-4">
                 <div class="mb-4"></div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">인증 완료</button>
 
             </form>
         </div>
@@ -94,20 +91,56 @@
 </div>
 <script>
 
-    function sendEmailNumber() {
+    var timerInterval;
 
+    function sendEmailNumber() {
         var email = $("#email").val();
         $.ajax({
             type: "POST",
             url: "/email",
             data: {email: email},
             success: function (response) {
-                console.log("서버 응답:", response);
+                startTimer();
             },
             error: function (error) {
                 console.error("오류 발생:", error);
             }
         });
+    }
+
+    function startTimer() {
+        // 입력 필드 및 버튼을 비활성화
+        $("#email").prop("disabled", true);
+        $("#button-addon2").prop("disabled", true);
+
+        var duration = 180; // 타이머의 기간 (초)
+        var timer = duration, minutes, seconds;
+        var invalidFeedback = $('#email').siblings('.invalid-feedback');
+        invalidFeedback.text("남은 시간: 3 : 00");
+        invalidFeedback.show();
+
+        function updateTimer() {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            invalidFeedback.text("남은 시간 " +minutes+" : " + seconds);
+        }
+
+        updateTimer();
+
+        timerInterval = setInterval(function () {
+            updateTimer();
+
+            if (--timer < 0) {
+                clearInterval(timerInterval);
+                // 타이머 종료 후 입력 필드와 버튼을 다시 활성화
+                $("#email").prop("disabled", false);
+                $("#button-addon2").prop("disabled", false);
+                invalidFeedback.hide();
+            }
+        }, 1000);
     }
 
 
@@ -123,6 +156,8 @@
             invalidFeedback.hide();
         }
     });
+
+
 
 
     window.addEventListener('load', () => {

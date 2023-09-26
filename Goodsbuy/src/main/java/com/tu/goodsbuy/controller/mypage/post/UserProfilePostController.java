@@ -25,12 +25,10 @@ public class UserProfilePostController {
     private String profileImagePath;
 
 
-    @PostMapping("/profile/update-nick.do")
+    @PostMapping("/users/nickname")
     public String updateNickname(@RequestParam String nickname, @SessionAttribute("loginMember") MemberUser loginMember) {
-
         profileService.updateNickname(loginMember.getUserNo(), nickname);
-
-        return "redirect:/goodsbuy/profile";
+        return "redirect:/profile";
     }
 
     @PostMapping("/profile/update.do")

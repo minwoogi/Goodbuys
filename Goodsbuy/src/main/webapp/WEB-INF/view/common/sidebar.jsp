@@ -14,7 +14,7 @@
                             <a href="/profile"><i class="bi bi-pencil"></i>마이페이지 수정</a>
                         </li>
                         <li>
-                            <a href="/nickname"><i class="bi bi-file-person"></i>닉네임 변경</a>
+                            <a href="/profile/nickname"><i class="bi bi-file-person"></i>닉네임 변경</a>
                         </li>
                     </ul>
                 </li>
