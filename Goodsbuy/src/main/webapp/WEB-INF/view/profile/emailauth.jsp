@@ -17,7 +17,6 @@
     <style>
         body {
             min-height: 100vh;
-
             background: #eee
 
         }
@@ -41,6 +40,11 @@
 
 <body>
 
+<% if ((Integer) request.getAttribute("emailCheck") == 1) {%>
+<script>
+    location.href="/goodsbuy/list";
+</script>
+<%}%>
 
 <div class="container">
     <div class="input-form-backgroud row">
@@ -52,7 +56,7 @@
 
             </a></div>
             <h5 class="mb-5 d-flex justify-content-left">이메일을 인증해주세요.</h5>
-            <form class="validation-form" novalidate   action="/email-code" method="post">
+            <form class="validation-form" novalidate action="/email-code" method="post">
 
                 <label for="email">이메일</label>
                 <div class="input-group mb-3">
@@ -125,7 +129,7 @@
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            invalidFeedback.text("남은 시간 " +minutes+" : " + seconds);
+            invalidFeedback.text("남은 시간 " + minutes + " : " + seconds);
         }
 
         updateTimer();
@@ -156,8 +160,6 @@
             invalidFeedback.hide();
         }
     });
-
-
 
 
     window.addEventListener('load', () => {
