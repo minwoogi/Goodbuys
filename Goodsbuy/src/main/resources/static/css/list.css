@@ -17,7 +17,25 @@
     letter-spacing: -0.035em;
 }
 
+#goodsBox #need_auth{
+    display: block;
+    font-weight: bold;
+    font-size: 27px;
+    color: #101010;
+    line-height: 35px;
+    letter-spacing: -0.035em;
+}
+
 #goodsBox #lock_img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 17px auto 0;
+    background: url(../img/lock.png) no-repeat;
+    background-size: 150px 150px;
+}
+
+#goodsBox #lock_img2 {
     display: block;
     width: 150px;
     height: 150px;

@@ -22,5 +22,6 @@ public class MemberProfile {
     private String imageURL;
     private String birthday;
     private String location;
+    private int emailCheck;
 
 }

@@ -29,6 +29,7 @@ public class ListController {
         if (Objects.nonNull(memberUser)) {
             MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
             model.addAttribute("location", memberProfile.getLocation());
+            model.addAttribute("emailCheck",memberProfile.getEmailCheck());
 
             List<Product> productList = listService.getProductListByLocation(memberProfile.getLocation());
             model.addAttribute("productList", productList);
