@@ -174,3 +174,26 @@ header{
     flex: 10.5; /* 오른쪽 컬럼 비율 */
     height:100vh;
 }
+
+
+.scrollable{
+
+    max-height: 90vh; /* 높이 조절 */
+    overflow-y: scroll; /* 수직 스크롤 활성화 */
+    overflow-x: hidden;
+    scrollbar-color: #ffc844 rgba(255,200,68,0.1); /* 스크롤바 색상 및 뒷 배경 색상 설정 */
+    scrollbar-width: thin; /* subpixel 스크롤바 너비 (auto, thin, none 중 선택) */
+}
+
+.scrollable::-webkit-scrollbar {
+    width: 10px; /* 스크롤바의 너비 (WebKit 브라우저용) */
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background: #ffc844; /* 스크롤바의 색상 (WebKit 브라우저용) */
+    border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+    background: rgba(255,200,68,0.1); /* 스크롤바 뒷 배경 색상 (WebKit 브라우저용) */
+}

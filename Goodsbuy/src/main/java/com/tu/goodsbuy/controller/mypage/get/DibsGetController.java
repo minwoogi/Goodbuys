@@ -24,9 +24,14 @@ public class DibsGetController {
 
         List<Product> dibsProudctList = dibsService.getDibsProductListByUserNo(
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
+
+
+
         model.addAttribute("dibsProductList", dibsProudctList);
 
-        return "/profile/mypage";
+
+
+        return "/profile/dibs";
     }
 
 }

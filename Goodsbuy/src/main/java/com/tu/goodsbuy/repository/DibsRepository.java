@@ -11,9 +11,9 @@ import java.util.List;
 public interface DibsRepository {
 
 
-    @Select("SELECT p.*" +
-            "FROM product p" +
-            "JOIN member_dibs d ON p.product_no = d.product_no" +
+    @Select("SELECT p.* " +
+            "FROM product p " +
+            "JOIN member_dibs d ON p.product_no = d.product_no " +
             "WHERE d.user_no = #{userNo};")
     List<Product> getDibsProductListByUserNo(Long userNo);
 

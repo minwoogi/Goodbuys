@@ -23,7 +23,7 @@
                 </li>
 
                 <li>
-                    <a href="#"><i class="bi bi-heart"></i> <span class="">관심목록</span></a>
+                    <a href="/dibs"><i class="bi bi-heart"></i> <span class="">관심목록</span></a>
                 </li>
 
 
