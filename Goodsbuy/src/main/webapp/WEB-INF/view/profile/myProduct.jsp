@@ -22,7 +22,7 @@
     <div class="custom-content">
         <div class="scrollable">
             <div class="list pt-5 ">
-                관심목록
+                ${divState}
             </div>
 
             <section class="py-5">
@@ -46,6 +46,7 @@
                                                     <!-- Product price-->
                                                     <c:out value="${product.productPrice}"/> <br>
                                                     <c:out value="${product.nickname}"/>
+                                                    <c:out value="${state}"/>
                                                 </div>
                                             </div>
                                             <!-- Product actions-->
@@ -62,34 +63,6 @@
                                 ${noProduct}
                             </c:otherwise>
                         </c:choose>
-
-                        <%--test--%>
-                        <c:forEach var="i" begin="1" end="5">
-                            <div class="col mb-5">
-                                <div class="card h-100">
-                                    <!-- Product image-->
-                                    <img class="card-img-top" src="/img/multipartImg/productImage/appleWatch.png"
-                                         alt="..."/>
-                                    <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center">
-                                            <!-- Product name-->
-                                            <h5 class="fw-bolder"><c:out value="${product.productName}"/></h5>
-                                            <!-- Product price-->
-                                            <c:out value="${product.productPrice}"/> <br>
-                                            <c:out value="${product.nickname}"/>
-                                        </div>
-                                    </div>
-                                    <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                                    href="#">상품보기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                        <%--test--%>
 
                     </div>
                 </div>

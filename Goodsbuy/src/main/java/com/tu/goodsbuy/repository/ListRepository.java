@@ -26,8 +26,17 @@ public interface ListRepository {
     List<Product> getDibsProductListByUserNo(Long userNo);
 
 
+    @Select("SELECT p.* " +
+            "FROM product p " +
+            "JOIN sales_product s ON p.product_no = s.product_no " +
+            "WHERE s.user_no = #{userNo} and s.sale_state= 0")
+    List<Product> getSalesItemsProductListByUserNo(Long userNo);
 
-    List<Product> getSalesProductListByUserNo(Long userNo);
+    @Select("SELECT p.* " +
+            "FROM product p " +
+            "JOIN sales_product s ON p.product_no = s.product_no " +
+            "WHERE s.user_no = #{userNo} and s.sale_state= 1")
+    List<Product> getSalesHistoryProductListByUserNo(Long userNo);
 
 
 }

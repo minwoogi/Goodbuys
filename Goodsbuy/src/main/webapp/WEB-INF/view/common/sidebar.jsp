@@ -28,7 +28,7 @@
 
 
                 <li>
-                    <a href="#"><i class="bi bi-archive"></i> <span class="">판매중인 상품</span></a>
+                    <a href="/sales-items"><i class="bi bi-archive"></i> <span class="">판매중인 상품</span></a>
                 </li>
 
 
@@ -36,10 +36,10 @@
                     <a href="#"><i class="bi bi-clock-history"></i> <span class="">판,구매 내역</span></a>
                     <ul class="nav-flyout">
                         <li>
-                            <a href="#"><i class="bi bi-receipt"></i>판매 내역</a>
+                            <a href="/sales-history"><i class="bi bi-receipt"></i>판매 내역</a>
                         </li>
                         <li>
-                            <a href="#"><i class="bi bi-bag-check"></i>구매 내역</a>
+                            <a href="/purchase-history"><i class="bi bi-bag-check"></i>구매 내역</a>
                         </li>
                     </ul>
                 </li>

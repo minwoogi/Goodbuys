@@ -72,14 +72,13 @@
                 <strong id="need_login">로그인 후에 이 서비스를 이용하실 수 있습니다.</strong>
             </div>
             <%
-            }else if((Integer)request.getAttribute("emailCheck") == 0){%>
+            } else if ((Integer) request.getAttribute("emailCheck") == 0) {%>
             <div id="goodsBox">
                 <span id="lock_img2"></span><br><br>
                 <strong id="need_auth">이메일 인증 후에 이 서비스를 이용하실 수 있습니다.</strong>
             </div>
 
-            <%}
-            else {%>
+            <%} else {%>
 
             <c:choose>
                 <c:when test="${not empty productList}">

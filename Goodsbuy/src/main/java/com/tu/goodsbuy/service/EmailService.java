@@ -1,8 +1,5 @@
 package com.tu.goodsbuy.service;
 
-import java.util.Random;
-
-
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.util.Random;
 
 
 @Slf4j
@@ -19,7 +18,6 @@ public class EmailService {
 
 
     private final JavaMailSender emailSender;
-    private final ProfileService profileService;
 
     private MimeMessage createMessage(String to, String ePw) throws Exception {
 
