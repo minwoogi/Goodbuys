@@ -28,6 +28,11 @@
 
 
                 <li>
+                    <a href="#"><i class="bi bi-archive"></i> <span class="">판매중인 상품</span></a>
+                </li>
+
+
+                <li>
                     <a href="#"><i class="bi bi-clock-history"></i> <span class="">판,구매 내역</span></a>
                     <ul class="nav-flyout">
                         <li>
