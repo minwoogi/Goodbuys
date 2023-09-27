@@ -32,4 +32,8 @@ public class ListService {
         }
         return productList;
     }
+
+    public List<Product> getDibsProductListByUserNo(Long userNo) {
+        return listRepository.getDibsProductListByUserNo(userNo);
+    }
 }

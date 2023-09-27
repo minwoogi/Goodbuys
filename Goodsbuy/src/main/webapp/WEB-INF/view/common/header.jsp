@@ -2,7 +2,6 @@
 <%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%--<!DOCTYPE html>--%>
 <%--<html lang="ko" data-dark="false" class="root">--%>
 <%--<head>--%>
@@ -69,5 +68,35 @@
 </nav>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const logOutLink = document.getElementById('logOut');
+
+        if (logOutLink) {
+            logOutLink.addEventListener('click', function (event) {
+                event.preventDefault(); // 링크의 기본 동작 중지
+
+                Swal.fire({
+                    title: '로그아웃',
+                    text: '정말로 로그아웃하시겠습니까?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: '확인',
+                    cancelButtonText: '취소'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+// 사용자가 확인을 눌렀을 때 POST 요청 전송
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = '/logout.do';
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+                });
+            });
+        }
+    });
+</script>
 <%--</body>--%>
 <%--</html>--%>

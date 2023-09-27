@@ -25,13 +25,13 @@
                 관심목록
             </div>
 
-                <section class="py-5">
+            <section class="py-5">
                 <div class="container px-4 px-lg-5 mt-5">
                     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                         <c:choose>
-                            <c:when test="${not empty dibsProductList}">
-                                <c:forEach var="product" items="${dibsProductList}">
+                            <c:when test="${not empty salesProductList}">
+                                <c:forEach var="product" items="${salesProductList}">
                                     <div class="col mb-5">
                                         <div class="card h-100">
                                             <!-- Product image-->

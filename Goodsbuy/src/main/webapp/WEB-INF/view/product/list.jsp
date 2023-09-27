@@ -123,36 +123,5 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const logOutLink = document.getElementById('logOut');
-
-        if (logOutLink) {
-            logOutLink.addEventListener('click', function (event) {
-                event.preventDefault(); // 링크의 기본 동작 중지
-
-                Swal.fire({
-                    title: '로그아웃',
-                    text: '정말로 로그아웃하시겠습니까?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: '확인',
-                    cancelButtonText: '취소'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // 사용자가 확인을 눌렀을 때 POST 요청 전송
-                        const form = document.createElement('form');
-                        form.method = 'POST';
-                        form.action = '/logout.do';
-                        document.body.appendChild(form);
-                        form.submit();
-                    }
-                });
-            });
-        }
-    });
-</script>
-
 </body>
 </html>

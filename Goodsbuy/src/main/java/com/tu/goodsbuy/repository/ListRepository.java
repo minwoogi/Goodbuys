@@ -19,5 +19,15 @@ public interface ListRepository {
     List<Product> getSearchProductListByProductNameAndLocation(@Param("location") String location,
                                                                @Param("product_name") String productName);
 
+    @Select("SELECT p.* " +
+            "FROM product p " +
+            "JOIN member_dibs d ON p.product_no = d.product_no " +
+            "WHERE d.user_no = #{userNo};")
+    List<Product> getDibsProductListByUserNo(Long userNo);
+
+
+
+    List<Product> getSalesProductListByUserNo(Long userNo);
+
 
 }
