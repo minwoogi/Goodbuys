@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.controller.product.post;
+package com.tu.goodsbuy.controller.product;
 
 
 import org.springframework.stereotype.Controller;

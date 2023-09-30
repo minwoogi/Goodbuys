@@ -19,7 +19,8 @@ import java.util.Objects;
 /**
  * 로그인 세션이 필요한 페이지면 로그인페이지로 보내기
  **/
-@WebFilter(urlPatterns = {"/profile", "/dibs", "/email" ,"/profile/nickname"})
+@WebFilter(urlPatterns = {"/profile", "/dibs", "/email",
+        "/profile/nickname , /sales-items , /sales-history , /purchase-history"})
 @Slf4j
 public class LoginCheckFilter implements Filter {
 

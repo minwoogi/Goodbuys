@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.controller.product.get;
+package com.tu.goodsbuy.controller.product;
 
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.model.dto.Product;
