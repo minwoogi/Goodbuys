@@ -42,5 +42,5 @@ public interface ProfileRepository {
     @Update("UPDATE member_profile SET " +
             "email=#{email} " +
             "WHERE user_no =#{user_no}")
-    int setEmailProfileByUserNo(@Param("email") String email, @Param("userNo") Long userNo);
+    int setEmailProfileByUserNo(@Param("email") String email, @Param("user_no") Long userNo);
 }

@@ -34,7 +34,7 @@
 
         <div class="lbl-div">
             <c:choose>
-                <c:when test="${not empty memberProfile.email}">
+                <c:when test="${memberProfile.emailCheck == 1}">
                     <i>이메일 확인</i>
                 </c:when>
                 <c:otherwise>
@@ -45,7 +45,7 @@
 
         <div class="input-div">
             <c:choose>
-                <c:when test="${not empty memberProfile.email}">
+                <c:when test="${memberProfile.emailCheck == 1}">
                     <div class="lbl-div">
                         <input id="email" name="email" type="text"
                                value="등록한 이메일 : ${memberProfile.email}" disabled style="margin-top:1em; ">

@@ -6,6 +6,7 @@ import com.tu.goodsbuy.service.ProfileService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class EmailPostController {
 
     private final ProfileService profileService;
