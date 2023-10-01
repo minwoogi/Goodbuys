@@ -1,0 +1,74 @@
+.custom-content {
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+#profileImg {
+    width: 400px; /* 이미지를 부모 요소의 크기에 맞게 조정 */
+    height: 400px; /* 이미지의 가로 세로 비율을 유지 */
+
+}
+
+
+.nick {
+    font-family: 'GmarketSansMedium';
+    font-size: 2em;
+}
+
+.lbl-div {
+    text-align: center;
+    width: 600px;
+}
+
+
+#introduction {
+    width: 600px;
+    height: 300px;
+    overflow-wrap: break-word;
+    font-size: 18px;
+    background-color: #8b8b8b1c;
+    resize: none;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.subb {
+    width: 10em;
+    height: 3em;
+    background-color: #4E00FF;
+    border-radius: 10%;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: 2em;
+    border-color: #4E00FF;
+
+
+}
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

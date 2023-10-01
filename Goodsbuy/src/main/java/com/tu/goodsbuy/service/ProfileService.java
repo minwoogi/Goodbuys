@@ -100,7 +100,13 @@ public class ProfileService {
 
     public void setEmailVerificationStatus(Long userNo) {
         if (profileRepository.setEmailVerificationStatus(userNo) == 0) {
+            throw new EmailStatusUpdateException();
+        }
+    }
 
+    public void setEmailProfileByUserNo(String email, Long userNo) {
+        if (profileRepository.setEmailProfileByUserNo(email, userNo) == 0) {
+            throw new EmailStatusUpdateException();
         }
     }
 }

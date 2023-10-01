@@ -37,6 +37,7 @@ public class EmailPostController {
                                HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String sendCode = (String) request.getSession().getAttribute("sendCode");
+        String sendEmail = (String) request.getSession().getAttribute("sendEmail");
 
         if (sendCode == null) {
             ScriptWriterUtil.writeAndRedirect(response, "이메일 인증 유효시간을 초과하였습니다.", "/profile");
@@ -53,6 +54,11 @@ public class EmailPostController {
         request.getSession().setAttribute("emailAuth", true);
 
 
+        profileService.setEmailProfileByUserNo(sendEmail,
+                ((MemberUser) request.getSession().getAttribute("loginMember")).getUserNo());
+        request.getSession().removeAttribute("sendEmail");
         ScriptWriterUtil.writeAndRedirect(response, "이메일 인증에 성공하였습니다.", "/goodsbuy/list");
     }
+
+
 }

@@ -29,4 +29,17 @@ public class UserProfileGetController {
     public String getNicknameUpdatePage() {
         return "profile/nicknameUpdate";
     }
+
+    @GetMapping("/profile/location")
+    public String getLocationUpdatePage() {
+        return "profile/locationUpdate";
+    }
+
+    @GetMapping("/profile/email")
+    public String getEmailUpdatePage(@SessionAttribute("loginMember") MemberUser loginMember, Model model) {
+        MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
+        model.addAttribute("memberProfile", memberProfile);
+        return "profile/emailUpdate";
+    }
+
 }

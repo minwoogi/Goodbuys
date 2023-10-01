@@ -41,26 +41,32 @@ public class ExceptionAdvice {
         ScriptWriterUtil.writeAndRedirect(response, "회원가입 실패", "/register");
     }
 
+    @ExceptionHandler(EmailStatusUpdateException.class)
+    public String emailStatusError() {
+        log.error("EmailStatusUpdateException");
+        return "errorPage";
+    }
+
 
     //404에러
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handle404(NoHandlerFoundException e) {
-        e.printStackTrace();
+        log.error(e.getMessage());
         return "errorPage";
     }
 
     // 데이터베이스오류
     @ExceptionHandler(DataAccessException.class)
     public String handleDataAccessException(DataAccessException e) {
-        e.printStackTrace();
+        log.error(e.getMessage());
         return "redirect:/errorPage";
     }
 
     // 500에러처리
     @ExceptionHandler(Exception.class)
     public String handleException(Exception e) {
-        e.printStackTrace();
+        log.error(e.getMessage());
         return "redirect:/errorPage";
     }
 

@@ -16,6 +16,12 @@
                         <li>
                             <a href="/profile/nickname"><i class="bi bi-file-person"></i>닉네임 변경</a>
                         </li>
+                        <li>
+                            <a href="/profile/email"><i class="bi bi-envelope"></i>이메일 등록 및 변경</a>
+                        </li>
+                        <li>
+                            <a href="/profile/location"><i class="bi bi-geo-alt"></i>지역 설정</a>
+                        </li>
                     </ul>
                 </li>
                 <li>

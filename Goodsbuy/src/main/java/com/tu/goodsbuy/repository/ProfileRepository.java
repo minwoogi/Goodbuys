@@ -33,9 +33,14 @@ public interface ProfileRepository {
     int makeMemberProfile(@Param("user_no") Long userNo, @Param("nickname") String nickname);
 
 
-
     @Update("UPDATE member_profile SET " +
             "email_check=1 " +
             "WHERE user_no =#{user_no}")
     int setEmailVerificationStatus(@Param("user_no") Long userNo);
+
+
+    @Update("UPDATE member_profile SET " +
+            "email=#{email} " +
+            "WHERE user_no =#{user_no}")
+    int setEmailProfileByUserNo(@Param("email") String email, @Param("userNo") Long userNo);
 }

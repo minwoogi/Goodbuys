@@ -68,3 +68,13 @@
     text-align: center;
 }
 
+#select{
+    width: 50%;
+}
+
+#email{
+    font-family: GmarketSansMedium, serif;
+    font-size: 1em;
+    text-align: center;
+}
+
