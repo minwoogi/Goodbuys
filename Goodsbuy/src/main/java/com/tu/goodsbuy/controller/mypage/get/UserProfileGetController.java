@@ -31,7 +31,10 @@ public class UserProfileGetController {
     }
 
     @GetMapping("/profile/location")
-    public String getLocationUpdatePage() {
+    public String getLocationUpdatePage(@SessionAttribute("loginMember") MemberUser loginMember, Model model) {
+        MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
+        model.addAttribute("memberProfile", memberProfile);
+
         return "profile/locationUpdate";
     }
 

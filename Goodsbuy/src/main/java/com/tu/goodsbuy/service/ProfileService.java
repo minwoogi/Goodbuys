@@ -49,11 +49,6 @@ public class ProfileService {
         }
     }
 
-    @Transactional
-    public void updateProfile(Long userNo) {
-
-    }
-
 
     public String makeFolder(String imagePath) {
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
@@ -98,15 +93,25 @@ public class ProfileService {
         return folderPath + uuid + "_" + fileName;
     }
 
+
+    @Transactional
     public void setEmailVerificationStatus(Long userNo) {
         if (profileRepository.setEmailVerificationStatus(userNo) == 0) {
             throw new EmailStatusUpdateException();
         }
     }
 
+    @Transactional
     public void setEmailProfileByUserNo(String email, Long userNo) {
         if (profileRepository.setEmailProfileByUserNo(email, userNo) == 0) {
             throw new EmailStatusUpdateException();
+        }
+    }
+
+    @Transactional
+    public void setLocationByUserNo(String location, Long userNo) {
+        if (profileRepository.setLocationByUserNo(location, userNo) == 0) {
+            throw new LocationUpdateException();
         }
     }
 }

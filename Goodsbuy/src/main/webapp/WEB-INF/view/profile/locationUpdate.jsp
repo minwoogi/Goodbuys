@@ -1,5 +1,6 @@
 <%--<a href="https://www.flaticon.com/kr/free-animated-icons/" title="위치 애니메이션 아이콘">
     위치 애니메이션 아이콘 제작자: Freepik - Flaticon</a>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -36,7 +37,14 @@
         </div>
 
         <div class="input-div">
-            <select class="form-select mx-auto mt-2" style="width: 20%"  >
+            <div class="lbl-div">
+                <input id="location" name="location" type="text"
+                <c:if test="${not empty memberProfile.location}">
+                       value="설정된 동네 : ${memberProfile.location}"
+                </c:if>
+                       disabled style="margin-top:1em; text-align: center; width: auto ">
+            </div>
+            <select class="form-select mx-auto mt-4" style="width: 20%; font-size: 1em">
                 <option value="부산광역시">부산광역시</option>
                 <option value="대구광역시">대구광역시</option>
                 <option value="인천광역시">인천광역시</option>
@@ -66,6 +74,29 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
+
+<script>
+    document.getElementById("nickCheck").addEventListener("click", function () {
+
+        var selectedLocation = document.querySelector(".form-select").value;
+
+
+        var form = document.createElement("form");
+        form.setAttribute("method", "POST");
+        form.setAttribute("action", "/profile/location");
+
+        // 선택한 지역 값을 hidden input 필드로 추가
+        var input = document.createElement("input");
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "location");
+        input.setAttribute("value", selectedLocation);
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    });
+
+</script>
 </body>
 </html>
 

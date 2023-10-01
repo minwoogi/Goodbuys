@@ -41,9 +41,13 @@ public class UserProfilePostController {
             String fileName = profileService.uploadSaveImageAndGetIdentifier(profileImagePath, file);
 
         }
-
-
         return "redirect:/profile";
+    }
+
+    @PostMapping("/profile/location")
+    public String updateLocation(@RequestParam String location, @SessionAttribute("loginMember") MemberUser loginMember) {
+        profileService.setLocationByUserNo(location, loginMember.getUserNo());
+        return "redirect:/profile/location";
     }
 
 

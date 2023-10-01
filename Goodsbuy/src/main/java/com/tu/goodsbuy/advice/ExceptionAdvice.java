@@ -41,9 +41,9 @@ public class ExceptionAdvice {
         ScriptWriterUtil.writeAndRedirect(response, "회원가입 실패", "/register");
     }
 
-    @ExceptionHandler(EmailStatusUpdateException.class)
+    @ExceptionHandler({EmailStatusUpdateException.class,LocationUpdateException.class})
     public String emailStatusError() {
-        log.error("EmailStatusUpdateException");
+        log.error("EmailStatusUpdateException | LocationUpdateException");
         return "errorPage";
     }
 
