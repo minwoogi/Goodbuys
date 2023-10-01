@@ -19,17 +19,17 @@ public class ListService {
 
     public List<Product> getProductListByLocation(String location) {
         List<Product> productList = listRepository.getProductListByLocation(location);
-        if (productList.isEmpty()) {
+        /*if (productList.isEmpty()) {
             throw new NoProductListException();
-        }
+        }*/
         return productList;
     }
 
     public List<Product> getSearchProductListByProductNameAndLocation(String location, String productName) {
         List<Product> productList = listRepository.getSearchProductListByProductNameAndLocation(location, productName);
-        if (productList.isEmpty()) {
+        /*if (productList.isEmpty()) {
             throw new NoProductListException();
-        }
+        }*/
         return productList;
     }
 
@@ -37,11 +37,11 @@ public class ListService {
         return listRepository.getDibsProductListByUserNo(userNo);
     }
 
-    public List<Product> getSalesItemsProductListByUserNo(Long userNo){
+    public List<Product> getSalesItemsProductListByUserNo(Long userNo) {
         return listRepository.getSalesItemsProductListByUserNo(userNo);
     }
 
-    public List<Product> getSalesHistoryProductListByUserNo(Long userNo){
+    public List<Product> getSalesHistoryProductListByUserNo(Long userNo) {
         return listRepository.getSalesItemsProductListByUserNo(userNo);
     }
 }

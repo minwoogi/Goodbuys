@@ -41,12 +41,24 @@ public class ExceptionAdvice {
         ScriptWriterUtil.writeAndRedirect(response, "회원가입 실패", "/register");
     }
 
-    @ExceptionHandler({EmailStatusUpdateException.class,LocationUpdateException.class})
+    @ExceptionHandler(EmailStatusUpdateException.class)
     public String emailStatusError() {
         log.error("EmailStatusUpdateException | LocationUpdateException");
         return "errorPage";
     }
 
+    @ExceptionHandler(LocationUpdateException.class)
+    public String locationUpdateError() {
+        log.error("LocationUpdateException");
+        return "errorPage";
+    }
+
+
+    @ExceptionHandler(IntroductionUpdateException.class)
+    public String introUpdateError() {
+        log.error("IntroductionUpdateException");
+        return "errorPage";
+    }
 
     //404에러
     @ExceptionHandler(NoHandlerFoundException.class)

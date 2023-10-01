@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" data-dark="false" class="root">
 <head>
@@ -24,7 +25,14 @@
             <div class="flex-grow-1">
                 <div id="profileImgDiv" class="img-div mt-4" style="position: relative;">
                     <img id="profileImg" class="img-fluid" alt="profile"
+                    <c:choose>
+                    <c:when test="${not empty memberProfile.imageURL}">
+                         src="/img/multipartImg/profileImage/${memberProfile.imageURL}"
+                    </c:when>
+                    <c:otherwise>
                          src="/img/multipartImg/profileImage/400400.png"
+                    </c:otherwise>
+                    </c:choose>
                          style="border-radius: 50%; border: 3px solid black;">
                     <div class="position-absolute color-bg-default rounded-2 color-fg-default px-2 py-1"
                          style="right: 25px; bottom: 25px;">
@@ -88,6 +96,53 @@
             }
         }
     });
+
+    document.querySelector('.subb').addEventListener('click', function () {
+        var introduction = document.getElementById('introduction').value;
+
+        // FormData 객체를 사용하여 form 데이터를 생성
+        var formData = new FormData();
+        formData.append('introduction', introduction);
+
+        // 파일 input 필드에서 선택한 파일
+        var fileInput = document.getElementById('file');
+        if (fileInput.files.length > 0) {
+            formData.append('file', fileInput.files[0]);
+        }
+
+
+        // 새로운 폼 엘리먼트 생성
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/profile/update.do';
+        form.enctype = 'multipart/form-data';
+
+        // FormData를 폼에 추가
+        for (var pair of formData.entries()) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = pair[0];
+            input.value = pair[1];
+            form.appendChild(input);
+        }
+
+        fetch('/profile/update.do', {
+            method: 'POST',
+            body: formData
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    sweetAlert("설정 완료", "프로필이 업데이트되었습니다.", "success");
+                } else {
+                    sweetAlert("오류", "프로필 업데이트 중 오류가 발생했습니다.", "error");
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+                sweetAlert("오류", "프로필 업데이트 중 오류가 발생했습니다.", "error");
+            });
+    });
+
 
 </script>
 

@@ -49,4 +49,14 @@ public interface ProfileRepository {
             "location=#{location} " +
             "WHERE user_no =#{user_no}")
     int setLocationByUserNo(@Param("location") String location, @Param("user_no") Long userNo);
+
+    @Update("UPDATE member_profile SET " +
+            "introduction=#{introduction} " +
+            "WHERE user_no =#{user_no}")
+    int setIntroductionByUserNo(@Param("introduction") String introduction, @Param("user_no") Long userNo);
+
+    @Update("UPDATE member_profile SET " +
+            "image_url=#{imgURL} " +
+            "WHERE user_no =#{user_no}")
+    int setImgUrlByUserNo(@Param("imgURL") String imgURL, @Param("user_no") Long userNo);
 }

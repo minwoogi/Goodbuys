@@ -51,17 +51,11 @@ input[type="file"] {
 }
 
 .subb {
-    height: 3em;
-    background-color: #4E00FF;
+    background-color: #33CCCC;
     border-radius: 10%;
     color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    cursor: pointer;
-    transition: 0.5s;
     font-size: 2em;
-    border-color: #4E00FF;
-
-
+    border-color: #33CCCC;
 }
 
 

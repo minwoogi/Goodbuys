@@ -80,7 +80,7 @@ public class ProfileService {
         String folderPath = makeFolder(imagePath);
 
         String uuid = UUID.randomUUID().toString();
-        String saveName = imagePath + File.separator + folderPath + File.separator + uuid + "_" + fileName;
+        String saveName = imagePath + "/" + folderPath + "/" + uuid + "_" + fileName;
         //ex) profileImage.2023.09.18.uuid_filename
         Path savePath = Paths.get(saveName);
         try {
@@ -90,7 +90,9 @@ public class ProfileService {
         }
         log.info("Saved Photos ==> " + folderPath + File.separator + uuid + "_" + fileName);
 
-        return folderPath + uuid + "_" + fileName;
+        String srcPath = folderPath.replace(File.separator,"/");
+
+        return srcPath + "/" + uuid + "_" + fileName;
     }
 
 
@@ -112,6 +114,19 @@ public class ProfileService {
     public void setLocationByUserNo(String location, Long userNo) {
         if (profileRepository.setLocationByUserNo(location, userNo) == 0) {
             throw new LocationUpdateException();
+        }
+    }
+
+    @Transactional
+    public void setIntroductionByUserNo(String introduction, Long userNo) {
+        if (profileRepository.setIntroductionByUserNo(introduction, userNo) == 0) {
+            throw new IntroductionUpdateException();
+        }
+    }
+
+    @Transactional
+    public void setImgUrlByUserNo(String imgURL, Long userNo) {
+        if (profileRepository.setImgUrlByUserNo(imgURL, userNo) == 0) {
         }
     }
 }
