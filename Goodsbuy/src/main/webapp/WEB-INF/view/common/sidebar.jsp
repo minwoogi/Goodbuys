@@ -11,7 +11,7 @@
                     <a href=""><i class="bi bi-person-circle"></i> <span>개인정보 수정</span></a>
                     <ul class="nav-flyout">
                         <li>
-                            <a href="/profile"><i class="bi bi-pencil"></i>마이페이지 수정</a>
+                            <a href="/profile"><i class="bi bi-pencil"></i>프로필 수정</a>
                         </li>
                         <li>
                             <a href="/profile/nickname"><i class="bi bi-file-person"></i>닉네임 변경</a>

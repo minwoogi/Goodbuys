@@ -33,7 +33,14 @@
         </div>
 
         <div class="lbl-div">
-            <i>이메일 등록 및 변경</i>
+            <c:choose>
+                <c:when test="${not empty memberProfile.email}">
+                    <i>이메일 확인</i>
+                </c:when>
+                <c:otherwise>
+                    <i>이메일 등록</i>
+                </c:otherwise>
+            </c:choose>
         </div>
 
         <div class="input-div">
@@ -43,7 +50,7 @@
                         <input id="email" name="email" type="text"
                                value="등록한 이메일 : ${memberProfile.email}" disabled style="margin-top:1em; ">
                     </div>
-                    <button id="nickCheck" class="btn btn-primary btn-block mt-5" type="button">이메일 변경</button>
+                    <%--                    <button id="nickCheck" class="btn btn-primary btn-block mt-5" type="button">이메일 변경</button>--%>
                 </c:when>
                 <c:otherwise>
                     <button id="nickCheck" class="btn btn-primary btn-block mt-2" type="button">이메일 등록</button>
