@@ -146,6 +146,17 @@
     });
 
 
+    var textarea = document.getElementById('introduction');
+
+    // input 이벤트 핸들러 등록
+    textarea.addEventListener('input', function() {
+        // 텍스트를 변경하고 커서를 끝으로 이동
+        this.selectionStart = this.value.length;
+        this.selectionEnd = this.value.length;
+    });
+
+
+
 </script>
 
 </body>

@@ -55,6 +55,12 @@ public class ExceptionAdvice {
         return "errorPage";
     }
 
+    @ExceptionHandler(ProductNotFoundException.class)
+    public String productNotFoundError() {
+        log.error("productNotFoundError");
+        return "errorPage";
+    }
+
 
     @ExceptionHandler(IntroductionUpdateException.class)
     public String introUpdateError() {

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface ListRepository {
@@ -37,6 +38,14 @@ public interface ListRepository {
             "JOIN sales_product s ON p.product_no = s.product_no " +
             "WHERE s.user_no = #{userNo} and s.sale_state= 1")
     List<Product> getSalesHistoryProductListByUserNo(Long userNo); //판매 완료 상품
+
+
+    @Select("SELECT * FROM product WHERE product_no = #{productNo}")
+    Optional<Product> getProductListByProductNo(Long productNo);
+
+
+    @Select("SELECT COUNT(*) FROM member_dibs WHERE product_no = #{productNo}")
+    int getDibsCountProductByProductNo(Long productNo);
 
 
 }

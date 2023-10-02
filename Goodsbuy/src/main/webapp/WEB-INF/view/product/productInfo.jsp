@@ -21,11 +21,11 @@
         <div class="row gx-5 align-items-center justify-content-center">
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
-                    <h1 class="display-5 fw-bolder text-white mb-2">물건 제목</h1>
-                    <p class="lead fw-normal text-white-50 mb-4">nickname</p>
+                    <h1 class="display-5 fw-bolder text-white mb-2">${product.productName}</h1>
+                    <p class="lead fw-normal text-white-50 mb-4">${product.nickname}</p>
                     <p class="lead fw-normal text-white-50 mb-4">
-                        <i class="bi bi-heart-fill"></i> 6&nbsp;&nbsp;|
-                        <i class="bi bi-eye-fill"></i> 100&nbsp;&nbsp;|
+                        <i class="bi bi-heart-fill"></i> ${dibsCount}&nbsp;&nbsp;|
+                        <i class="bi bi-eye-fill"></i> ${product.view}&nbsp;&nbsp;|
                         <i class="bi bi-clock-fill"></i> 17시간전
                     </p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">

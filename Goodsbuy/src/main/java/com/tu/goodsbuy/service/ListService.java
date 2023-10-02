@@ -2,6 +2,7 @@ package com.tu.goodsbuy.service;
 
 
 import com.tu.goodsbuy.global.exception.NoProductListException;
+import com.tu.goodsbuy.global.exception.ProductNotFoundException;
 import com.tu.goodsbuy.model.dto.Product;
 import com.tu.goodsbuy.repository.ListRepository;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +44,13 @@ public class ListService {
 
     public List<Product> getSalesHistoryProductListByUserNo(Long userNo) {
         return listRepository.getSalesItemsProductListByUserNo(userNo);
+    }
+
+    public Product getProductByProductNo(Long productNo) {
+        return listRepository.getProductListByProductNo(productNo).orElseThrow(ProductNotFoundException::new);
+    }
+
+    public int getDibsCountProductByProductNo(Long productNo) {
+        return listRepository.getDibsCountProductByProductNo(productNo);
     }
 }

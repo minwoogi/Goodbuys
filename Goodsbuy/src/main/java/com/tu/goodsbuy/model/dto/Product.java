@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Getter
 @AllArgsConstructor
 @ToString
@@ -17,5 +19,7 @@ public class Product {
     private String productPrice;
     private String location;
     private short categoryNo;
+    private Long view;
+    private Date makeTime;
 
 }
