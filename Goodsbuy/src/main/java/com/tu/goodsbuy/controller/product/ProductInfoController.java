@@ -25,6 +25,8 @@ public class ProductInfoController {
 
 
         log.info("productNo -->" + productNo);
+        listService.increaseViewByProductNo(Long.valueOf(productNo));
+
 
         model.addAttribute("product",
                 listService.getProductByProductNo(Long.valueOf(productNo)));

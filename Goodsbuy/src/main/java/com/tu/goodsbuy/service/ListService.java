@@ -53,4 +53,10 @@ public class ListService {
     public int getDibsCountProductByProductNo(Long productNo) {
         return listRepository.getDibsCountProductByProductNo(productNo);
     }
+
+    public void increaseViewByProductNo(Long productNo){
+        if(listRepository.increaseViewByProductNo(productNo) ==0){
+
+        }
+    }
 }
