@@ -76,8 +76,7 @@
 
 
                     <div id="info" class="fs-4 m-4">
-                        물건 설명 이러쿵 저러쿵 이러쿵 저러쿵 이러쿵 저러쿵
-                        물건 설명 이러쿵 저러쿵 이러쿵 저러쿵 이러쿵 저러쿵
+                        ${product.productInfo}
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..."/>

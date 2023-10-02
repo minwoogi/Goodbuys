@@ -21,5 +21,6 @@ public class Product {
     private short categoryNo;
     private Long view;
     private Date makeTime;
+    private String productInfo;
 
 }

@@ -24,7 +24,7 @@ public class ProductInfoController {
     public String getProductInfoPage(@PathVariable("productNo") String productNo, Model model) {
 
 
-        log.info("productNo -->" + productNo);
+        log.info("productNo --> " + productNo);
         listService.increaseViewByProductNo(Long.valueOf(productNo));
 
 
