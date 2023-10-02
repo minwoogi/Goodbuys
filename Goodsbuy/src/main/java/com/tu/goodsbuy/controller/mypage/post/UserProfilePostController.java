@@ -37,7 +37,7 @@ public class UserProfilePostController {
     @PostMapping("/profile/update.do")
     public String updateProfile(@SessionAttribute("loginMember") MemberUser loginMember,
                                 @RequestParam(required = false) MultipartFile file,
-                                @RequestParam String introduction, HttpServletResponse response) throws IOException {
+                                @RequestParam String introduction, HttpServletResponse response) {
 
         profileService.setIntroductionByUserNo(introduction, loginMember.getUserNo());
 

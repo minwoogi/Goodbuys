@@ -134,7 +134,9 @@
                 if (response.ok) {
                     sweetAlert("설정 완료", "프로필이 업데이트되었습니다.", "success");
                 } else {
-                    sweetAlert("오류", "프로필 업데이트 중 오류가 발생했습니다.", "error");
+                    response.text().then(function(errorMessage) {
+                        sweetAlert("오류", errorMessage, "error");
+                    });
                 }
             })
             .catch(function (error) {
