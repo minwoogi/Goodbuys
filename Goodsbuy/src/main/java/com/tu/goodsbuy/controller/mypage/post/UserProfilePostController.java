@@ -39,8 +39,10 @@ public class UserProfilePostController {
 
 
         if (!file.isEmpty()) {
+            profileService.deleteImage(profileImagePath, profileService.getMemberProfileByUserNo(loginMember.getUserNo()).getImageURL());
             String fileName = profileService.uploadSaveImageAndGetIdentifier(profileImagePath, file);
             profileService.setImgUrlByUserNo(fileName, loginMember.getUserNo());
+
         }
         return "redirect:/profile";
     }

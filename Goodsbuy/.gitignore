@@ -41,6 +41,4 @@ out/
 application.properties
 email.properties
 
-/src/main/java/com/tu/goodsbuy/global/config/WebConfig.class
-
 

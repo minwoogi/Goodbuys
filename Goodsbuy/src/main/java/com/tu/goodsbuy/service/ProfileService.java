@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -90,9 +91,22 @@ public class ProfileService {
         }
         log.info("Saved Photos ==> " + folderPath + File.separator + uuid + "_" + fileName);
 
-        String srcPath = folderPath.replace(File.separator,"/");
+        String srcPath = folderPath.replace(File.separator, "/");
 
         return srcPath + "/" + uuid + "_" + fileName;
+    }
+
+    public void deleteImage(String imagePath, String imageUrl) {
+        String filePath = imagePath + "/" + imageUrl.replace("/", File.separator);
+        Path deletePath = Paths.get(filePath);
+        try {
+            // 파일 삭제
+            Files.deleteIfExists(deletePath);
+            log.info("Deleted Image ==> " + filePath);
+        } catch (IOException e) {
+            log.error("Failed to delete image: " + filePath, e);
+        }
+
     }
 
 
