@@ -40,6 +40,6 @@ out/
 ### 
 application.properties
 email.properties
-WebConfig.class
+src/main/java/com/tu/goodsbuy/global/config/WebConfig.class
 
 
