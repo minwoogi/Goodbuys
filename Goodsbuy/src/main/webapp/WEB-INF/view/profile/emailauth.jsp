@@ -42,7 +42,7 @@
 
 <% if ((Integer) request.getAttribute("emailCheck") == 1) {%>
 <script>
-    location.href="/goodsbuy/list";
+    location.href = "/goodsbuy/list";
 </script>
 <%}%>
 
@@ -93,7 +93,17 @@
         <p class="mb-1">&copy; 2023 Goodsbuy</p>
     </footer>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
+
+    function sweetAlert(tle, msg, icn) {
+        Swal.fire({
+            title: tle,  // 제목
+            text: msg,  // 메시지 내용
+            icon: icn,  // 아이콘 (success, error, warning, info 중 선택)
+            confirmButtonText: '확인'  // 확인 버튼 텍스트
+        });
+    }
 
     var timerInterval;
 
@@ -107,7 +117,7 @@
                 startTimer();
             },
             error: function (error) {
-                console.error("오류 발생:", error);
+                sweetAlert(error.responseText,"",'info');
             }
         });
     }

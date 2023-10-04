@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "utf8Filter", urlPatterns = "/goodsbuy/product/post")
+@WebFilter(filterName = "utf8Filter", urlPatterns = "/product/post")
 public class UTF8Filter implements Filter {
 
 

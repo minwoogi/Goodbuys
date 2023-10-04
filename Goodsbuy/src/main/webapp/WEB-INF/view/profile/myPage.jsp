@@ -1,3 +1,4 @@
+<%--<a href="https://www.flaticon.com/kr/free-icons/" title="사용자 아이콘">사용자 아이콘  제작자: Becris - Flaticon</a>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -30,7 +31,7 @@
                          src="/img/multipartImg/profileImage/${memberProfile.imageURL}"
                     </c:when>
                     <c:otherwise>
-                         src="/img/multipartImg/profileImage/400400.png"
+                         src="/img/multipartImg/profileImage/profile.png"
                     </c:otherwise>
                     </c:choose>
                          style="border-radius: 50%; border: 3px solid black;">

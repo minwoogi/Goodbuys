@@ -111,7 +111,7 @@
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
-
+                    등록된 상품이 없습니다.
                 </c:otherwise>
             </c:choose>
             <%}%>

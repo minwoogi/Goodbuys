@@ -28,7 +28,7 @@ public class LoginController {
     public String doLogin(@Valid LoginForm loginForm, BindingResult br, RedirectAttributes rttr, Model model) {
 
         if (br.hasErrors()) {
-            if (!loginForm.getUsername().equals("choo")) { // imsi 관리자 아이디
+            if (!loginForm.getUsername().equals("choo")&& !loginForm.getUsername().equals("min"))  { // imsi 관리자 아이디
                 rttr.addFlashAttribute("errors", br);
                 return "redirect:/login";
             }

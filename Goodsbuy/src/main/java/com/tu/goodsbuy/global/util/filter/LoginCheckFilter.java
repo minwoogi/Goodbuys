@@ -21,7 +21,7 @@ import java.util.Objects;
  **/
 @WebFilter(urlPatterns = {"/profile", "/dibs", "/email",
         "/profile/nickname , /sales-items , /sales-history , /purchase-history," ,
-                "/profile/location","/profile/email"})
+                "/profile/location","/profile/email","/product/*"})
 @Slf4j
 public class LoginCheckFilter implements Filter {
 

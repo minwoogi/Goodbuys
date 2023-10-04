@@ -59,4 +59,8 @@ public interface ProfileRepository {
             "image_url=#{imgURL} " +
             "WHERE user_no =#{user_no}")
     int setImgUrlByUserNo(@Param("imgURL") String imgURL, @Param("user_no") Long userNo);
+
+
+    @Select("SELECT COUNT(*) FROM member_profile WHERE email =#{email}")
+    boolean isDuplicatedEmail(String email);
 }

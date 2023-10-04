@@ -1,5 +1,6 @@
 package com.tu.goodsbuy.service;
 
+import com.tu.goodsbuy.repository.ProfileRepository;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class EmailService {
 
 
     private final JavaMailSender emailSender;
+    private final ProfileRepository profileRepository;
 
     private MimeMessage createMessage(String to, String ePw) throws Exception {
 
@@ -78,5 +80,9 @@ public class EmailService {
             throw new IllegalArgumentException();
         }
         return ePw;
+    }
+
+    public boolean isDuplicatedEmail(String email) {
+        return profileRepository.isDuplicatedEmail(email);
     }
 }
