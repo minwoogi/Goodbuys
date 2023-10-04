@@ -28,10 +28,10 @@
                     <img id="profileImg" class="img-fluid" alt="profile"
                     <c:choose>
                     <c:when test="${not empty memberProfile.imageURL}">
-                         src="/img/multipartImg/profileImage/${memberProfile.imageURL}"
+                         src="/multipartImg/profileImage/${memberProfile.imageURL}"
                     </c:when>
                     <c:otherwise>
-                         src="/img/multipartImg/profileImage/profile.png"
+                         src="/img/profile.png"
                     </c:otherwise>
                     </c:choose>
                          style="border-radius: 50%; border: 3px solid black;">
@@ -52,8 +52,7 @@
                 <div class="mt-4">
                     <p class="nick" style="text-align: center">${memberProfile.nickName}님</p>
                     <hr class="my-2">
-                    <textarea class="mt-3" id="introduction" spellcheck="false">${memberProfile.introduction}
-                    </textarea>
+                    <textarea class="mt-3" id="introduction" spellcheck="false">${memberProfile.introduction}</textarea>
                 </div>
             </div>
         </div>
@@ -135,7 +134,7 @@
                 if (response.ok) {
                     sweetAlert("설정 완료", "프로필이 업데이트되었습니다.", "success");
                 } else {
-                    response.text().then(function(errorMessage) {
+                    response.text().then(function (errorMessage) {
                         sweetAlert("오류", errorMessage, "error");
                     });
                 }
@@ -145,8 +144,6 @@
                 sweetAlert("오류", "프로필 업데이트 중 오류가 발생했습니다.", "error");
             });
     });
-
-
 
 
 </script>

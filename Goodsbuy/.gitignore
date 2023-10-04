@@ -40,4 +40,6 @@ out/
 ### 
 application.properties
 email.properties
+WebConfig.class
+
 

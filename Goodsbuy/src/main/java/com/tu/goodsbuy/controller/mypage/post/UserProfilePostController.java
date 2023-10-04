@@ -1,10 +1,8 @@
 package com.tu.goodsbuy.controller.mypage.post;
 
 
-import com.tu.goodsbuy.global.util.ScriptWriterUtil;
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.service.ProfileService;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 
 @Slf4j
@@ -37,15 +33,15 @@ public class UserProfilePostController {
     @PostMapping("/profile/update.do")
     public String updateProfile(@SessionAttribute("loginMember") MemberUser loginMember,
                                 @RequestParam(required = false) MultipartFile file,
-                                @RequestParam String introduction, HttpServletResponse response) {
+                                @RequestParam String introduction) {
 
         profileService.setIntroductionByUserNo(introduction, loginMember.getUserNo());
+
 
         if (!file.isEmpty()) {
             String fileName = profileService.uploadSaveImageAndGetIdentifier(profileImagePath, file);
             profileService.setImgUrlByUserNo(fileName, loginMember.getUserNo());
         }
-
         return "redirect:/profile";
     }
 
