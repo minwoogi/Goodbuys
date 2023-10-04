@@ -1,8 +1,8 @@
 package com.tu.goodsbuy.service;
 
 
-import com.tu.goodsbuy.global.exception.NoProductListException;
-import com.tu.goodsbuy.global.exception.ProductNotFoundException;
+import com.tu.goodsbuy.controller.param.ProductUpdateParam;
+import com.tu.goodsbuy.global.exception.*;
 import com.tu.goodsbuy.model.dto.Product;
 import com.tu.goodsbuy.repository.ListRepository;
 import lombok.RequiredArgsConstructor;
@@ -56,13 +56,38 @@ public class ListService {
 
     public void increaseViewByProductNo(Long productNo) {
         if (listRepository.increaseViewByProductNo(productNo) == 0) {
-
+            throw new IncreaseViewCountException();
         }
     }
 
     public void deleteProductByProductNo(String productNo) {
         if (listRepository.deleteProductByProductNo(productNo) == 0) {
-
+            throw new DeleteProductException();
         }
+    }
+
+    public String getProductImageUrlByProductNo(String productNo) {
+        return listRepository.getProductImageUrlByProductNo(productNo);
+    }
+
+
+    public void updateProductImgUrlByProductNo(String imgURL, String productNo) {
+        if (listRepository.updateProductImgUrlByProductNo(imgURL, productNo) == 0) {
+            throw new UpdateProductImageException();
+        }
+    }
+
+    public void updateProductInfoByProductUpdateParam(ProductUpdateParam productUpdateParam) {
+
+        String productNo = productUpdateParam.getProductNo();
+        String productName = productUpdateParam.getProductName();
+        String productPrice = productUpdateParam.getProductPrice();
+        String productInfo = productUpdateParam.getProductInfo();
+
+        if (listRepository.updateProductInfoByProductUpdateParam(productNo, productName, productPrice, productInfo) == 0) {
+            throw new ProductUpdateException();
+        }
+
+
     }
 }

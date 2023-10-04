@@ -86,7 +86,16 @@
                         <div class="col mb-5">
                             <div class="card h-100">
                                 <!-- Product image-->
-                                <img class="card-img-top" src="https://dummyimage.com/500x500/dee2e6/6c757d.jpg"
+                                <img class="card-img-top"
+                                        <c:choose>
+                                            <c:when test="${not empty product.productImageUrl}">
+                                                src="/multipartImg/productImage/${product.productImageUrl}"
+                                            </c:when>
+                                            <c:otherwise>
+                                                src="https://dummyimage.com/500x500/dee2e6/6c757d.jpg"
+                                            </c:otherwise>
+                                        </c:choose>
+
                                      alt="..."/>
                                 <!-- Product details-->
                                 <div class="card-body p-4">

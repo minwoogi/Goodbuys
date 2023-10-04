@@ -52,4 +52,20 @@ public interface ListRepository {
     @Delete("DELETE FROM product WHERE product_no =#{productNo}")
     int deleteProductByProductNo(String productNo);
 
+
+    @Select("SELECT product_image_url FROM product WHERE product_no = #{productNo}")
+    String getProductImageUrlByProductNo(String productNo);
+
+
+    @Update("UPDATE product SET product_image_url=#{imageURL} WHERE product_no =#{productNo}")
+    int updateProductImgUrlByProductNo(@Param("imageURL") String imgURL, @Param("productNo") String productNo);
+
+
+    @Update("UPDATE product " +
+            "SET product_name = #{productName}, " +
+            "    product_price = #{productPrice}, " +
+            "    product_info = #{productInfo} " +
+            "WHERE product_no = #{productNo}")
+    int updateProductInfoByProductUpdateParam(@Param("productNo") String productNo, @Param("productName") String productName,
+                                              @Param("productPrice") String productPrice, @Param("productInfo") String productInfo);
 }

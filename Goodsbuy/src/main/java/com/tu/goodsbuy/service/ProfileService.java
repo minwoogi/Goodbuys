@@ -102,7 +102,7 @@ public class ProfileService {
         try {
             // 파일 삭제
             Files.deleteIfExists(deletePath);
-            log.info("Deleted Image ==> " + filePath);
+            log.info("Deleted Image ==> " + deletePath);
         } catch (IOException e) {
             log.error("Failed to delete image: " + filePath, e);
         }

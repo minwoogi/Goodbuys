@@ -21,7 +21,14 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
-                                       src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..."/></div>
+                    <c:choose>
+                        <c:when test="${not empty product.productImageUrl}">
+                            src="/multipartImg/productImage/${product.productImageUrl}"
+                        </c:when>
+                        <c:otherwise>
+                            src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg"
+                        </c:otherwise>
+                    </c:choose> alt="..."/></div>
             <div class="col-md-6">
                 <div class="small mb-1">${product.nickname}님</div>
                 <h1 class="display-5 fw-bolder">${product.productName}</h1>
@@ -30,9 +37,10 @@
                         <i class="bi bi-eye-fill"></i> ${product.view}&nbsp;&nbsp;|
                         <i class="bi bi-clock-fill"></i> 17시간전<br><br></span>
                     <span id="priceSpan"><script>
-                        function formatKoreanCurrency(number,id) {
-                            document.getElementById(id).textContent = new Intl.NumberFormat('ko-KR').format(number)+'원';
+                        function formatKoreanCurrency(number, id) {
+                            document.getElementById(id).textContent = new Intl.NumberFormat('ko-KR').format(number) + '원';
                         }
+
                         formatKoreanCurrency(${product.productPrice}, 'priceSpan');
                     </script></span>
                 </div>
@@ -43,9 +51,8 @@
                     <c:when test="${userNo eq product.userNo}">
 
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
-                               onclick="confirmAndRedirect('수정 페이지로 이동',
-                                       '/product/update.do','productNo','${productNo}');">
+                            <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3"
+                               href="/product/update?productNo=${productNo}">
                                 수정하기 <i class="bi bi-cloud-arrow-up"></i></a>
                             <a id="deleteBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
                                onclick="confirmAndRedirect('삭제 하시겠습니까?'
@@ -57,8 +64,9 @@
                     <c:otherwise>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                             <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="#!" style="background-color: #4E00FF">찜하기 <i
-                                    class="bi bi-heart"></i></a>
+                            <a class="btn btn-outline-light btn-lg px-4" href="#!" style="background-color: #4E00FF">찜하기
+                                <i
+                                        class="bi bi-heart"></i></a>
                         </div>
                     </c:otherwise>
                 </c:choose>
@@ -77,8 +85,17 @@
                         <div class="col mb-5">
                             <div class="card h-100">
 
+
                                 <!-- Product image-->
-                                <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                                <img class="card-img-top"
+                                        <c:choose>
+                                            <c:when test="${not empty product.productImageUrl}">
+                                                src="/multipartImg/profileImage/${product.productImageUrl}"
+                                            </c:when>
+                                            <c:otherwise>
+                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                                            </c:otherwise>
+                                        </c:choose>
                                      alt="..."/>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
