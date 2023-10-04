@@ -15,7 +15,6 @@ public class Product {
     private Long userNo;
     private String nickname;
     private String productName;
-    private String productImageUrl;
     private String productPrice;
     private String location;
     private short categoryNo;

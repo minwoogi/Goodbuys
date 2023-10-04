@@ -1,0 +1,20 @@
+#introduction {
+    width: 700px;
+    height: 300px;
+    overflow-wrap: break-word;
+    font-size: 18px;
+    background-color: #8b8b8b1c;
+    resize: none;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input{
+    font-size: 24px;
+    color: white;
+}

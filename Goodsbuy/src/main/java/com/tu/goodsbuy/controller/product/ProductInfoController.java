@@ -1,15 +1,18 @@
 package com.tu.goodsbuy.controller.product;
 
 
+import com.tu.goodsbuy.model.dto.MemberProfile;
+import com.tu.goodsbuy.model.dto.MemberUser;
+import com.tu.goodsbuy.model.dto.Product;
 import com.tu.goodsbuy.service.ListService;
+import com.tu.goodsbuy.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -19,13 +22,14 @@ public class ProductInfoController {
 
 
     private final ListService listService;
+    private final ProfileService profileService;
 
 
     @GetMapping("/product/{productNo}")
-    public String getProductInfoPage(@PathVariable("productNo") String productNo, Model model) {
+    public String getProductInfoPage(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser,
+                                     @PathVariable("productNo") String productNo, Model model) {
 
 
-        log.info("productNo --> " + productNo);
         listService.increaseViewByProductNo(Long.valueOf(productNo));
 
 
@@ -33,6 +37,11 @@ public class ProductInfoController {
                 listService.getProductByProductNo(Long.valueOf(productNo)));
         model.addAttribute("dibsCount",
                 listService.getDibsCountProductByProductNo(Long.valueOf(productNo)));
+
+        MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
+        List<Product> productList = listService.getProductListByLocation(memberProfile.getLocation());
+        model.addAttribute("productList", productList);
+
 
         return "product/productInfo";
     }
@@ -42,6 +51,24 @@ public class ProductInfoController {
         listService.deleteProductByProductNo(productNo);
         return "redirect:/goodsbuy/list";
     }
+
+    @PostMapping("/product/update.do")
+    public String test(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser,
+                       @RequestParam String productNo , Model model){
+
+        model.addAttribute("product",
+                listService.getProductByProductNo(Long.valueOf(productNo)));
+        model.addAttribute("dibsCount",
+                listService.getDibsCountProductByProductNo(Long.valueOf(productNo)));
+
+        MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
+        List<Product> productList = listService.getProductListByLocation(memberProfile.getLocation());
+        model.addAttribute("productList", productList);
+
+
+        return "product/productUpdate";
+    }
+
 
 
 }

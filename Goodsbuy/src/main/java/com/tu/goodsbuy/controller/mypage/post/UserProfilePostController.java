@@ -34,8 +34,7 @@ public class UserProfilePostController {
     public String updateProfile(@SessionAttribute("loginMember") MemberUser loginMember,
                                 @RequestParam(required = false) MultipartFile file,
                                 @RequestParam String introduction) {
-
-        profileService.setIntroductionByUserNo(introduction, loginMember.getUserNo());
+        profileService.setIntroductionByUserNo(introduction.trim(), loginMember.getUserNo());
 
 
         if (!file.isEmpty()) {

@@ -17,103 +17,97 @@
 <body>
 
 <jsp:include page="../common/header.jsp"></jsp:include>
-
-<header class="bg-dark py-5">
-    <div class="container px-5">
-        <div class="row gx-5 align-items-center justify-content-center">
-            <div class="col-lg-8 col-xl-7 col-xxl-6">
-                <div class="my-5 text-center text-xl-start">
-                    <h1 class="display-5 fw-bolder text-white mb-2">${product.productName}</h1>
-                    <p class="lead fw-normal text-white-50 mb-4">${product.nickname}</p>
-                    <p class="lead fw-normal text-white-50 mb-4">
-                        <i class="bi bi-heart-fill"></i> ${dibsCount}&nbsp;&nbsp;|
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                                       src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..."/></div>
+            <div class="col-md-6">
+                <div class="small mb-1">${product.nickname}님</div>
+                <h1 class="display-5 fw-bolder">${product.productName}</h1>
+                <div class="fs-5 mb-5">
+                    <span><br> <i class="bi bi-heart-fill"></i> ${dibsCount}&nbsp;&nbsp;|
                         <i class="bi bi-eye-fill"></i> ${product.view}&nbsp;&nbsp;|
-                        <i class="bi bi-clock-fill"></i> 17시간전
-                    </p>
-
-                    <c:set var="userNo" value="${loginMember.userNo}"/>
-
-                    <c:choose>
-                        <c:when test="${userNo eq product.userNo}">
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">
-                                    수정하기 <i class="bi bi-cloud-arrow-up"></i></a>
-                                <a id="deleteBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
-                                   onclick="confirmAndRedirect('삭제 하시겠습니까?'
-                                           ,'/product/delete.do','productNo','${productNo}');">
-                                    삭제하기 <i class="bi bi-trash"></i></a>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="#!">찜하기 <i
-                                        class="bi bi-heart"></i></a>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-
+                        <i class="bi bi-clock-fill"></i> 17시간전<br><br></span>
+                    <span id="priceSpan"><script>
+                        function formatKoreanCurrency(number,id) {
+                            document.getElementById(id).textContent = new Intl.NumberFormat('ko-KR').format(number)+'원';
+                        }
+                        formatKoreanCurrency(${product.productPrice}, 'priceSpan');
+                    </script></span>
                 </div>
-            </div>
-            <%--<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
-                                                                               src="https://dummyimage.com/600x400/343a40/6c757d"
-                                                                               alt="..."/></div>--%>
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://dummyimage.com/600x400/343a40/6c757d" class="d-block w-100" alt="...">
+                <p class="lead"> ${product.productInfo}</p>
+
+                <c:set var="userNo" value="${loginMember.userNo}"/>
+                <c:choose>
+                    <c:when test="${userNo eq product.userNo}">
+
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                            <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
+                               onclick="confirmAndRedirect('수정 페이지로 이동',
+                                       '/product/update.do','productNo','${productNo}');">
+                                수정하기 <i class="bi bi-cloud-arrow-up"></i></a>
+                            <a id="deleteBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
+                               onclick="confirmAndRedirect('삭제 하시겠습니까?'
+                                       ,'/product/delete.do','productNo','${productNo}');">
+                                삭제하기 <i class="bi bi-trash"></i></a>
                         </div>
-                        <div class="carousel-item">
-                            <img src="/multipartImg/productImage/test.png" width="600" height="400"
-                                 class="d-block w-100" alt="...">
+
+                    </c:when>
+                    <c:otherwise>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                            <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
+                            <a class="btn btn-outline-light btn-lg px-4" href="#!" style="background-color: #4E00FF">찜하기 <i
+                                    class="bi bi-heart"></i></a>
                         </div>
-                        <div class="carousel-item">
-                            <img src="/img/banner3.jpg" width="600" height="400" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
-</header>
+</section>
+<section class="py-5 bg-light">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-4">다른 상품</h2>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-<div class="py-5 bg-light">
-    <div class="container px-5 my-5">
-        <div class="row gx-5 justify-content-center">
-            <div class="col-lg-10 col-xl-7">
-                <div class="text-center">
-                    <h1 id="jinvley">상품 정보</h1>
-                    <hr class="my-2">
+            <c:choose>
+                <c:when test="${not empty productList}">
+                    <c:forEach var="product" items="${productList}">
+                        <div class="col mb-5">
+                            <div class="card h-100">
 
-
-                    <div id="info" class="fs-4 m-4">
-                        ${product.productInfo}
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..."/>
-                        <div class="fw-bold">
-                            ${product.nickname}
-                            <span class="fw-bold text-primary mx-1">/</span>
-                            ${product.location} <i class="bi bi-geo-alt"></i>
+                                <!-- Product image-->
+                                <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                                     alt="..."/>
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <h5 class="fw-bolder"><c:out value="${product.productName}"/></h5>
+                                        <c:out value="${product.productPrice}"/> <br>
+                                        <c:out value="${product.nickname}"/>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                                href="/product/${product.productNo}">
+                                        상품보기</a></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+
+
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    등록된 상품이 없습니다.
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
-</div>
+</section>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 
 <script>
     function confirmAndRedirect(msg, path, name, value) {
@@ -142,6 +136,8 @@
             }
         });
     }
+
+
 </script>
 </body>
 </html>

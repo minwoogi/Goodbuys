@@ -36,7 +36,7 @@
                                         <div class="card h-100">
                                             <!-- Product image-->
                                             <img class="card-img-top"
-                                                 src="/img/multipartImg/productImage/appleWatch.png"
+                                                 src="/multipartImg/productImage/appleWatch.png"
                                                  alt="..."/>
                                             <!-- Product details-->
                                             <div class="card-body p-4">
