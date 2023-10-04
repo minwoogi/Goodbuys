@@ -66,7 +66,7 @@
                             <img src="https://dummyimage.com/600x400/343a40/6c757d" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="/img/multipartImg/productImage/test.png" width="600" height="400"
+                            <img src="/multipartImg/productImage/test.png" width="600" height="400"
                                  class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">

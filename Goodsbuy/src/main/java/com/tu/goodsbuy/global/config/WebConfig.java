@@ -22,6 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/multipartImg/**")
                 .addResourceLocations("file:///C:/Users/csc19/goodsbuy/multipartImg/");
+        // 외부경로 등록
 
 
     }
