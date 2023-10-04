@@ -20,17 +20,17 @@ public class ListService {
 
     public List<Product> getProductListByLocation(String location) {
         List<Product> productList = listRepository.getProductListByLocation(location);
-        /*if (productList.isEmpty()) {
+        if (productList.isEmpty()) {
             throw new NoProductListException();
-        }*/
+        }
         return productList;
     }
 
     public List<Product> getSearchProductListByProductNameAndLocation(String location, String productName) {
         List<Product> productList = listRepository.getSearchProductListByProductNameAndLocation(location, productName);
-        /*if (productList.isEmpty()) {
+        if (productList.isEmpty()) {
             throw new NoProductListException();
-        }*/
+        }
         return productList;
     }
 
@@ -54,8 +54,14 @@ public class ListService {
         return listRepository.getDibsCountProductByProductNo(productNo);
     }
 
-    public void increaseViewByProductNo(Long productNo){
-        if(listRepository.increaseViewByProductNo(productNo) ==0){
+    public void increaseViewByProductNo(Long productNo) {
+        if (listRepository.increaseViewByProductNo(productNo) == 0) {
+
+        }
+    }
+
+    public void deleteProductByProductNo(String productNo) {
+        if (listRepository.deleteProductByProductNo(productNo) == 0) {
 
         }
     }

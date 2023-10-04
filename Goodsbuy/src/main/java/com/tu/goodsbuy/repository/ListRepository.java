@@ -2,10 +2,7 @@ package com.tu.goodsbuy.repository;
 
 
 import com.tu.goodsbuy.model.dto.Product;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,5 +49,7 @@ public interface ListRepository {
     @Update("UPDATE product SET view = view + 1 WHERE product_no = #{productNo}")
     int increaseViewByProductNo(Long productNo);
 
+    @Delete("DELETE FROM product WHERE product_no =#{productNo}")
+    int deleteProductByProductNo(String productNo);
 
 }

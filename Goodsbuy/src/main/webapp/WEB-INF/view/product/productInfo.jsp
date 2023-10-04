@@ -1,3 +1,5 @@
+<%@ page import="com.tu.goodsbuy.model.dto.MemberUser" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,10 +30,30 @@
                         <i class="bi bi-eye-fill"></i> ${product.view}&nbsp;&nbsp;|
                         <i class="bi bi-clock-fill"></i> 17시간전
                     </p>
-                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                        <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
-                        <a class="btn btn-outline-light btn-lg px-4" href="#!">찜하기 <i class="bi bi-heart"></i></a>
-                    </div>
+
+                    <c:set var="userNo" value="${loginMember.userNo}"/>
+
+                    <c:choose>
+                        <c:when test="${userNo eq product.userNo}">
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">
+                                    수정하기 <i class="bi bi-cloud-arrow-up"></i></a>
+                                <a id="deleteBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
+                                   onclick="confirmAndRedirect('삭제 하시겠습니까?'
+                                           ,'/product/delete.do','productNo','${productNo}');">
+                                    삭제하기 <i class="bi bi-trash"></i></a>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
+                                <a class="btn btn-outline-light btn-lg px-4" href="#!">찜하기 <i
+                                        class="bi bi-heart"></i></a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
                 </div>
             </div>
             <%--<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
@@ -44,10 +66,11 @@
                             <img src="https://dummyimage.com/600x400/343a40/6c757d" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="/img/multipartImg/productImage/test.png" width="600" height="400" class="d-block w-100" alt="...">
+                            <img src="/img/multipartImg/productImage/test.png" width="600" height="400"
+                                 class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="/img/banner3.jpg"  width="600" height="400" class="d-block w-100" alt="...">
+                            <img src="/img/banner3.jpg" width="600" height="400" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -81,9 +104,9 @@
                     <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..."/>
                         <div class="fw-bold">
-                            Nickname
+                            ${product.nickname}
                             <span class="fw-bold text-primary mx-1">/</span>
-                            부산광역시 <i class="bi bi-geo-alt"></i>
+                            ${product.location} <i class="bi bi-geo-alt"></i>
                         </div>
                     </div>
                 </div>
@@ -91,5 +114,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    function confirmAndRedirect(msg, path, name, value) {
+        Swal.fire({
+            title: msg,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '확인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = path;
+                form.style.display = 'none';
+
+                const productNoInput = document.createElement('input');
+                productNoInput.type = 'hidden';
+                productNoInput.name = name;
+                productNoInput.value = value;
+                form.appendChild(productNoInput);
+                // Append the form to the body and submit
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
+</script>
 </body>
 </html>

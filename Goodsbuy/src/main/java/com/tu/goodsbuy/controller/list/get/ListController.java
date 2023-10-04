@@ -29,7 +29,7 @@ public class ListController {
         if (Objects.nonNull(memberUser)) {
             MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
             model.addAttribute("location", memberProfile.getLocation());
-            model.addAttribute("emailCheck",memberProfile.getEmailCheck());
+            model.addAttribute("emailCheck", memberProfile.getEmailCheck());
 
             List<Product> productList = listService.getProductListByLocation(memberProfile.getLocation());
             model.addAttribute("productList", productList);
@@ -40,13 +40,22 @@ public class ListController {
 
     @GetMapping("/list/search")
     public String getSearchList(@RequestParam(required = false, defaultValue = "") String productName,
+                                @SessionAttribute(value = "loginMember", required = false) MemberUser memberUser,
                                 HttpServletRequest request, Model model) {
+
 
         request.setAttribute("searchProductName", productName);
 
-        List<Product> productList = listService.getSearchProductListByProductNameAndLocation(
-                (String) request.getSession().getAttribute("location"), productName);
-        model.addAttribute("productList", productList);
+
+        if (Objects.nonNull(memberUser)) {
+            MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
+            List<Product> productList = listService.getSearchProductListByProductNameAndLocation(
+                    memberProfile.getLocation(), productName);
+            model.addAttribute("productList", productList);
+            model.addAttribute("location", memberProfile.getLocation());
+            model.addAttribute("emailCheck", memberProfile.getEmailCheck());
+        }
+
 
         return "product/list";
     }

@@ -56,7 +56,7 @@
 <% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");%>
 <div class="container px-1 px-lg-5 mt-1" id="selected_location">
     <a><%
-        if (Objects.nonNull(loginUser)) {
+        if (Objects.nonNull(loginUser) && Objects.nonNull(session.getAttribute("location"))) {
             String location = (String) session.getAttribute("location");
     %>
         <i class="bi bi-geo-alt-fill"></i> &nbsp;설정된 동네: <%=location%>
@@ -72,7 +72,7 @@
                 <strong id="need_login">로그인 후에 이 서비스를 이용하실 수 있습니다.</strong>
             </div>
             <%
-            } else if ((Integer) request.getAttribute("emailCheck") == 0) {%>
+            } else if (Objects.nonNull(request.getAttribute("emailCheck")) && (Integer) request.getAttribute("emailCheck") == 0) {%>
             <div id="goodsBox">
                 <span id="lock_img2"></span><br><br>
                 <strong id="need_auth">이메일 인증 후에 이 서비스를 이용하실 수 있습니다.</strong>
@@ -111,7 +111,7 @@
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
-                    등록된 상품이 없습니다.
+
                 </c:otherwise>
             </c:choose>
             <%}%>

@@ -28,9 +28,9 @@ public class ExceptionAdvice {
     }
 
     @ExceptionHandler(NoProductListException.class)
-    public String noProductListError(Exception e, Model model) {
-        model.addAttribute("noProduct", e.getMessage());
-        return "list";
+    public String noProductListError() {
+
+        return "product/list";
     }
 
     @ExceptionHandler(NicknameDuplicateException.class)

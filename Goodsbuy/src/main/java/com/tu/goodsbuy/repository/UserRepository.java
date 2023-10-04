@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Mapper
 public interface UserRepository {
-    @Select("SELECT user_no " +
+    @Select("SELECT * " +
             "FROM member_user " +
             "WHERE user_id = #{user_id} AND user_pwd = #{user_pwd}")
     Optional<MemberUser> getMemberUserByIdAndPwd(@Param("user_id") String userId, @Param("user_pwd") String userPwd);
