@@ -90,7 +90,7 @@
                                 <img class="card-img-top"
                                         <c:choose>
                                             <c:when test="${not empty product.productImageUrl}">
-                                                src="/multipartImg/profileImage/${product.productImageUrl}"
+                                                src="/multipartImg/productImage/${product.productImageUrl}"
                                             </c:when>
                                             <c:otherwise>
                                                 src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
