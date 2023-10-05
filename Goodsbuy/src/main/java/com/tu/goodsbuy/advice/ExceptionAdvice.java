@@ -27,13 +27,13 @@ public class ExceptionAdvice {
         return "redirect:/login";
     }
 
-    @ExceptionHandler(NoProductListException.class)
+    /*@ExceptionHandler(NoProductListException.class)
     public String noProductListError(Exception e, Model model) {
 
         model.addAttribute("msg",e.getMessage());
 
         return "product/list";
-    }
+    }*/
 
     @ExceptionHandler(NicknameDuplicateException.class)
     public void duplicatedNickNameError(HttpServletResponse response, Exception e) throws IOException {

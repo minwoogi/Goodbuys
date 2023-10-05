@@ -58,51 +58,53 @@
     </div>
 </header>
 
+<c:set var="loginUser" value="${sessionScope.loginMember}"/>
 
-<% MemberUser loginUser = (MemberUser) request.getSession(false).getAttribute("loginMember");%>
 <div class="container px-1 px-lg-5 mt-1" id="selected_location">
-    <a><%
-        if (Objects.nonNull(loginUser) && Objects.nonNull(session.getAttribute("location"))) {
-            String location = (String) session.getAttribute("location");
-    %>
-        <i class="bi bi-geo-alt-fill"></i> &nbsp;설정된 동네: <%=location%>
-        <%}%></a>
+    <a>
+        <c:if test="${not empty loginUser}">
+            <i class="bi bi-geo-alt-fill"></i> &nbsp;설정된 동네: ${location}
+        </c:if>
+    </a>
 </div>
-
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <%if (Objects.isNull(loginUser)) {%>
-            <div id="goodsBox">
-                <span id="lock_img"></span><br><br>
-                <strong id="need_login">로그인 후에 이 서비스를 이용하실 수 있습니다.</strong>
-            </div>
-            <%
-            } else if (Objects.nonNull(request.getAttribute("emailCheck")) && (Integer) request.getAttribute("emailCheck") == 0) {%>
-            <div id="goodsBox">
-                <span id="lock_img2"></span><br><br>
-                <strong id="need_auth">이메일 인증 후에 이 서비스를 이용하실 수 있습니다.</strong>
-            </div>
-
-            <%} else {%>
-
             <c:choose>
-                <c:when test="${not empty productList}">
+                <c:when test="${empty loginUser}">
+                    <div id="goodsBox">
+                        <span id="lock_img"></span><br><br>
+                        <strong id="need_login">로그인 후에 이 서비스를 이용하실 수 있습니다.</strong>
+                    </div>
+                </c:when>
+                <c:when test="${not empty emailCheck and emailCheck == -1}">
+                    <div id="goodsBox">
+                        <span id="lock_img2"></span><br><br>
+                        <strong id="need_auth">이메일 인증 후에 이 서비스를 이용하실 수 있습니다.</strong>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <script>
+                        var email = "${emailCheck}";
+                        if (email === null) {
+                            console.log("Email is null");
+                        } else {
+                            console.log("Email is not null: " + email);
+                        }
+                    </script>
                     <c:forEach var="product" items="${productList}">
                         <div class="col mb-5">
                             <div class="card h-100">
                                 <!-- Product image-->
                                 <img class="card-img-top"
-                                        <c:choose>
-                                            <c:when test="${not empty product.productImageUrl}">
-                                                src="/multipartImg/productImage/${product.productImageUrl}"
-                                            </c:when>
-                                            <c:otherwise>
-                                                src="https://dummyimage.com/500x500/dee2e6/6c757d.jpg"
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                     alt="..."/>
+                                     src='<c:choose>
+                                              <c:when test="${not empty product.productImageUrl}">
+                                                  /multipartImg/productImage/${product.productImageUrl}
+                                              </c:when>
+                                              <c:otherwise>
+                                                  https://dummyimage.com/500x500/dee2e6/6c757d.jpg
+                                              </c:otherwise>
+                                          </c:choose>' alt="..."/>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
@@ -116,22 +118,18 @@
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <div class="text-center">
-                                        <a class="btn btn-outline-dark mt-auto" href="/product/${product.productNo}">상품보기</a>
+                                        <a class="btn btn-outline-dark mt-auto"
+                                           href="/product/${product.productNo}">상품보기</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </c:forEach>
-                </c:when>
-                <c:otherwise>
-                    등록된 상품이 없습니다.
+                    <c:if test="${empty productList}">
+                        등록된 상품이 없습니다.
+                    </c:if>
                 </c:otherwise>
             </c:choose>
-            <%}%>
-
-
         </div>
     </div>
 </section>

@@ -18,6 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -97,14 +98,16 @@ public class ProfileService {
     }
 
     public void deleteImage(String imagePath, String imageUrl) {
-        String filePath = imagePath + "/" + imageUrl.replace("/", File.separator);
-        Path deletePath = Paths.get(filePath);
+
         try {
-            // 파일 삭제
-            Files.deleteIfExists(deletePath);
-            log.info("Deleted Image ==> " + deletePath);
+            if(Objects.nonNull(imageUrl)){
+                String filePath = imagePath + "/" + imageUrl.replace("/", File.separator);
+                Path deletePath = Paths.get(filePath);
+                Files.deleteIfExists(deletePath);
+                log.info("Deleted Image ==> " + deletePath);
+            }
         } catch (IOException e) {
-            log.error("Failed to delete image: " + filePath, e);
+            log.error("Failed to delete image: "+ e);
         }
 
     }

@@ -34,11 +34,12 @@ public class UserProfilePostController {
     public String updateProfile(@SessionAttribute("loginMember") MemberUser loginMember,
                                 @RequestParam(required = false) MultipartFile file,
                                 @RequestParam String introduction) {
+
         profileService.setIntroductionByUserNo(introduction.trim(), loginMember.getUserNo());
 
-
         if (!file.isEmpty()) {
-            profileService.deleteImage(profileImagePath, profileService.getMemberProfileByUserNo(loginMember.getUserNo()).getImageURL());
+            profileService.deleteImage(
+                    profileImagePath, profileService.getMemberProfileByUserNo(loginMember.getUserNo()).getImageURL());
             String fileName = profileService.uploadSaveImageAndGetIdentifier(profileImagePath, file);
             profileService.setImgUrlByUserNo(fileName, loginMember.getUserNo());
 

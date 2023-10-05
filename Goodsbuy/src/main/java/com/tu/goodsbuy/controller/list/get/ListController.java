@@ -7,6 +7,7 @@ import com.tu.goodsbuy.service.ListService;
 import com.tu.goodsbuy.service.ProfileService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.Objects;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value = "/goodsbuy")
-@SessionAttributes({"location"})
+@Slf4j
 public class ListController {
 
     private final ProfileService profileService;
@@ -27,6 +28,9 @@ public class ListController {
     public String getList(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser, Model model) {
 
         if (Objects.nonNull(memberUser)) {
+            log.info(memberUser.toString());
+
+
             MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
             model.addAttribute("location", memberProfile.getLocation());
             model.addAttribute("emailCheck", memberProfile.getEmailCheck());
