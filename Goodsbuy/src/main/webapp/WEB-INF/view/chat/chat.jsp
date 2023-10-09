@@ -23,7 +23,7 @@
         </header>
         <ul>
             <li id="test">
-                <img src="/multipartImg/productImage/macbook.png" alt="profile" style="height: 55px; width: 55px">
+                <img src="/multipartImg/productImage/macbook.png" alt="profile">
                 <div>
                     <h2>하요</h2>
                     <h3>
@@ -31,12 +31,12 @@
                         오후 07:50
                     </h3>
                 </div>
-                <div id="unread-messages" class="rounded-circle ms-4 text-white text-center" style="width:20px; background-color: #FF725D;">
-                    <span class="number ">1</span>
+                <div id="unread-messages" class="rounded-circle ms-4 text-white text-center" style="width:30px; background-color: #FF725D;">
+                    <span class="number ">10+</span>
                 </div>
             </li>
             <li>
-                <img src="/multipartImg/productImage/airpod.png" alt="" style="height: 55px; width: 55px">
+                <img src="/multipartImg/productImage/airpod.png" alt="profile" >
                 <div>
                     <h2>더존</h2>
                     <h3>
@@ -46,7 +46,7 @@
                 </div>
             </li>
             <li>
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_03.jpg" alt="">
+                <img src="/multipartImg/productImage/airpod.png" alt="" >
                 <div>
                     <h2>더존</h2>
                     <h3>
@@ -129,7 +129,7 @@
     </aside>
     <main>
         <header>
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
+            <img src="/multipartImg/productImage/macbook.png" alt="" style="width: 55px; height: 55px">
             <div>
                 <h2>하요</h2>
                 <h3>오후 07:50</h3>

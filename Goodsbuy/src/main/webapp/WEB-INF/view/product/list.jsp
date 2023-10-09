@@ -85,14 +85,6 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <script>
-                        var email = "${emailCheck}";
-                        if (email === null) {
-                            console.log("Email is null");
-                        } else {
-                            console.log("Email is not null: " + email);
-                        }
-                    </script>
                     <c:forEach var="product" items="${productList}">
                         <div class="col mb-5">
                             <div class="card h-100">
@@ -136,6 +128,9 @@
         </div>
     </div>
 </section>
+
+<%--<jsp:include page="../chat/alertChat.jsp"></jsp:include>--%>
+
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 

@@ -25,7 +25,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-chat-dots"></i> <span class="">채팅</span></a>
+                    <a href="/chat"><i class="bi bi-chat-dots"></i> <span class="">채팅</span></a>
                 </li>
 
                 <li>
