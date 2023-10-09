@@ -20,16 +20,22 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    // jsp jstl
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // jsp
-
-
-    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0' //0919 Jakarta Standard Tag Library API » 3.0.0
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' //jstl
+    implementation 'jakarta.servlet:jakarta.servlet-api'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+    //jsp jstl end
 
 
     implementation 'mysql:mysql-connector-java:8.0.33'  //0919 jdbc
 
-    compileOnly 'org.projectlombok:lombok' // lombok
-    annotationProcessor 'org.projectlombok:lombok' //lombok
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    // lombok end
 
 
     // mybatis
@@ -48,6 +54,10 @@ dependencies {
     //springboot mail
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     //springboot mail end
+
+    //websocket
+//    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    //websocket end
 
 
 }
