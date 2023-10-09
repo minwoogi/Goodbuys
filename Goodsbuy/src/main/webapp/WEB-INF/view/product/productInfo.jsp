@@ -70,9 +70,19 @@
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                             <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
                             <a class="btn btn-outline-light btn-lg px-4" href="#!" style="background-color: #4E00FF"
-                               onclick="confirmAndRedirect('상품을 찜하시겠습니까?',
-                                       '/product/dibs','productNo',${productNo},'info')">찜하기
-                                <i class="bi bi-heart"></i></a>
+                                    <c:choose>
+                                        <c:when test="${!dibsState}">
+                                            onclick="confirmAndRedirect('상품을 찜하시겠습니까?',
+                                            '/product/dibs','productNoDibsState','${productNo}/0','info')"> 찜 하기 <i
+                                                class="bi bi-heart"></i>
+                                        </c:when>
+                                        <c:otherwise>
+                                            onclick="confirmAndRedirect('관심상품에서 제외시키겠습니까?',
+                                            '/product/dibs','productNoDibsState','${productNo}/1','info')"> 찜 해제 <i
+                                                class="bi bi-heart-fill"></i>
+                                        </c:otherwise>
+                                    </c:choose>
+                            </a>
                         </div>
                     </c:otherwise>
                 </c:choose>

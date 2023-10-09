@@ -46,6 +46,8 @@ public class ProductInfoController {
         model.addAttribute("dibsCount",
                 listService.getDibsCountProductByProductNo(Long.valueOf(productNo)));
 
+        model.addAttribute("dibsState",listService.isDibs(memberUser.getUserNo(), productNo));
+
         MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
         List<Product> productList = listService.getProductListByLocation(memberProfile.getLocation());
         model.addAttribute("productList", productList);
@@ -101,6 +103,27 @@ public class ProductInfoController {
 
 
         return "product/productUpdate";
+    }
+
+
+    @PostMapping("/product/dibs")
+    public String doDibsProduct(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser,
+                                @RequestParam String productNoDibsState) {
+
+        String[] arr = productNoDibsState.split("/");
+
+        String productNo = arr[0];
+        String productDibsState = arr[1];
+
+        if (productDibsState.equals("0")) { // 관심상품 등록
+            listService.registerDibsProduct(memberUser.getUserNo(), productNo);
+        }
+
+        if (productDibsState.equals("1")) { // 관심상품 해제
+            listService.deleteDibsProduct(memberUser.getUserNo(), productNo);
+        }
+
+        return "redirect:/product/" + productNo;
     }
 
 

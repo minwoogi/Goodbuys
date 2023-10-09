@@ -68,4 +68,15 @@ public interface ListRepository {
             "WHERE product_no = #{productNo}")
     int updateProductInfoByProductUpdateParam(@Param("productNo") String productNo, @Param("productName") String productName,
                                               @Param("productPrice") String productPrice, @Param("productInfo") String productInfo);
+
+
+    @Insert("INSERT INTO member_dibs(user_no,product_no) VALUES(#{userNo} , #{productNo})")
+    int registerDibsProduct(@Param("userNo") Long userNo, @Param("productNo") String productNo);
+
+    @Delete("DELETE FROM member_dibs WHERE user_no = #{userNo} and product_no = #{productNo}")
+    int deleteDibsProduct(@Param("userNo") Long userNo, @Param("productNo") String productNo);
+
+
+    @Select("SELECT COUNT(*) FROM member_dibs WHERE  user_no = #{userNo} and product_no = #{productNo}")
+    int isDibs(@Param("userNo") Long userNo, @Param("productNo") String productNo);
 }

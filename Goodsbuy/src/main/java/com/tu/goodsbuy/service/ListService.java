@@ -6,10 +6,12 @@ import com.tu.goodsbuy.global.exception.*;
 import com.tu.goodsbuy.model.dto.Product;
 import com.tu.goodsbuy.repository.ListRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class ListService {
@@ -87,7 +89,24 @@ public class ListService {
         if (listRepository.updateProductInfoByProductUpdateParam(productNo, productName, productPrice, productInfo) == 0) {
             throw new ProductUpdateException();
         }
+    }
+
+    public void registerDibsProduct(Long userNo, String productNo) {
+        if (listRepository.registerDibsProduct(userNo, productNo) == 0) {
+            log.error("관심상품 등록 error");
+
+        }
+    }
+
+    public void deleteDibsProduct(Long userNo, String productNo) {
+        if (listRepository.deleteDibsProduct(userNo, productNo) == 0) {
+            log.error("관심상품 삭제 error");
+        }
+    }
+
+    public boolean isDibs(Long userNo, String productNo) {
 
 
+        return listRepository.isDibs(userNo, productNo) == 1;
     }
 }
