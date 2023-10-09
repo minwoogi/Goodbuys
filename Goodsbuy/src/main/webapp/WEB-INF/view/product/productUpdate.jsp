@@ -26,12 +26,12 @@
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
                     <h3 class="display-10 fw-bolder text-white mb-2">상품 제목 수정</h3>
-                    <input id="productNameInput" class="input-form bg-dark" placeholder="${product.productName}"
+                    <input id="productNameInput" class="input-form bg-dark" value="${product.productName}"
                            required maxlength="19"
                            style="font-size: 36px">
 
                     <h3 class="display-10 fw-bolder text-white mb-2"><br>상품 가격 수정</h3>
-                    <input id="#productPriceInput" type="number" class="input-form bg-dark" placeholder="${product.productPrice}"
+                    <input id="#productPriceInput" type="number" class="input-form bg-dark" value="${product.productPrice}"
                            required maxlength="13"
                            style="font-size: 36px">
 

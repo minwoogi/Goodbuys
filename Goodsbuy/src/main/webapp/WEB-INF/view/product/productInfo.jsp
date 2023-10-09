@@ -53,20 +53,26 @@
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                             <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3"
                                href="/product/update?productNo=${productNo}">
-                                수정하기 <i class="bi bi-cloud-arrow-up"></i></a>
+                                수정하기 <i class="bi bi-receipt"></i></a>
                             <a id="deleteBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
                                onclick="confirmAndRedirect('삭제 하시겠습니까?'
-                                       ,'/product/delete.do','productNo','${productNo}');">
+                                       ,'/product/delete.do','productNo','${productNo}','info');">
                                 삭제하기 <i class="bi bi-trash"></i></a>
+
+                            <a id="soldOutBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
+                               onclick="confirmAndRedirect('이 상품을 더 이상 판매하지 않을까요?'
+                                       ,'/product/soldOut.do','productNo','${productNo}','info');">
+                                판매완료 <i class="bi bi-flag"></i></a>
                         </div>
 
                     </c:when>
                     <c:otherwise>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                             <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="#!" style="background-color: #4E00FF">찜하기
-                                <i
-                                        class="bi bi-heart"></i></a>
+                            <a class="btn btn-outline-light btn-lg px-4" href="#!" style="background-color: #4E00FF"
+                               onclick="confirmAndRedirect('상품을 찜하시겠습니까?',
+                                       '/product/dibs','productNo',${productNo},'info')">찜하기
+                                <i class="bi bi-heart"></i></a>
                         </div>
                     </c:otherwise>
                 </c:choose>
@@ -127,10 +133,10 @@
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
 <script>
-    function confirmAndRedirect(msg, path, name, value) {
+    function confirmAndRedirect(msg, path, name, value, icon) {
         Swal.fire({
             title: msg,
-            icon: 'warning',
+            icon: icon,
             showCancelButton: true,
             confirmButtonText: '확인',
             cancelButtonText: '취소'

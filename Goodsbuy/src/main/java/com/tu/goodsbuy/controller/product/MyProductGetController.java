@@ -24,9 +24,8 @@ public class MyProductGetController {
         List<Product> salesProductList = listService.getSalesItemsProductListByUserNo(
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
         model.addAttribute("salesProductList", salesProductList);
-        model.addAttribute("divState","판매중인 상품");
-        model.addAttribute("state","판매중");
-
+        model.addAttribute("divState", "판매중인 상품");
+        model.addAttribute("state", "판매중");
 
 
         return "/profile/myProduct";
@@ -39,8 +38,8 @@ public class MyProductGetController {
         List<Product> salesProductList = listService.getSalesHistoryProductListByUserNo(
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
         model.addAttribute("salesProductList", salesProductList);
-        model.addAttribute("divState","판매 완료 상품");
-        model.addAttribute("state","거래 완료");
+        model.addAttribute("divState", "판매 완료 상품");
+        model.addAttribute("state", "거래 완료");
 
         return "/profile/myProduct";
 
@@ -53,8 +52,8 @@ public class MyProductGetController {
         List<Product> salesProductList = listService.getSalesHistoryProductListByUserNo(
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
         model.addAttribute("purchaseProductList", salesProductList);
-        model.addAttribute("divState","구매한 상품");
-        model.addAttribute("state","거래 완료");
+        model.addAttribute("divState", "구매한 상품");
+        model.addAttribute("state", "거래 완료");
 
         return "/profile/myProduct";
 

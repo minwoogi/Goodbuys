@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -111,7 +112,9 @@
                                         <!-- Product name-->
                                         <h5 class="fw-bolder"><c:out value="${product.productName}"/></h5>
                                         <!-- Product price-->
-                                        <c:out value="${product.productPrice}"/> <br>
+                                        <fmt:formatNumber type="number" value="${product.productPrice}"
+                                                          pattern="#,###원"/><br>
+                                            <%--<c:out value="${product.productPrice}"/> <br>--%>
                                         <c:out value="${product.nickname}"/>
                                     </div>
                                 </div>

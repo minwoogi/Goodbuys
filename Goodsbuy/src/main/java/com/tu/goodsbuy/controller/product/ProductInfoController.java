@@ -60,6 +60,12 @@ public class ProductInfoController {
         return "redirect:/goodsbuy/list";
     }
 
+    @PostMapping("/product/soldOut.do") // 판매완료등록
+    public String soldOutProduct(@RequestParam String productNo) {
+        listService.deleteProductByProductNo(productNo);
+        return "redirect:/goodsbuy/list";
+    }
+
     @GetMapping("/product/update")
     public String getProductUpdatePage(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser,
                                        @RequestParam String productNo, Model model) {
