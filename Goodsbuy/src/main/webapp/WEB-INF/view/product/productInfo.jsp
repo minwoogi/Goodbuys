@@ -1,6 +1,7 @@
 <%@ page import="com.tu.goodsbuy.model.dto.MemberUser" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Goodsbuy</title>
@@ -26,23 +27,26 @@
                             src="/multipartImg/productImage/${product.productImageUrl}"
                         </c:when>
                         <c:otherwise>
-                            src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg"
+                            <%--                            src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg"--%>
+                            src="/img/noProductInfo.png"
                         </c:otherwise>
                     </c:choose> alt="..."/></div>
             <div class="col-md-6">
                 <div class="small mb-1">${product.nickname}님</div>
                 <h1 class="display-5 fw-bolder">${product.productName}</h1>
+                <c:choose>
+                    <c:when test="${product.saleState == 1}">
+                        <br><h2 class="text-danger">판매완료</h2>
+                    </c:when>
+                </c:choose>
                 <div class="fs-5 mb-5">
                     <span><br> <i class="bi bi-heart-fill"></i> ${dibsCount}&nbsp;&nbsp;|
                         <i class="bi bi-eye-fill"></i> ${product.view}&nbsp;&nbsp;|
                         <i class="bi bi-clock-fill"></i> 17시간전<br><br></span>
-                    <span id="priceSpan"><script>
-                        function formatKoreanCurrency(number, id) {
-                            document.getElementById(id).textContent = new Intl.NumberFormat('ko-KR').format(number) + '원';
-                        }
-
-                        formatKoreanCurrency(${product.productPrice}, 'priceSpan');
-                    </script></span>
+                    <span id="priceSpan">
+                        <fmt:formatNumber type="number" value="${product.productPrice}"
+                                          pattern="#,###원"/><br>
+                    </span>
                 </div>
                 <p class="lead"> ${product.productInfo}</p>
 
@@ -116,7 +120,8 @@
                                                 src="/multipartImg/productImage/${product.productImageUrl}"
                                             </c:when>
                                             <c:otherwise>
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                                                <%--src="https://dummyimage.com/500x500/dee2e6/6c757d.jpg"--%>
+                                                src="/img/noProduct.png"
                                             </c:otherwise>
                                         </c:choose>
                                      alt="..."/>
@@ -124,7 +129,9 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <h5 class="fw-bolder"><c:out value="${product.productName}"/></h5>
-                                        <c:out value="${product.productPrice}"/> <br>
+
+                                        <fmt:formatNumber type="number" value="${product.productPrice}"
+                                                          pattern="#,###원"/><br>
                                         <c:out value="${product.nickname}"/>
                                     </div>
                                 </div>

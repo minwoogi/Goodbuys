@@ -98,7 +98,7 @@ public class ProductInfoController {
             return "redirect:/errorPage";
         }
 
-        if (!file.isEmpty()) {
+        if (Objects.nonNull(file)) {
             profileService.deleteImage(productImagePath, productService.getProductImageUrlByProductNo(productUpdateParam.getProductNo()));
             String fileName = profileService.uploadSaveImageAndGetIdentifier(productImagePath, file);
             productService.updateProductImgUrlByProductNo(fileName, productUpdateParam.getProductNo());
@@ -162,9 +162,9 @@ public class ProductInfoController {
 
         MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
 
-        String fileName = "NULL";
+        String fileName = null;
 
-        if (!file.isEmpty()) {
+        if (Objects.nonNull(file)) {
             fileName = profileService.uploadSaveImageAndGetIdentifier(productImagePath, file);
         }
 

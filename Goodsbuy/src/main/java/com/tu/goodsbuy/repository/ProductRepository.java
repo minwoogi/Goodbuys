@@ -10,7 +10,7 @@ import java.util.Optional;
 @Mapper
 public interface ProductRepository {
 
-    @Select("SELECT * FROM product WHERE location = #{location}")
+    @Select("SELECT * FROM product WHERE location = #{location} ORDER BY product_no DESC")
     List<Product> getProductListByLocation(String location);
 
 

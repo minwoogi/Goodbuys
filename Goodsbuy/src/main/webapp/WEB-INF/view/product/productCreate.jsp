@@ -100,6 +100,15 @@
 
 <script>
 
+    function sweetAlert(tle, msg, icn) {
+        Swal.fire({
+            title: tle,  // 제목
+            text: msg,  // 메시지 내용
+            icon: icn,  // 아이콘 (success, error, warning, info 중 선택)
+            confirmButtonText: '확인'  // 확인 버튼 텍스트
+        });
+    }
+
     function sweetAlertWithRedirect(tle, msg, icn, redirectUrl) {
         Swal.fire({
             title: tle,  // 제목

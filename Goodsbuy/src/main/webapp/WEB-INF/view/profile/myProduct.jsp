@@ -43,7 +43,14 @@
                                             </c:choose>
                                             <!-- Product image-->
                                             <img class="card-img-top"
-                                                 src="/img/multipartImg/productImage/appleWatch.png"
+                                                 src="<c:choose>
+                                              <c:when test="${not empty product.productImageUrl}">
+                                                  /multipartImg/productImage/${product.productImageUrl}
+                                              </c:when>
+                                              <c:otherwise>
+                                                  /img/noProduct.png
+                                              </c:otherwise>
+                                          </c:choose>"
                                                  alt="..."/>
                                             <!-- Product details-->
                                             <div class="card-body p-4">

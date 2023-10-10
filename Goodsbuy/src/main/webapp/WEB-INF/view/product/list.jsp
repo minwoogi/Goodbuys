@@ -1,3 +1,5 @@
+<%--<a href="https://www.flaticon.com/kr/free-icons/" title="금지 아이콘">금지 아이콘  제작자: Prosymbols Premium - Flaticon</a>--%>
+<%--<a href="https://www.flaticon.com/kr/free-icons/" title="상자 아이콘">상자 아이콘  제작자: JunGSa - Flaticon</a>--%>
 <%@ page import="java.util.Objects" %>
 <%@ page import="com.tu.goodsbuy.model.dto.MemberUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -103,7 +105,7 @@
                                                   /multipartImg/productImage/${product.productImageUrl}
                                               </c:when>
                                               <c:otherwise>
-                                                  https://dummyimage.com/500x500/dee2e6/6c757d.jpg
+                                                  /img/noProduct.png
                                               </c:otherwise>
                                           </c:choose>' alt="..."/>
                                 <!-- Product details-->
