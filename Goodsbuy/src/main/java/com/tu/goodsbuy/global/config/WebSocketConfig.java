@@ -17,6 +17,17 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 //    private final StompHandler stompHandler;
 
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        // 클라이언트가 메시지 발행시 /pub/* 경로로 전송
+        registry.setApplicationDestinationPrefixes("/pub");
+
+
+        // 클라이언트가 메시지를 /sub/* 경로로 구독
+        registry.enableSimpleBroker("/sub");
+    }
+
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // without SockJS
@@ -29,15 +40,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .setHeartbeatTime(5 * 1000);
     }
 
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        // 클라이언트가 메시지 발행시 /pub/* 경로로 전송
-        registry.setApplicationDestinationPrefixes("/pub");
 
-
-        // 클라이언트가 메시지를 /sub/* 경로로 구독
-        registry.enableSimpleBroker("/sub");
-    }
 
     /*@Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
