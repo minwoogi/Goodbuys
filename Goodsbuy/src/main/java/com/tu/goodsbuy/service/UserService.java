@@ -1,8 +1,8 @@
 package com.tu.goodsbuy.service;
 
 
-import com.tu.goodsbuy.global.exception.DuplicatedLoginIdException;
-import com.tu.goodsbuy.global.exception.MakeMemberException;
+import com.tu.goodsbuy.global.exception.user.DuplicatedLoginIdException;
+import com.tu.goodsbuy.global.exception.user.MakeMemberException;
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,10 +1,8 @@
 package com.tu.goodsbuy.controller.user.post;
 
-import com.tu.goodsbuy.global.exception.EmailSendFailedException;
-import com.tu.goodsbuy.global.util.ScriptWriterUtil;
+import com.tu.goodsbuy.global.exception.profile.EmailSendFailedException;
 import com.tu.goodsbuy.service.EmailService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Objects;
 
 
 @RestController

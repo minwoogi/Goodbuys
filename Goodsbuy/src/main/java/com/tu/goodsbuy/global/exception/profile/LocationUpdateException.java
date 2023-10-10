@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.global.exception;
+package com.tu.goodsbuy.global.exception.profile;
 
 public class LocationUpdateException extends RuntimeException{
     public LocationUpdateException() {

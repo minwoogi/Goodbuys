@@ -1,14 +1,17 @@
 package com.tu.goodsbuy.advice;
 
-import com.tu.goodsbuy.global.exception.*;
+import com.tu.goodsbuy.global.exception.file.NotImageFileException;
+import com.tu.goodsbuy.global.exception.product.ProductCreateException;
+import com.tu.goodsbuy.global.exception.product.ProductNotFoundException;
+import com.tu.goodsbuy.global.exception.profile.*;
+import com.tu.goodsbuy.global.exception.user.DuplicatedLoginIdException;
+import com.tu.goodsbuy.global.exception.user.MakeMemberException;
 import com.tu.goodsbuy.global.util.ScriptWriterUtil;
-import com.tu.goodsbuy.model.dto.Product;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

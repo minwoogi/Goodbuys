@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.global.exception;
+package com.tu.goodsbuy.global.exception.product;
 
 public class IncreaseViewCountException extends RuntimeException{
     public IncreaseViewCountException() {

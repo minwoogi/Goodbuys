@@ -65,87 +65,34 @@
                             </h3>
                         </div>
                     </li>
-                    <li>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_04.jpg" alt="">
-                        <div>
-                            <h2>더존</h2>
-                            <h3>
-                                <span class="status green"></span>
-                                online
-                            </h3>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_05.jpg" alt="">
-                        <div>
-                            <h2>더존</h2>
-                            <h3>
-                                <span class="status orange"></span>
-                                offline
-                            </h3>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_06.jpg" alt="">
-                        <div>
-                            <h2>더존</h2>
-                            <h3>
-                                <span class="status green"></span>
-                                online
-                            </h3>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_07.jpg" alt="">
-                        <div>
-                            <h2>더존</h2>
-                            <h3>
-                                <span class="status green"></span>
-                                online
-                            </h3>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_08.jpg" alt="">
-                        <div>
-                            <h2>더존</h2>
-                            <h3>
-                                <span class="status green"></span>
-                                online
-                            </h3>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_09.jpg" alt="">
-                        <div>
-                            <h2>더존</h2>
-                            <h3>
-                                <span class="status green"></span>
-                                online
-                            </h3>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_10.jpg" alt="">
-                        <div>
-                            <h2>더존맨</h2>
-                            <h3>
-                                <span class="status orange"></span>
-                                offline
-                            </h3>
-                        </div>
-                    </li>
                 </ul>
             </aside>
             <main>
                 <header>
                     <img src="/multipartImg/productImage/macbook.png" alt="" style="width: 55px; height: 55px">
                     <div>
-                        <h2>하요</h2>
+                        <h2><a href="#" style="text-decoration: none; color: inherit;">하요</a></h2>
                         <h3>오후 07:50</h3>
                     </div>
                 </header>
+
                 <ul id="chat">
+                    <div class="container pt-3">
+                        <div class="row ps-4 pb-1">
+                            <div class="col-auto">
+                                <div>
+                                    <img src="/img/profile.png" style="height: 55px; width: 55px">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="pt-1" id="productInfo">
+                                    <a href="#" style="text-decoration: none; color: inherit;">에어팟3세대 맥세이프 미개봉</a><br>
+                                    35,000원
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                    </div>
                     <li class="you">
                         <div class="entete">
                             <span class="status green"></span>

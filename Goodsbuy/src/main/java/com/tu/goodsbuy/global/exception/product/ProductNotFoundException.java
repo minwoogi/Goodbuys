@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.global.exception;
+package com.tu.goodsbuy.global.exception.product;
 
 public class ProductNotFoundException extends RuntimeException{
     public ProductNotFoundException() {

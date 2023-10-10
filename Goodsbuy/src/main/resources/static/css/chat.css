@@ -7,6 +7,12 @@ body {
     font-family: Arial;
 }
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 #container {
@@ -18,6 +24,7 @@ body {
     border-radius: 5px;
     overflow: hidden;
 }
+
 
 aside {
     width: 260px;
@@ -69,12 +76,16 @@ aside input::placeholder {
 }
 */
 
-#chatUl{
+#chatUl {
     padding-left: 0;
     margin: 0;
     list-style-type: none;
     overflow-y: scroll;
     height: 690px;
+}
+
+#chatUl::-webkit-scrollbar {
+    display: none;
 }
 
 aside li {
@@ -277,3 +288,8 @@ main footer a {
     margin-top: 5px;
     display: inline-block;
 }
+
+#productInfo {
+    font-family: 'GmarketSansMedium';
+}
+

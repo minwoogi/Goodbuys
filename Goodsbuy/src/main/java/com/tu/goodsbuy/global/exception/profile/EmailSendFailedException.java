@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.global.exception;
+package com.tu.goodsbuy.global.exception.profile;
 
 public class EmailSendFailedException extends RuntimeException{
     public EmailSendFailedException() {

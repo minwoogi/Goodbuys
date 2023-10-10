@@ -3,9 +3,8 @@ package com.tu.goodsbuy.service;
 
 import com.tu.goodsbuy.controller.param.ProductCreateParam;
 import com.tu.goodsbuy.controller.param.ProductUpdateParam;
-import com.tu.goodsbuy.global.exception.*;
+import com.tu.goodsbuy.global.exception.product.*;
 import com.tu.goodsbuy.model.dto.MemberProfile;
-import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.model.dto.Product;
 import com.tu.goodsbuy.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;

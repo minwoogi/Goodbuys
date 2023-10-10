@@ -1,4 +1,4 @@
-package com.tu.goodsbuy.global.exception;
+package com.tu.goodsbuy.global.exception.user;
 
 public class MakeMemberException extends RuntimeException {
 

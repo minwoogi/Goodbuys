@@ -1,7 +1,9 @@
 package com.tu.goodsbuy.service;
 
 
-import com.tu.goodsbuy.global.exception.*;
+import com.tu.goodsbuy.global.exception.file.FileTransferException;
+import com.tu.goodsbuy.global.exception.file.NotImageFileException;
+import com.tu.goodsbuy.global.exception.profile.*;
 import com.tu.goodsbuy.model.dto.MemberProfile;
 import com.tu.goodsbuy.repository.ProfileRepository;
 import com.tu.goodsbuy.repository.UserRepository;
