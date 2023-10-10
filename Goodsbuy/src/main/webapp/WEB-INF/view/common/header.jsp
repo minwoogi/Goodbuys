@@ -58,7 +58,7 @@
                 </div>
                 <div class="p-1">
                     <button type="button" class="btn" style="background-color: #4E00FF; color: white;">
-                        글쓰기
+                        <a href="/product/create" style="text-decoration: none; color: inherit;">글쓰기</a>
                     </button>
                 </div>
                 <%}%>

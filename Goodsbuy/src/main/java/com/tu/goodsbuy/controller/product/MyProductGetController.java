@@ -2,7 +2,7 @@ package com.tu.goodsbuy.controller.product;
 
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.model.dto.Product;
-import com.tu.goodsbuy.service.ListService;
+import com.tu.goodsbuy.service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,13 +15,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MyProductGetController {
 
-    private final ListService listService;
+    private final ProductService productService;
 
     @GetMapping("/sales-items")
     public String getSalesItemsPage(Model model, HttpServletRequest request) {
 
 
-        List<Product> salesProductList = listService.getSalesItemsProductListByUserNo(
+        List<Product> salesProductList = productService.getSalesItemsProductListByUserNo(
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
         model.addAttribute("salesProductList", salesProductList);
         model.addAttribute("divState", "판매중인 상품");
@@ -35,7 +35,7 @@ public class MyProductGetController {
     @GetMapping("/sales-history")
     public String getSalesHistoryPage(Model model, HttpServletRequest request) {
 
-        List<Product> salesProductList = listService.getSalesHistoryProductListByUserNo(
+        List<Product> salesProductList = productService.getSalesHistoryProductListByUserNo(
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
         model.addAttribute("salesProductList", salesProductList);
         model.addAttribute("divState", "판매 완료 상품");
@@ -49,7 +49,7 @@ public class MyProductGetController {
     @GetMapping("/purchase-history")
     public String getPurchaseHistoryPage(Model model, HttpServletRequest request) {
 
-        List<Product> salesProductList = listService.getSalesHistoryProductListByUserNo(
+        List<Product> salesProductList = productService.getSalesHistoryProductListByUserNo(
                 ((MemberUser) request.getSession(false).getAttribute("loginMember")).getUserNo());
         model.addAttribute("purchaseProductList", salesProductList);
         model.addAttribute("divState", "구매한 상품");

@@ -3,7 +3,7 @@ package com.tu.goodsbuy.controller.list.get;
 import com.tu.goodsbuy.model.dto.MemberProfile;
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.model.dto.Product;
-import com.tu.goodsbuy.service.ListService;
+import com.tu.goodsbuy.service.ProductService;
 import com.tu.goodsbuy.service.ProfileService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import java.util.Objects;
 public class ListController {
 
     private final ProfileService profileService;
-    private final ListService listService;
+    private final ProductService productService;
 
     @GetMapping(value = {" ", "/", "/list"})
     public String getList(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser, Model model) {
@@ -35,7 +35,7 @@ public class ListController {
             model.addAttribute("location", memberProfile.getLocation());
             model.addAttribute("emailCheck", memberProfile.getEmailCheck());
 
-            List<Product> productList = listService.getProductListByLocation(memberProfile.getLocation());
+            List<Product> productList = productService.getProductListByLocation(memberProfile.getLocation());
             model.addAttribute("productList", productList);
         }
 
@@ -53,7 +53,7 @@ public class ListController {
 
         if (Objects.nonNull(memberUser)) {
             MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
-            List<Product> productList = listService.getSearchProductListByProductNameAndLocation(
+            List<Product> productList = productService.getSearchProductListByProductNameAndLocation(
                     memberProfile.getLocation(), productName);
             model.addAttribute("productList", productList);
             model.addAttribute("location", memberProfile.getLocation());

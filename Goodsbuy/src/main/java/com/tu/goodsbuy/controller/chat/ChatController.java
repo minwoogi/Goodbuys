@@ -24,7 +24,12 @@ public class ChatController {
     }
 
     @GetMapping("/alertChat")
-    public String getAlertChat(){
+    public String getAlertChat() {
         return "chat/alertChat";
+    }
+
+    @GetMapping("/alertChat2")
+    public String getAlertChat2() {
+        return "chat/alertChat2";
     }
 }

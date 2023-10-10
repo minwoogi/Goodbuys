@@ -2,6 +2,7 @@ package com.tu.goodsbuy.advice;
 
 import com.tu.goodsbuy.global.exception.*;
 import com.tu.goodsbuy.global.util.ScriptWriterUtil;
+import com.tu.goodsbuy.model.dto.Product;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -46,28 +47,40 @@ public class ExceptionAdvice {
     }
 
     @ExceptionHandler(EmailStatusUpdateException.class)
-    public String emailStatusError() {
-        log.error("EmailStatusUpdateException | LocationUpdateException");
+    public String emailStatusError(EmailStatusUpdateException e) {
+        log.error(e.getMessage() + " | LocationUpdateException");
         return "errorPage";
     }
 
     @ExceptionHandler(LocationUpdateException.class)
-    public String locationUpdateError() {
-        log.error("LocationUpdateException");
+    public String locationUpdateError(LocationUpdateException e) {
+        log.error(e.getMessage());
         return "errorPage";
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
-    public String productNotFoundError() {
-        log.error("productNotFoundError");
+    public String productNotFoundError(ProductNotFoundException e) {
+
+        log.error(e.getMessage());
+        return "errorPage";
+    }
+
+    @ExceptionHandler(ProductCreateException.class)
+    public String productCreationError(ProductCreateException e) {
+        log.error(e.getMessage());
         return "errorPage";
     }
 
 
     @ExceptionHandler(IntroductionUpdateException.class)
-    public String introUpdateError() {
-        log.error("IntroductionUpdateException");
+    public String introUpdateError(IntroductionUpdateException e) {
+        log.error(e.getMessage());
         return "errorPage";
+    }
+
+    @ExceptionHandler(EmailSendFailedException.class)
+    public void sendEmailError(HttpServletResponse response, EmailSendFailedException e) throws IOException {
+        ScriptWriterUtil.writeAndRedirect(response, e.getMessage(), "/email");
     }
 
     //404에러

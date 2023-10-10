@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Mapper
-public interface ListRepository {
+public interface ProductRepository {
 
     @Select("SELECT * FROM product WHERE location = #{location}")
     List<Product> getProductListByLocation(String location);
@@ -25,16 +25,10 @@ public interface ListRepository {
     List<Product> getDibsProductListByUserNo(Long userNo);
 
 
-    @Select("SELECT p.* " +
-            "FROM product p " +
-            "JOIN sales_product s ON p.product_no = s.product_no " +
-            "WHERE s.user_no = #{userNo} and s.sale_state= 0")
+    @Select("SELECT * FROM product WHERE user_no=#{userNo} and sale_state = 0")
     List<Product> getSalesItemsProductListByUserNo(Long userNo); // 판매 중인 상품
 
-    @Select("SELECT p.* " +
-            "FROM product p " +
-            "JOIN sales_product s ON p.product_no = s.product_no " +
-            "WHERE s.user_no = #{userNo} and s.sale_state= 1")
+    @Select("SELECT * FROM product WHERE user_no=#{userNo} and sale_state = 1")
     List<Product> getSalesHistoryProductListByUserNo(Long userNo); //판매 완료 상품
 
 
@@ -79,4 +73,15 @@ public interface ListRepository {
 
     @Select("SELECT COUNT(*) FROM member_dibs WHERE  user_no = #{userNo} and product_no = #{productNo}")
     int isDibs(@Param("userNo") Long userNo, @Param("productNo") String productNo);
+
+
+    @Update("UPDATE product SET sale_state=1 WHERE product_no =#{productNo}")
+    int registerSoldOut(@Param("productNo") String productNo);
+
+    @Insert("INSERT INTO " +
+            "product(user_no,nickname,product_name, product_image_url, product_price , location, category_no ,product_info) " +
+            "values(#{userNo} , #{nickname} , #{name} , #{url} , #{price}, #{location} , #{categoryNo} , #{info})")
+    int createProduct(@Param("userNo") Long userNo, @Param("nickname") String nickname, @Param("name") String productName,
+                      @Param("url") String productImageUrl, @Param("price") String productPrice, @Param("location") String location,
+                      @Param("categoryNo") String categoryNo, @Param("info") String info);
 }

@@ -22,5 +22,6 @@ public class Product {
     private Long view;
     private Date makeTime;
     private String productInfo;
+    private short saleState;
 
 }

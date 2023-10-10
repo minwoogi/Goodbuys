@@ -56,7 +56,7 @@ dependencies {
     //springboot mail end
 
     //websocket
-//    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     //websocket end
 
 

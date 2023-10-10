@@ -49,7 +49,6 @@
                 <c:set var="userNo" value="${loginMember.userNo}"/>
                 <c:choose>
                     <c:when test="${userNo eq product.userNo}">
-
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                             <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3"
                                href="/product/update?productNo=${productNo}">
@@ -59,12 +58,15 @@
                                        ,'/product/delete.do','productNo','${productNo}','info');">
                                 삭제하기 <i class="bi bi-trash"></i></a>
 
-                            <a id="soldOutBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
-                               onclick="confirmAndRedirect('이 상품을 더 이상 판매하지 않을까요?'
-                                       ,'/product/soldOut.do','productNo','${productNo}','info');">
-                                판매완료 <i class="bi bi-flag"></i></a>
+                            <c:choose>
+                                <c:when test="${product.saleState == 0}">
+                                    <a id="soldOutBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#"
+                                       onclick="confirmAndRedirect('이 상품을 더 이상 판매하지 않을까요?'
+                                               ,'/product/soldOut.do','productNo','${productNo}','info');">
+                                        판매완료 <i class="bi bi-flag"></i></a>
+                                </c:when>
+                            </c:choose>
                         </div>
-
                     </c:when>
                     <c:otherwise>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
@@ -100,8 +102,13 @@
                     <c:forEach var="product" items="${productList}">
                         <div class="col mb-5">
                             <div class="card h-100">
-
-
+                                <c:choose>
+                                    <c:when test="${product.saleState == 1}">
+                                        <div class="badge bg-dark text-white position-absolute"
+                                             style="top: 0.5rem; right: 0.5rem">판매완료
+                                        </div>
+                                    </c:when>
+                                </c:choose>
                                 <!-- Product image-->
                                 <img class="card-img-top"
                                         <c:choose>

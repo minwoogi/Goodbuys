@@ -25,20 +25,22 @@
         <div class="row gx-5 align-items-center justify-content-center">
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
-                    <h3 class="display-10 fw-bolder text-white mb-2">상품 제목 수정</h3>
+                    <h3 class="display-10 fw-bolder text-white mb-2">상품 제목</h3>
                     <input id="productNameInput" class="input-form bg-dark" required style="font-size: 36px">
 
-                    <h3 class="display-10 fw-bolder text-white mb-2"><br>상품 가격 수정</h3>
+                    <h3 class="display-10 fw-bolder text-white mb-2"><br>상품 가격</h3>
                     <input id="#productPriceInput" type="number" class="input-form bg-dark" required
                            style="font-size: 36px">
 
-                    <p class="lead fw-normal text-white-50 mb-4"><br>${product.nickname}</p>
-                    <p class="lead fw-normal text-white-50 mb-4">
-                        <i class="bi bi-heart-fill"></i> ${dibsCount}&nbsp;&nbsp;|
-                        <i class="bi bi-eye-fill"></i> ${product.view}&nbsp;&nbsp;|
-                        <i class="bi bi-clock-fill"></i> 17시간전
-                    </p>
-
+                    <h3 class="display-10 fw-bolder text-white mb-2"><br>카테고리</h3>
+                    <select id="categorySelect" class="bg-dark text-white" style="font-size:20px;">
+                        <option value="1">CD/DVD</option>
+                        <option value="2">도서</option>
+                        <option value="3">의류</option>
+                        <option value="4">테크/IT</option>
+                        <option value="5">패션잡화</option>
+                        <option value="6">기타</option>
+                    </select>
                 </div>
             </div>
 
@@ -62,7 +64,7 @@
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-10 col-xl-7">
                 <div class="text-center">
-                    <h1 id="jinvley">상품 정보 수정</h1>
+                    <h1 id="jinvley">상품 정보</h1>
                     <hr class="my-2">
 
 
@@ -74,18 +76,20 @@
 
 
                     <div class="d-flex align-items-center justify-content-center pb-4 pt-5">
-                        <a id="modifyBtn" class="btn btn-primary btn-lg px-4 me-sm-3"
+                        <a id="createBtn" class="btn btn-primary btn-lg px-4 me-sm-3"
                            href="#features" style="background-color: #4E00FF; border: #4E00FF">
-                            변경완료 <i class="bi bi-flag"></i>
+                            등록
                         </a>
                     </div>
 
                     <div class="d-flex align-items-center justify-content-center">
-                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..."/>
+                        <img class="rounded-circle me-3 px-40" src="/multipartImg/profileImage/${profile.imageURL}"
+                             alt="profileImage"
+                             style="width: 40px; height: 40px;"/>
                         <div class="fw-bold">
-                            ${product.nickname}
+                            ${profile.nickName}
                             <span class="fw-bold text-primary mx-1">/</span>
-                            ${product.location} <i class="bi bi-geo-alt"></i>
+                            ${profile.location} <i class="bi bi-geo-alt"></i>
                         </div>
                     </div>
                 </div>
@@ -133,18 +137,24 @@
     });
 
 
-    document.querySelector('#modifyBtn').addEventListener('click', function () {
+    document.querySelector('#createBtn').addEventListener('click', function () {
         var productInfo = document.getElementById('introduction').value;
         var productName = document.getElementById('productNameInput').value;
         var productPrice = document.getElementById('#productPriceInput').value;
-        var productNo = ${product.productNo};
+        var categoryNo = document.getElementById('categorySelect').value;
+
+        if (!productName || !productPrice || !productInfo || !categoryNo) {
+            sweetAlert("입력 오류", "모든 필드를 입력하세요.", "error");
+            return;
+        }
+
 
         // FormData 객체를 사용하여 form 데이터를 생성
         var formData = new FormData();
         formData.append('productInfo', productInfo);
         formData.append('productName', productName);
         formData.append('productPrice', productPrice);
-        formData.append('productNo', productNo);
+        formData.append('categoryNo', categoryNo);
 
         // 파일 input 필드에서 선택한 파일
         var fileInput = document.getElementById('file');
@@ -156,7 +166,7 @@
         // 새로운 폼 엘리먼트 생성
         var form = document.createElement('form');
         form.method = 'POST';
-        form.action = '/product/update.do';
+        form.action = '/product/create.do';
         form.enctype = 'multipart/form-data';
 
         // FormData를 폼에 추가
@@ -168,13 +178,13 @@
             form.appendChild(input);
         }
 
-        fetch('/product/update.do', {
+        fetch('/product/create.do', {
             method: 'POST',
             body: formData
         })
             .then(function (response) {
                 if (response.ok) {
-                    sweetAlertWithRedirect("상품 수정 완료", "", "success", "/product/${product.productNo}");
+                    sweetAlertWithRedirect("상품 등록 완료", "", "success", "/goodsbuy/list");
                 } else {
                     response.text().then(function (errorMessage) {
                         sweetAlert("오류", errorMessage, "error");
@@ -183,7 +193,7 @@
             })
             .catch(function (error) {
                 console.error(error);
-                sweetAlert("오류", "상품 업데이트 중 오류가 발생했습니다.", "error");
+                sweetAlert("오류", "상품 등록 중 오류가 발생했습니다.", "error");
             });
     });
 </script>

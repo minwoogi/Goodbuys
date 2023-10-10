@@ -78,7 +78,7 @@
                         <strong id="need_login">로그인 후에 이 서비스를 이용하실 수 있습니다.</strong>
                     </div>
                 </c:when>
-                <c:when test="${not empty emailCheck and emailCheck == -1}">
+                <c:when test="${not empty emailCheck and emailCheck == 0}">
                     <div id="goodsBox">
                         <span id="lock_img2"></span><br><br>
                         <strong id="need_auth">이메일 인증 후에 이 서비스를 이용하실 수 있습니다.</strong>
@@ -88,6 +88,14 @@
                     <c:forEach var="product" items="${productList}">
                         <div class="col mb-5">
                             <div class="card h-100">
+
+                                <c:choose>
+                                    <c:when test="${product.saleState == 1}">
+                                        <div class="badge bg-dark text-white position-absolute"
+                                             style="top: 0.5rem; right: 0.5rem">판매완료
+                                        </div>
+                                    </c:when>
+                                </c:choose>
                                 <!-- Product image-->
                                 <img class="card-img-top"
                                      src='<c:choose>
