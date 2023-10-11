@@ -5,6 +5,7 @@ import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -23,27 +24,28 @@ public class ChatRoomController {
     private final ChatService chatService;
 
 
-//    private final SimpMessageSendingOperations messagingTemplate;
-//
-//    @EventListener
-//    public void handleWebSocketConnecListener(SessionConnectEvent event) {
-//        log.info("Received a new web socket connection");
-//    }
-
-    @GetMapping("/rooms")
+    @GetMapping("/chat")
     public String getChat(@SessionAttribute(value = "loginMember") MemberUser loginMember, Model model) {
 
         List<ChatRoom> rooms = chatService.findAllRoomByUserNo(loginMember.getUserNo());
         model.addAttribute("chatroom", rooms);
 
+        log.info("date --> {}", rooms.get(0).getLastModifiedDate());
+
         return "chat/chatRoom";
     }
 
-    /*@MessageMapping("/chat.sendMessage")
-    @SendTo("/chat/purchaseNo")
-    public ChatMessage sendMessage(ChatMessage chatMessage) {
-        return chatMessage;
-    }*/
+
+    // /pub/enter/{roomId} request 요청
+    // /sub/chat/{roomId} response
+    @MessageMapping("/enter/{roomId}")
+    @SendTo("/sub/chat/{roomId}")
+    public String enter(@DestinationVariable("roomId") Long roomId, Long memberId) {
+        log.info("enter room : " + roomId + ", member : " + memberId);
+
+
+        return "System : " + memberId + "님 입장";
+    }
 
 
     @GetMapping("/alertChat")

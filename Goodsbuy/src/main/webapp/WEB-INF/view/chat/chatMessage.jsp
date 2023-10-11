@@ -25,7 +25,7 @@
         </div>
         <hr class="my-2">
     </div>
-    <li class="you">
+   <%-- <li class="you">
         <div class="entete">
             <span class="status green"></span>
             <h2>Vincent</h2>
@@ -66,7 +66,7 @@
         </div>
         <div class="triangle"></div>
         <div class="message">
-            네고 가능한가여???네고 가능한가여???네고 가능한가여???네고 가능한가여???
+            메세지
         </div>
     </li>
     <li class="me">
@@ -90,10 +90,10 @@
         <div class="message">
             OK
         </div>
-    </li>
+    </li>--%>
 </ul>
 <footer>
-    <textarea placeholder="Type your message"></textarea>
+    <textarea id="content" placeholder="Type your message"></textarea>
     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
     <a id="send-button">Send</a>

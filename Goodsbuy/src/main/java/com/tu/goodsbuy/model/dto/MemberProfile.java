@@ -11,8 +11,8 @@ import lombok.ToString;
 @ToString
 public class MemberProfile {
 
-    private int profileId;
-    private int userNo;
+    private Long profileId;
+    private Long userNo;
     private String nickName;
     private String joinDate;
     private String updateDate;

@@ -3,6 +3,7 @@ package com.tu.goodsbuy.service;
 
 import com.tu.goodsbuy.model.dto.ChatRoom;
 import com.tu.goodsbuy.repository.ChatRepository;
+import com.tu.goodsbuy.repository.param.ChatRoomBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,12 @@ public class ChatService {
         Collections.reverse(rooms);
 
         return rooms;
+    }
+
+    public void createChatRoom(ChatRoomBuilder chatRoomBuilder) {
+        if (chatRepository.createChatRoom(chatRoomBuilder) == 0) {
+
+        }
     }
 
 

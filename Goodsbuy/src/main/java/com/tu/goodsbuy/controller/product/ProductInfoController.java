@@ -7,6 +7,8 @@ import com.tu.goodsbuy.global.util.ScriptWriterUtil;
 import com.tu.goodsbuy.model.dto.MemberProfile;
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.model.dto.Product;
+import com.tu.goodsbuy.repository.param.ChatRoomBuilder;
+import com.tu.goodsbuy.service.ChatService;
 import com.tu.goodsbuy.service.ProductService;
 import com.tu.goodsbuy.service.ProfileService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,6 +38,7 @@ public class ProductInfoController {
 
     private final ProductService productService;
     private final ProfileService profileService;
+    private final ChatService chatService;
 
     @Value("${productImage.upload.path}")
     private String productImagePath;
@@ -99,7 +105,8 @@ public class ProductInfoController {
         }
 
         if (Objects.nonNull(file)) {
-            profileService.deleteImage(productImagePath, productService.getProductImageUrlByProductNo(productUpdateParam.getProductNo()));
+            profileService.deleteImage(productImagePath,
+                    productService.getProductImageUrlByProductNo(productUpdateParam.getProductNo()));
             String fileName = profileService.uploadSaveImageAndGetIdentifier(productImagePath, file);
             productService.updateProductImgUrlByProductNo(fileName, productUpdateParam.getProductNo());
         }
@@ -160,6 +167,8 @@ public class ProductInfoController {
                     Objects.requireNonNull(br.getFieldError("productPrice")).getDefaultMessage(), "/product/create");
         }
 
+
+
         MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
 
         String fileName = null;
@@ -168,9 +177,35 @@ public class ProductInfoController {
             fileName = profileService.uploadSaveImageAndGetIdentifier(productImagePath, file);
         }
 
-        productService.createProduct(loginMember.getUserNo(), memberProfile.getNickName(), fileName, memberProfile, productCreateParam);
+        productService.createProduct(loginMember.getUserNo(),
+                memberProfile.getNickName(), fileName, memberProfile, productCreateParam);
 
         return "redirect:/goodsbuy/list";
+    }
+
+    @PostMapping("/product/chat.do")
+    public String doChat(@SessionAttribute(value = "loginMember") MemberUser loginMember, @RequestParam String productNo) {
+
+        Product product = productService.getProductByProductNo(Long.valueOf(productNo));
+        MemberProfile sellerProfile = profileService.getMemberProfileByUserNo(product.getUserNo());
+        MemberProfile purchaseProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
+
+
+        ChatRoomBuilder chatRoomBuilder = ChatRoomBuilder.builder()
+                .productNo(productNo)
+                .userNo(sellerProfile.getUserNo())
+                .userNickname(sellerProfile.getNickName())
+                .userProfileUrl(sellerProfile.getImageURL())
+                .purchaseNo(purchaseProfile.getUserNo())
+                .purchaseNickname(purchaseProfile.getNickName())
+                .purchaseProfileUrl(purchaseProfile.getImageURL())
+                .productImageUrl(product.getProductImageUrl())
+                .productName(product.getProductName())
+                .productPrice(product.getProductPrice())
+                .build();
+        chatService.createChatRoom(chatRoomBuilder);
+
+        return "redirect:/chat";
     }
 
 

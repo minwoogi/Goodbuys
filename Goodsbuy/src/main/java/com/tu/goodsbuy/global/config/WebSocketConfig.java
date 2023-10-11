@@ -31,10 +31,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // without SockJS
-        registry.addEndpoint("/chat");
+        registry.addEndpoint("/ws");
 
         // with SockJS
-        registry.addEndpoint("/chat")
+        registry.addEndpoint("/ws")
                 .withSockJS()
                 .setDisconnectDelay(15 * 1000)
                 .setHeartbeatTime(5 * 1000);

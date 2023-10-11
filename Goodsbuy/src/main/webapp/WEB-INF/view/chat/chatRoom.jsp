@@ -1,7 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -14,8 +17,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
     <link href="/css/chat.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="css/sidebar.css">
-    <script src="/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/chat.js"></script>
 
 
@@ -37,38 +41,115 @@
                 </header>
                 <ul id="chatUl">
                     <c:forEach var="chatroom" items="${chatroom}">
-
-                    <li id="test">
-                        <img src="/multipartImg/profileImage/${chatroom.productImageUrl}" alt="profile">
-                        <div>
-                            <h2>${chatroom.purchaseNickname}</h2>
-                            <h3>
+                        <li id="test">
+                        <c:choose>
+                            <c:when test="${sessionScope.loginMember.userNo eq chatroom.userNo}"> <%--내가 판매자일때--%>
+                                <img src="/multipartImg/profileImage/${chatroom.purchaseProfileUrl}" alt="profile">
+                                <div>
+                                    <h2>${chatroom.userNickname}</h2>
+                                    <h3>
+                                        <c:choose>
+                                            <c:when test="${chatroom.notReadCount > 0}">
+                                                <span class="status orange"></span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="status green"></span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:set var="formattedDate" value="${chatroom.lastModifiedDate}"/>
+                                        <fmt:formatDate value="${formattedDate}" pattern="yyyy-MM-dd"
+                                                        var="formattedDateDate"/>
+                                        <fmt:formatDate value="${formattedDate}" pattern="HH:mm:ss"
+                                                        var="formattedDateTime"/>
+                                        <c:set var="todayDate" value="<%= LocalDate.now() %>"/>
+                                        <c:choose>
+                                            <c:when test="${formattedDateDate.toLocalDate() == todayDate}">
+                                                <!-- 오늘인 경우: 시간만 표시 -->
+                                                ${formattedDateTime}
+                                            </c:when>
+                                            <c:otherwise>
+                                                <!-- 오늘이 아닌 경우: 날짜만 표시 -->
+                                                ${formattedDateDate}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </h3>
+                                </div>
                                 <c:choose>
-                                    <c:when test="${chatroom.notReadCount > 0}">
-                                        <span class="status orange"></span>
+                                    <c:when test="${chatroom.notReadCount > 0 and chatroom.notReadCount < 10}">
+                                        <div id="unread-messages" class="rounded-circle ms-4 text-white text-center"
+                                             style="width:25px; background-color: #FF725D;">
+                                            <span class="number ">${chatroom.notReadCount}</span>
+                                        </div>
                                     </c:when>
-                                    <c:otherwise>
-                                        <span class="status green"></span>
-                                    </c:otherwise>
+                                    <c:when test="${chatroom.notReadCount >= 10 }">
+                                        <div id="unread-messages" class="rounded-circle ms-4 text-white text-center"
+                                             style="width:30px; background-color: #FF725D;">
+                                            <span class="number ">10+</span>
+                                        </div>
+                                    </c:when>
                                 </c:choose>
-                                <c:set var="formatter" value="yyyy-MM-dd HH:mm:ss" />
-                                <c:set var="formattedDate" value="${chatroom.lastModifiedDate.format(formatter)}" />
-                                ${formattedDate}
-                            </h3>
-                        </div>
-                        <div id="unread-messages" class="rounded-circle ms-4 text-white text-center"
-                             style="width:30px; background-color: #FF725D;">
-                            <span class="number ">10+</span>
-                        </div>
-                    </li>
+                                </li>
+                            </c:when>
+
+
+                            <c:otherwise> <%--내가 구매자일때--%>
+                                <img src="/multipartImg/profileImage/${chatroom.userProfileUrl}" alt="profile">
+                                <div>
+                                    <h2>${chatroom.userNickname}</h2>
+                                    <h3>
+                                        <c:choose>
+                                            <c:when test="${chatroom.notReadCount > 0}">
+                                                <span class="status orange"></span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="status green"></span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:set var="formattedDate" value="${chatroom.lastModifiedDate}"/>
+                                        <fmt:formatDate value="${formattedDate}" pattern="yyyy-MM-dd"
+                                                        var="formattedDateDate"/>
+                                        <fmt:formatDate value="${formattedDate}" pattern="HH:mm:ss"
+                                                        var="formattedDateTime"/>
+                                        <c:set var="todayDate" value="<%= LocalDate.now() %>"/>
+                                        <c:choose>
+                                            <c:when test="${formattedDateDate == todayDate}">
+                                                <!-- 오늘인 경우: 시간만 표시 -->
+                                                ${formattedDateTime}
+                                            </c:when>
+                                            <c:otherwise>
+                                                <!-- 오늘이 아닌 경우: 날짜만 표시 -->
+                                                ${formattedDateDate}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </h3>
+                                </div>
+                                <c:choose>
+                                    <c:when test="${chatroom.notReadCount > 0 or chatroom.notReadCount < 10}">
+                                        <div id="unread-messages" class="rounded-circle ms-4 text-white text-center"
+                                             style="width:25px; background-color: #FF725D;">
+                                            <span class="number ">${chatroom.notReadCount}</span>
+                                        </div>
+                                    </c:when>
+                                    <c:when test="${chatroom.notReadCount >= 10 }">
+                                        <div id="unread-messages" class="rounded-circle ms-4 text-white text-center"
+                                             style="width:30px; background-color: #FF725D;">
+                                            <span class="number ">10+</span>
+                                        </div>
+                                    </c:when>
+                                </c:choose>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+
                     </c:forEach>
                 </ul>
             </aside>
             <main>
-<%--                <div id="chatDots" class="d-flex h-100 align-items-center justify-content-center text-center" style="font-size: 200px;">--%>
-<%--                    <i class="bi bi-chat-dots text-secondary"></i>--%>
-<%--                </div>--%>
-    <jsp:include page="chatMessage.jsp"></jsp:include>
+                <div id="chatDots" class="d-flex h-100 align-items-center justify-content-center text-center"
+                     style="font-size: 200px;">
+                    <i class="bi bi-chat-dots text-secondary"></i>
+                </div>
+                <%--<jsp:include page="chatMessage.jsp"></jsp:include>--%>
             </main>
         </div>
     </div>

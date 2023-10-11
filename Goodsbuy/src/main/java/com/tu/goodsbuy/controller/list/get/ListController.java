@@ -28,8 +28,6 @@ public class ListController {
     public String getList(@SessionAttribute(value = "loginMember", required = false) MemberUser memberUser, Model model) {
 
         if (Objects.nonNull(memberUser)) {
-            log.info(memberUser.toString());
-
 
             MemberProfile memberProfile = profileService.getMemberProfileByUserNo(memberUser.getUserNo());
             model.addAttribute("location", memberProfile.getLocation());

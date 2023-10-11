@@ -36,7 +36,8 @@
                 <h1 class="display-5 fw-bolder">${product.productName}</h1>
                 <c:choose>
                     <c:when test="${product.saleState == 1}">
-                        <br><h2 class="text-danger">판매완료</h2>
+                        <br>
+                        <h2 class="text-danger">판매완료</h2>
                     </c:when>
                 </c:choose>
                 <div class="fs-5 mb-5">
@@ -74,7 +75,9 @@
                     </c:when>
                     <c:otherwise>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">채팅하기</a>
+                            <a id="chatBtn" class="btn btn-primary btn-lg px-4 me-sm-3"
+                               onclick="confirmAndRedirect('물품 거래를 위한 채팅을 시작하시겠습니까?','/product/chat.do','productNo'
+                                       ,'${productNo}','info')">채팅하기</a>
                             <a class="btn btn-outline-light btn-lg px-4" href="#!" style="background-color: #4E00FF"
                                     <c:choose>
                                         <c:when test="${!dibsState}">
