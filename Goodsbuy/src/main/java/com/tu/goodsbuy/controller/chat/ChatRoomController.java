@@ -1,5 +1,6 @@
 package com.tu.goodsbuy.controller.chat;
 
+import com.tu.goodsbuy.model.dto.ChatMessage;
 import com.tu.goodsbuy.model.dto.ChatRoom;
 import com.tu.goodsbuy.model.dto.MemberUser;
 import com.tu.goodsbuy.service.ChatService;
@@ -8,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +26,7 @@ import java.util.Map;
 public class ChatRoomController {
 
     private final ChatService chatService;
+    private final SimpMessagingTemplate messagingTemplate;
 
 
     @GetMapping("/chat")
@@ -38,16 +42,16 @@ public class ChatRoomController {
     // /pub/enter/{roomId} request 요청
     // /sub/chat/{roomId} response
     @MessageMapping("/enter/{roomId}")
-    @SendTo("/sub/chat/{roomId}")
-    public String enter(@DestinationVariable("roomId") String roomId, String memberId) {
+    @SendTo("/sub/render/messages")
+    public List<ChatMessage> enter(@DestinationVariable("roomId") String roomId, Map<String, String> memberId) {
 
-        log.info("enter room : " + roomId + ", member : " + memberId);
+        log.info("enter room : " + roomId + ", member : " + memberId.get("memberId"));
 
-
-        return "System : " + memberId + "님 입장";
+        return chatService.findAllMessageByChatRoomNo(roomId);
     }
 
 
+    // 채팅방 render
     @ResponseBody
     @PostMapping("/chat/render")
     public ResponseEntity<ChatRoom> renderChatRoom(@RequestBody Map<String, String> roomId) {

@@ -4,6 +4,7 @@ package com.tu.goodsbuy.service;
 import com.tu.goodsbuy.controller.param.ProductUpdateParam;
 import com.tu.goodsbuy.global.exception.product.ProductUpdateException;
 import com.tu.goodsbuy.global.exception.product.UpdateProductImageException;
+import com.tu.goodsbuy.model.dto.ChatMessage;
 import com.tu.goodsbuy.model.dto.ChatRoom;
 import com.tu.goodsbuy.repository.ChatRepository;
 import com.tu.goodsbuy.repository.param.ChatRoomBuilder;
@@ -41,9 +42,14 @@ public class ChatService {
 
     public void createChatRoom(ChatRoomBuilder chatRoomBuilder) {
         if (chatRepository.createChatRoom(chatRoomBuilder) == 0) {
-
+            //TODO 예외 처리 해야함
         }
     }
+
+    public List<ChatMessage> findAllMessageByChatRoomNo(String roomId) {
+        return chatRepository.findAllMessageByChatRoomNo(roomId);
+    }
+
 
     public void updateProductInfoChatRoomByProductUpdateParam(ProductUpdateParam productUpdateParam) {
 

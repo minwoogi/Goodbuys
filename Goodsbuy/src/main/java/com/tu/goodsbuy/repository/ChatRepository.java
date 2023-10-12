@@ -1,5 +1,6 @@
 package com.tu.goodsbuy.repository;
 
+import com.tu.goodsbuy.model.dto.ChatMessage;
 import com.tu.goodsbuy.model.dto.ChatRoom;
 import com.tu.goodsbuy.repository.param.ChatRoomBuilder;
 import org.apache.ibatis.annotations.*;
@@ -16,6 +17,9 @@ public interface ChatRepository {
 
     @Select("SELECT * FROM chat_room WHERE chat_room_no = #{roomNo}")
     Optional<ChatRoom> findRoomByRoomNo(Long roomNo);
+
+    @Select("SELECT * FROM chat_message WHERE chat_room_no = #{roomNo} ORDER BY created_date asc")
+    List<ChatMessage> findAllMessageByChatRoomNo(String roomNo);
 
 
     @Insert("INSERT INTO " +
