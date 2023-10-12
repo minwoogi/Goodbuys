@@ -144,7 +144,9 @@ public class ProfileService {
     }
 
     @Transactional
-    public void setImgUrlByUserNo(String imgURL, Long userNo) {
+    public void setImgUrlByUserNo(String imgURL, Long userNo) { // chat_room imageUrl도 업데이트
+
+
         if (profileRepository.setImgUrlByUserNo(imgURL, userNo) == 0) {
         }
     }

@@ -109,10 +109,11 @@ public class ProductInfoController {
                     productService.getProductImageUrlByProductNo(productUpdateParam.getProductNo()));
             String fileName = profileService.uploadSaveImageAndGetIdentifier(productImagePath, file);
             productService.updateProductImgUrlByProductNo(fileName, productUpdateParam.getProductNo());
+            chatService.updateProductImgUrlByProductNo(fileName, productUpdateParam.getProductNo());
         }
 
         productService.updateProductInfoByProductUpdateParam(productUpdateParam);
-
+        chatService.updateProductInfoChatRoomByProductUpdateParam(productUpdateParam);
 
         return "product/productUpdate";
     }
@@ -162,11 +163,12 @@ public class ProductInfoController {
                                 @RequestParam(required = false) MultipartFile file,
                                 HttpServletResponse response) throws IOException {
 
+
+        // valid
         if (br.hasErrors()) {
             ScriptWriterUtil.writeAndRedirect(response,
                     Objects.requireNonNull(br.getFieldError("productPrice")).getDefaultMessage(), "/product/create");
         }
-
 
 
         MemberProfile memberProfile = profileService.getMemberProfileByUserNo(loginMember.getUserNo());
@@ -185,6 +187,12 @@ public class ProductInfoController {
 
     @PostMapping("/product/chat.do")
     public String doChat(@SessionAttribute(value = "loginMember") MemberUser loginMember, @RequestParam String productNo) {
+
+
+        // 이미 채팅방이 존재하면
+        if (chatService.isExistChatRoom(loginMember.getUserNo(), productNo)) {
+            return "redirect:/chat";
+        }
 
         Product product = productService.getProductByProductNo(Long.valueOf(productNo));
         MemberProfile sellerProfile = profileService.getMemberProfileByUserNo(product.getUserNo());

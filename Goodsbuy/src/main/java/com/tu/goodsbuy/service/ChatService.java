@@ -1,6 +1,9 @@
 package com.tu.goodsbuy.service;
 
 
+import com.tu.goodsbuy.controller.param.ProductUpdateParam;
+import com.tu.goodsbuy.global.exception.product.ProductUpdateException;
+import com.tu.goodsbuy.global.exception.product.UpdateProductImageException;
 import com.tu.goodsbuy.model.dto.ChatRoom;
 import com.tu.goodsbuy.repository.ChatRepository;
 import com.tu.goodsbuy.repository.param.ChatRoomBuilder;
@@ -25,10 +28,37 @@ public class ChatService {
         return rooms;
     }
 
+    public ChatRoom findRoomByRoomNo(Long roomNo) {
+        return chatRepository.findRoomByRoomNo(roomNo).orElseThrow();
+    }
+
+    public boolean isExistChatRoom(Long userNo, String productNo) {
+        if (chatRepository.isExistChatRoom(userNo, productNo) == 1) {
+            return true;
+        }
+        return false;
+    }
+
     public void createChatRoom(ChatRoomBuilder chatRoomBuilder) {
         if (chatRepository.createChatRoom(chatRoomBuilder) == 0) {
 
         }
+    }
+
+    public void updateProductInfoChatRoomByProductUpdateParam(ProductUpdateParam productUpdateParam) {
+
+        String productNo = productUpdateParam.getProductNo();
+        String productName = productUpdateParam.getProductName();
+        String productPrice = productUpdateParam.getProductPrice();
+
+        if (chatRepository.updateProductInfoChatRoomByProductUpdateParam(productNo, productName, productPrice) == 0) {
+            throw new ProductUpdateException();
+        }
+    }
+
+
+    public void updateProductImgUrlByProductNo(String imgURL, String productNo) {
+        chatRepository.updateProductImgUrlChatRoomByProductNo(imgURL, productNo);
     }
 
 

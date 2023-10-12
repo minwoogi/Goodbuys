@@ -9,6 +9,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.core.annotation.Order;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,6 +19,7 @@ import java.util.Objects;
  * 로그인 햇을때 로그인 페이지 접근 불가
  */
 @WebFilter(urlPatterns = {"/login.do", "/login"})
+@Order(2)
 public class LoginSessionFilter implements Filter {
 
     @Override

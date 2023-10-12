@@ -41,12 +41,12 @@
                 </header>
                 <ul id="chatUl">
                     <c:forEach var="chatroom" items="${chatroom}">
-                        <li id="test">
+                        <li id="test" onclick="enterChatRoom(${chatroom.chatRoomNo},${sessionScope.loginMember.userNo})">
                         <c:choose>
                             <c:when test="${sessionScope.loginMember.userNo eq chatroom.userNo}"> <%--내가 판매자일때--%>
                                 <img src="/multipartImg/profileImage/${chatroom.purchaseProfileUrl}" alt="profile">
                                 <div>
-                                    <h2>${chatroom.userNickname}</h2>
+                                    <h2>${chatroom.purchaseNickname}</h2>
                                     <h3>
                                         <c:choose>
                                             <c:when test="${chatroom.notReadCount > 0}">
@@ -63,7 +63,7 @@
                                                         var="formattedDateTime"/>
                                         <c:set var="todayDate" value="<%= LocalDate.now() %>"/>
                                         <c:choose>
-                                            <c:when test="${formattedDateDate.toLocalDate() == todayDate}">
+                                            <c:when test="${formattedDateDate == todayDate}">
                                                 <!-- 오늘인 경우: 시간만 표시 -->
                                                 ${formattedDateTime}
                                             </c:when>
@@ -124,7 +124,7 @@
                                     </h3>
                                 </div>
                                 <c:choose>
-                                    <c:when test="${chatroom.notReadCount > 0 or chatroom.notReadCount < 10}">
+                                    <c:when test="${chatroom.notReadCount > 0 and chatroom.notReadCount < 10}">
                                         <div id="unread-messages" class="rounded-circle ms-4 text-white text-center"
                                              style="width:25px; background-color: #FF725D;">
                                             <span class="number ">${chatroom.notReadCount}</span>
@@ -149,7 +149,11 @@
                      style="font-size: 200px;">
                     <i class="bi bi-chat-dots text-secondary"></i>
                 </div>
-                <%--<jsp:include page="chatMessage.jsp"></jsp:include>--%>
+
+                <div id="chatMessage" style="display: none;">
+                    <jsp:include page="chatMessage.jsp"></jsp:include>
+                </div>
+
             </main>
         </div>
     </div>

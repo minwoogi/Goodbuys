@@ -93,6 +93,8 @@ public class ProductService {
         }
     }
 
+
+
     public void registerDibsProduct(Long userNo, String productNo) {
         if (productRepository.registerDibsProduct(userNo, productNo) == 0) {
             log.error("관심상품 등록 error");

@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -23,6 +24,7 @@ import java.util.Objects;
         "/profile/nickname , /sales-items , /sales-history , /purchase-history," ,
                 "/profile/location","/profile/email","/product/*", "/chat/*"})
 @Slf4j
+@Order(1)
 public class LoginCheckFilter implements Filter {
 
 

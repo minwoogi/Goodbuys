@@ -64,6 +64,8 @@ public interface ProductRepository {
                                               @Param("productPrice") String productPrice, @Param("productInfo") String productInfo);
 
 
+
+
     @Insert("INSERT INTO member_dibs(user_no,product_no) VALUES(#{userNo} , #{productNo})")
     int registerDibsProduct(@Param("userNo") Long userNo, @Param("productNo") String productNo);
 
