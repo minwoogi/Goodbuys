@@ -102,14 +102,14 @@ public class ProfileService {
     public void deleteImage(String imagePath, String imageUrl) {
 
         try {
-            if(Objects.nonNull(imageUrl)){
+            if (Objects.nonNull(imageUrl)) {
                 String filePath = imagePath + "/" + imageUrl.replace("/", File.separator);
                 Path deletePath = Paths.get(filePath);
                 Files.deleteIfExists(deletePath);
                 log.info("Deleted Image ==> " + deletePath);
             }
         } catch (IOException e) {
-            log.error("Failed to delete image: "+ e);
+            log.error("Failed to delete image: " + e);
         }
 
     }
@@ -149,6 +149,12 @@ public class ProfileService {
 
         if (profileRepository.setImgUrlByUserNo(imgURL, userNo) == 0) {
         }
+    }
+
+
+    @Transactional(readOnly = true)
+    public String getNicknameByUserNo(Long userNo) {
+        return profileRepository.getNicknameByUserNo(userNo);
     }
 }
 

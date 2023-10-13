@@ -1,5 +1,6 @@
 var stompClient = null;
 
+var roomNo;
 
 function connect(chatRoomNo, loginId) {
     setConnected = false;
@@ -7,6 +8,7 @@ function connect(chatRoomNo, loginId) {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
 
+        roomNo = chatRoomNo;
         sendEnterMessage(chatRoomNo, loginId);
 
         stompClient.subscribe('/sub/render/messages', function (message) { // 메세지 렌더링
@@ -14,7 +16,8 @@ function connect(chatRoomNo, loginId) {
         });
 
         stompClient.subscribe('/sub/message', function (message) { // 메세지 전달받기
-            showMessage(JSON.parse(message.body));
+            var msg = JSON.parse(message.body);
+            showMessage(msg.content,msg.createdDate,msg.senderNickname);
         });
     });
 }
@@ -25,7 +28,7 @@ function renderMessages(messages, loginId) {
     for (var i = 0; i < messages.length; i++) {
         var message = messages[i];
         if (messages[i].senderId === loginId) { //내가 보낸 메세지이면
-            sendMessageRender(messages[i].content, messages[i].createdDate, messages[i].senderNickname);
+            sendMessageRender(messages[i].content, messages[i].createdDate);
         } else {
             showMessage(messages[i].content, messages[i].createdDate, messages[i].senderNickname);
         }
@@ -33,14 +36,14 @@ function renderMessages(messages, loginId) {
     }
 }
 
-function sendMessageRender(message, time, nickname) { //처음 채팅방 입장시 메세지 렌더링
+function sendMessageRender(message, time) { //처음 채팅방 입장시 메세지 렌더링
 
     let date = formattedDate(time);
 
     var messageHtml = '<li class="me">';
     messageHtml += '<div class="entete">';
     messageHtml += '<h3>' + date + '&nbsp</h3>'; // 현재 시간 표시
-    messageHtml += '<h2>' + nickname + '</h2>';
+    /*messageHtml += '<h2>' + nickname + '</h2>';*/
     messageHtml += '<span class="status blue"></span>';
     messageHtml += '</div>';
     messageHtml += '<div class="triangle"></div>';
@@ -49,7 +52,6 @@ function sendMessageRender(message, time, nickname) { //처음 채팅방 입장�
     messageHtml += '</div>';
     messageHtml += '</li>';
     $("#chat").append(messageHtml);
-
 }
 
 
@@ -71,14 +73,14 @@ function showMessage(message, time, nickname) { //받는 메세지
     $("#chat").append(messageHtml);
 }
 
-function sendMessage(nickname) { //보내는 메세지
+function sendMessage(chatRoomNo,userNo) { //보내는 메세지
 
     var content = document.getElementById('content').value;
 
     var messageHtml = '<li class="me">';
     messageHtml += '<div class="entete">';
     messageHtml += '<h3>' + new Date().toLocaleTimeString() + '&nbsp</h3>'; // 현재 시간 표시
-    messageHtml += '<h2>' + '임시 닉네임' + '</h2>';
+    /*messageHtml += '<h2>' + nickname + '</h2>';*/
     messageHtml += '<span class="status blue"></span>';
     messageHtml += '</div>';
     messageHtml += '<div class="triangle"></div>';
@@ -93,7 +95,8 @@ function sendMessage(nickname) { //보내는 메세지
 
     stompClient.send(destination, {}, JSON.stringify({
         /*roomId: chatRoomNo,*/
-        message: content
+        message: content,
+        userNo: userNo
     }));
 
 
@@ -102,13 +105,21 @@ function sendMessage(nickname) { //보내는 메세지
 
 }
 
+
+
+
+function sendButtonOnclick(userNo){
+    sendMessage(roomNo,userNo); // 메시지 전송 함수 호출
+}
+
+
+/*
 $(function () {
     $("#send-button").on('click', function () {
-        sendMessage(); // 메시지 전송 함수 호출
-
-
+        sendMessage(roomNo); // 메시지 전송 함수 호출
     });
 });
+*/
 
 
 function enterChatRoom(chatRoomNo, loginId) {

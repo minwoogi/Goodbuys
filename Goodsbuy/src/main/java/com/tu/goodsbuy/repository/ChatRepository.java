@@ -3,6 +3,8 @@ package com.tu.goodsbuy.repository;
 import com.tu.goodsbuy.model.dto.ChatMessage;
 import com.tu.goodsbuy.model.dto.ChatRoom;
 import com.tu.goodsbuy.repository.param.ChatRoomBuilder;
+import com.tu.goodsbuy.repository.param.InsertChatMessageDto;
+import com.tu.goodsbuy.service.ChatService;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -47,4 +49,27 @@ public interface ChatRepository {
 
     @Update("UPDATE chat_room SET product_image_url=#{imageURL} WHERE product_no =#{productNo}")
     int updateProductImgUrlChatRoomByProductNo(String imgURL, String productNo);
+
+
+    /*@Options(useGeneratedKeys = true, keyProperty = "messageNo", keyColumn = "message_no")
+    @Insert("INSERT INTO chat_message(chat_room_no , created_date , content, sender_id , sender_nickname, recipient_id )" +
+            " VALUES(#{chatRoomNo} , now() ,#{content}, #{senderId} , #{nickname}, #{recipientId})")
+    void createChatMessage(InsertChatMessageDto insertChatMessageDto);*/
+
+
+    /*@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "message_no", before = false, resultType = Long.class)
+    void createChatMessage(@Param("roomNo") String roomNo, @Param("content") String content,
+                           @Param("senderId") Long senderId,
+                           @Param("nickname") String senderNickname, @Param("recipientId") Long recipientId);
+*/
+
+
+    @Insert("INSERT INTO chat_message(chat_room_no , created_date , content, sender_id , sender_nickname, recipient_id )" +
+            " VALUES(#{chatRoomNo} , now() ,#{content}, #{senderId} , #{senderNickname}, #{recipientId})")
+    @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "messageNo", before = false, resultType = Long.class)
+    void createChatMessage(InsertChatMessageDto insertChatMessageDto);
+
+
+    @Select("SELECT * FROM chat_message WHERE message_no = #{messageNo}")
+    Optional<ChatMessage> getChatMessageByMessageNo(Long messageNo);
 }

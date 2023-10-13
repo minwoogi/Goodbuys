@@ -40,7 +40,6 @@ public class MybatisConfig {
         configuration.setMapUnderscoreToCamelCase(true);
         sqlSessionFactoryBean.setConfiguration(configuration);
         // mapper xml 위치 지정
-        sqlSessionFactoryBean.setMapperLocations(resourceLoader.getResources("classpath:mappers/*-mapper.xml"));
 
         return sqlSessionFactoryBean;
     }

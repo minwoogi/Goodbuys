@@ -63,4 +63,8 @@ public interface ProfileRepository {
 
     @Select("SELECT COUNT(*) FROM member_profile WHERE email =#{email}")
     boolean isDuplicatedEmail(String email);
+
+
+    @Select("SELECT nickname FROM member_profile WHERE user_no = #{userNo}")
+    String getNicknameByUserNo(Long userNo);
 }
