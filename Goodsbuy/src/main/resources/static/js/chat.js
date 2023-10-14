@@ -17,7 +17,8 @@ function connect(chatRoomNo, loginId) {
 
         stompClient.subscribe('/sub/message', function (message) { // 메세지 전달받기
             var msg = JSON.parse(message.body);
-            showMessage(msg.content,msg.createdDate,msg.senderNickname);
+            // showMessage(msg.content, msg.createdDate, msg.senderNickname);
+            subMessage(msg,loginId);
         });
     });
 }
@@ -55,6 +56,15 @@ function sendMessageRender(message, time) { //처음 채팅방 입장시 메세�
 }
 
 
+function subMessage(message,loginId){
+
+    if (message.senderId === loginId) { //내가 보낸 메세지이면
+        sendMessageRender(message.content, message.createdDate);
+    } else {
+        showMessage(message.content, message.createdDate, message.senderNickname);
+    }
+}
+
 function showMessage(message, time, nickname) { //받는 메세지
 
     let date = formattedDate(time);
@@ -73,23 +83,10 @@ function showMessage(message, time, nickname) { //받는 메세지
     $("#chat").append(messageHtml);
 }
 
-function sendMessage(chatRoomNo,userNo) { //보내는 메세지
+
+function sendMessage(chatRoomNo, userNo) { //보내는 메세지
 
     var content = document.getElementById('content').value;
-
-    var messageHtml = '<li class="me">';
-    messageHtml += '<div class="entete">';
-    messageHtml += '<h3>' + new Date().toLocaleTimeString() + '&nbsp</h3>'; // 현재 시간 표시
-    /*messageHtml += '<h2>' + nickname + '</h2>';*/
-    messageHtml += '<span class="status blue"></span>';
-    messageHtml += '</div>';
-    messageHtml += '<div class="triangle"></div>';
-    messageHtml += '<div class="message">';
-    messageHtml += content;
-    messageHtml += '</div>';
-    messageHtml += '</li>';
-    $("#chat").append(messageHtml);
-
     var destination = '/pub/chat/' + chatRoomNo;
 
 
@@ -99,17 +96,12 @@ function sendMessage(chatRoomNo,userNo) { //보내는 메세지
         userNo: userNo
     }));
 
-
     $("textarea#content").val("");
-
-
 }
 
 
-
-
-function sendButtonOnclick(userNo){
-    sendMessage(roomNo,userNo); // 메시지 전송 함수 호출
+function sendButtonOnclick(userNo) {
+    sendMessage(roomNo, userNo); // 메시지 전송 함수 호출
 }
 
 

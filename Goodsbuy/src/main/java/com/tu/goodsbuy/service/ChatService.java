@@ -3,8 +3,10 @@ package com.tu.goodsbuy.service;
 
 import com.tu.goodsbuy.controller.param.ProductUpdateParam;
 import com.tu.goodsbuy.global.exception.product.ProductUpdateException;
+import com.tu.goodsbuy.global.exception.profile.GetProfileException;
 import com.tu.goodsbuy.model.dto.ChatMessage;
 import com.tu.goodsbuy.model.dto.ChatRoom;
+import com.tu.goodsbuy.model.dto.MemberProfile;
 import com.tu.goodsbuy.repository.param.InsertChatMessageDto;
 import com.tu.goodsbuy.repository.ChatRepository;
 import com.tu.goodsbuy.repository.param.ChatRoomBuilder;
