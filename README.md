@@ -8,6 +8,7 @@
 
 ```
 Second hand transaction platform(중고 거래 플랫폼)
+Full Stack Project
 
 - Java , SpringBoot
 
