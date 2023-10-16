@@ -1,4 +1,11 @@
 # Goodbuys
+<br>
+
+<img src="https://github.com/minwoogi/Goodbuys/assets/96968834/d026f54c-ed50-4e16-94b2-5764137364e0">
+
+
+ ## 프로젝트 정보 🔖
+
 ```
 Second hand transaction platform(중고 거래 플랫폼)
 
@@ -6,14 +13,93 @@ Second hand transaction platform(중고 거래 플랫폼)
 
 - MySQL MyBatis
 
-- HTML , CSS , JavaScript , JQuery , AJax
+- HTML , CSS , JavaScript , JQuery , AJax , bootstarp
 ```
 <br>
-
-<img src="https://github.com/minwoogi/Goodbuys/assets/96968834/d026f54c-ed50-4e16-94b2-5764137364e0">
+<div align="left">
+  <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/jquery-0769AD?style=flat-square&logo=jquery&logoColor=white">
+  <img src="https://img.shields.io/badge/bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white">
+  <img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"> 
+  <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/git-F05032?style=flat-square&logo=git&logoColor=white">
+</div>
 
 <br><br>
 
+## File Tree 🎄
+
+```
+📦Goodsbuy
+ ┣ 📂src
+ ┃ ┣ 📂main
+ ┃ ┃ ┣ 📂generated
+ ┃ ┃ ┣ 📂java
+ ┃ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┃ ┗ 📂tu
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂goodsbuy
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂advice
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ExceptionAdvice.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂chat
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂list
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂get
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂post
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂mypage
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂get
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂post
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂param
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂product
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂user
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂get
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂post
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GoodsBuyController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂global
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂file
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂product
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂profile
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂user
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂util
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂model
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂enumeration
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂param
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GoodsbuyApplication.java
+ ┃ ┃ ┣ 📂resources
+ ┃ ┃ ┃ ┣ 📂static
+ ┃ ┃ ┃ ┃ ┣ 📂css
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜*.css
+ ┃ ┃ ┃ ┃ ┣ 📂img
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜*.png
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜*.gif
+ ┃ ┃ ┃ ┃ ┗ 📂js
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜*.js
+ ┃ ┃ ┃ ┣ 📜application.properties
+ ┃ ┃ ┃ ┗ 📜email.properties
+ ┃ ┃ ┗ 📂webapp
+ ┃ ┃ ┃ ┗ 📂WEB-INF
+ ┃ ┃ ┃ ┃ ┗ 📂view
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂chat
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂common
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂product
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂profile
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂users
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜errorPage.jsp
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜index.jsp
+ ┣ 📜.gitignore
+ ┣ 📜build.gradle
+```
+
+
+<br><br>
 
 
 
